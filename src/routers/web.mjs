@@ -12,7 +12,6 @@ webRouter.use(express.static(public_dir))
 
 // root index page
 webRouter.get('/', (req, res) => {
-    // res render
     res.sendFile(join(__dirname, '/index.html'))
 })
 

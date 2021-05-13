@@ -2,8 +2,9 @@
   "name": "tightshorts",
   "version": "1.0.0",
   "description": "Tight Shorts - Finra short sale volume",
-  "main": ".eslintrc.js",
+  "main": "public/index.html",
   "scripts": {
+    "build": "parcel build web/index.html",
     "start": "node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
     "dev": "nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
   },
@@ -24,9 +25,10 @@
   },
   "devDependencies": {
     "eslint": "^7.26.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "parcel": "^2.0.0-beta.2"
   },
-   "engines": {
+  "engines": {
     "node": ">=16.0.0"
   }
 }

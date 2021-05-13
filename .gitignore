@@ -102,4 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
 config/dev.env
+.parcel-cache/
+public/
