@@ -1,14 +1,20 @@
-import { createChart, PriceScaleMode } from 'lightweight-charts'
+import {
+	createChart
+} from 'lightweight-charts'
+import resizeDetector from 'element-resize-detector'
 
+// Define chart properties
 var chart = createChart(document.getElementById('chart'), {
 	width: 800,
 	height: 400,
+	timeScale: {
+		lockVisibleTimeRangeOnResize: true
+	},
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
 			bottom: 0.1,
 		},
-		mode: PriceScaleMode.Percentage,
 		borderColor: 'rgba(197, 203, 206, 0.4)',
 	},
 	watermark: {
@@ -38,6 +44,9 @@ var areaSeries = chart.addAreaSeries({
 	bottomColor: 'rgba(38,198,218, 0.04)',
 	lineColor: 'rgba(38,198,218, 1)',
 	lineWidth: 2,
+	priceFormat: {
+		type: 'percent',
+	},
 })
 
 var extraSeries = chart.addAreaSeries({
@@ -45,6 +54,9 @@ var extraSeries = chart.addAreaSeries({
 	bottomColor: 'rgba(233, 16, 169, 0)',
 	lineColor: 'rgba(233, 16, 169, 1)',
 	lineWidth: 2,
+	priceFormat: {
+		type: 'percent',
+	},
 })
 
 var volumeSeries = chart.addHistogramSeries({
@@ -57,6 +69,18 @@ var volumeSeries = chart.addHistogramSeries({
 		top: 0.8,
 		bottom: 0,
 	},
+})
+
+// Resize charts
+const resizer = resizeDetector({
+	strategy: 'scroll'
+})
+
+resizer.listenTo(document.getElementById('chart'), function (element) {
+	chart.applyOptions({
+		width: element.offsetWidth,
+		height: element.offsetHeight
+	})
 })
 
 areaSeries.setData([{
