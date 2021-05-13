@@ -1,5 +1,6 @@
-/*global LightweightCharts*/
-var chart = LightweightCharts.createChart(document.getElementById('chart'), {
+import { createChart, PriceScaleMode } from 'lightweight-charts'
+
+var chart = createChart(document.getElementById('chart'), {
 	width: 800,
 	height: 400,
 	rightPriceScale: {
@@ -7,7 +8,7 @@ var chart = LightweightCharts.createChart(document.getElementById('chart'), {
 			top: 0.1,
 			bottom: 0.1,
 		},
-		mode: LightweightCharts.PriceScaleMode.Percentage,
+		mode: PriceScaleMode.Percentage,
 		borderColor: 'rgba(197, 203, 206, 0.4)',
 	},
 	watermark: {
