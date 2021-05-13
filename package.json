@@ -5,8 +5,8 @@
   "main": "public/index.html",
   "scripts": {
     "build": "parcel build web/index.html",
-    "start": "node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
-    "dev": "nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
+    "start": "npm run build && node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
+    "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
   },
   "repository": {
     "type": "git",
