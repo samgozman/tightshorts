@@ -1,0 +1,32 @@
+{
+  "name": "tightshorts",
+  "version": "1.0.0",
+  "description": "Tight Shorts - Finra short sale volume",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
+    "dev": "nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samgozman/tightshorts.git"
+  },
+  "keywords": [],
+  "author": "Sam Gozman <sam@gozman.space>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samgozman/tightshorts/issues"
+  },
+  "homepage": "https://github.com/samgozman/tightshorts#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0",
+    "nodemon": "^2.0.7"
+  },
+   "engines": {
+    "node": ">=16.0.0"
+  }
+}
