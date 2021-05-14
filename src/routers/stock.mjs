@@ -7,7 +7,7 @@ const stockRouter = new express.Router()
 stockRouter.get('/stock', async (req, res) => {
     try {
         const ticker = req.query.ticker
-        var config = {
+        const config = {
             method: 'get',
             url: `${process.env.API_URL}/stock?ticker=${ticker}`,
             headers: {
