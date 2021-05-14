@@ -2,9 +2,9 @@
   "name": "tightshorts",
   "version": "1.0.0",
   "description": "Tight Shorts - Finra short sale volume",
-  "main": "public/index.html",
+  "main": "public/main.html",
   "scripts": {
-    "build": "parcel build web/index.html",
+    "build": "parcel build web/main.html",
     "start": "npm run build && node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
     "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
   },
@@ -22,6 +22,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bulma": "^0.9.2",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "csurf": "^1.11.0",
     "dotenv": "^9.0.2",
     "element-resize-detector": "^1.2.2",
     "express": "^4.17.1",

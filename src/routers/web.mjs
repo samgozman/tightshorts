@@ -1,4 +1,5 @@
 import express from 'express'
+import fs from 'fs'
 import { join } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -11,8 +12,10 @@ const public_dir = join(__dirname, '../../public')
 webRouter.use(express.static(public_dir))
 
 // root index page
-webRouter.get('/', (req, res) => {
-    res.sendFile(join(__dirname, '/index.html'))
+webRouter.get('', (req, res) => {
+    // Save csrf token in the meta
+    const file = fs.readFileSync(join(public_dir, '/main.html'), 'utf8')
+    res.send(file.replace('{{ csrf }}', req.csrfToken()))
 })
 
 export default webRouter

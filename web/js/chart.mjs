@@ -98,7 +98,16 @@ chart.subscribeCrosshairMove((param) => {
 // Get response from server side
 const getResponse = async (ticker) => {
 	try {
-		const resp = await fetch('/stock?ticker=' + ticker)
+		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+		const resp = await fetch('/stock?ticker=' + ticker, {
+			credentials: 'same-origin',
+			headers: {
+				'CSRF-Token': token,
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: 'POST'
+		})
 		if (resp.status !== 200) {
 			throw new Error(resp.status)
 		}
@@ -114,6 +123,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 	try {
 		// Fetch data
 		const ticker = document.getElementById('input_ticker').value.toUpperCase()
+		// const _csrf = document.getElementById('_csrf').value
 		const response = await getResponse(ticker)
 
 		const data_short_volume = []

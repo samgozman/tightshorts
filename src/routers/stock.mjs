@@ -4,7 +4,7 @@ import axios from 'axios'
 const stockRouter = new express.Router()
 
 // root index page
-stockRouter.get('/stock', async (req, res) => {
+stockRouter.post('/stock', async (req, res) => {
     try {
         const ticker = req.query.ticker
         const config = {
@@ -20,9 +20,8 @@ stockRouter.get('/stock', async (req, res) => {
 
         res.send(api)
     } catch (error) {
-        res.status(404).send('Stock is not found!')
+        res.status(404).send(error)
     }
 
 })
-
 export default stockRouter
