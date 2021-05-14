@@ -2,6 +2,7 @@ import {
 	createChart
 } from 'lightweight-charts'
 import resizeDetector from 'element-resize-detector'
+import Legend from './Legend.mjs'
 
 // Define chart properties
 var chart = createChart(document.getElementById('chart'), {
@@ -81,6 +82,17 @@ resizer.listenTo(document.getElementById('chart'), function (element) {
 		width: element.offsetWidth,
 		height: element.offsetHeight
 	})
+})
+
+// Legend
+const legend_short_volume = new Legend('Short Volume', 'rgba(38,198,218, 1)', 'legend_short_volume', 'legend')
+const legend_short_exempt_volume = new Legend('Short Exempt Volume', 'rgba(233, 16, 169, 1)', 'legend_short_exempt_volume', 'legend')
+const legend_volume = new Legend('Volume', 'rgba(38,198,218, 1)', 'legend_volume', 'legend')
+
+chart.subscribeCrosshairMove((param) => {
+	legend_short_volume.setLegendText(param.seriesPrices.get(areaSeries))
+	legend_short_exempt_volume.setLegendText(param.seriesPrices.get(extraSeries))
+	legend_volume.setLegendText(param.seriesPrices.get(volumeSeries))
 })
 
 areaSeries.setData([{
