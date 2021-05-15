@@ -18,7 +18,7 @@ const chartPercent = createChart(document.getElementById('chartPercent'), {
 	},
 	watermark: {
 		visible: true,
-		fontSize: 24,
+		fontSize: 22,
 		horzAlign: 'center',
 		vertAlign: 'center',
 		color: color.watermark,
@@ -50,7 +50,7 @@ const chartVolume = createChart(document.getElementById('chartVolume'), {
 	},
 	watermark: {
 		visible: true,
-		fontSize: 24,
+		fontSize: 22,
 		horzAlign: 'center',
 		vertAlign: 'center',
 		color: color.watermark,
@@ -240,7 +240,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 		series_shortExemptVolume.setData(data_shortExemptVolume)
 
 		// Update chart watermark
-		const watermark = `TightShorts.ru, ${ticker}`
+		const watermark = `TightShorts.ru, ${response.ticker}`
 		chartPercent.applyOptions({
 			watermark: {
 				text: watermark,
