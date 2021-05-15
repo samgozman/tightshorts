@@ -3,32 +3,68 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="US stocks short volume, short volume ratio, short exempt volume.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tight Shorts</title>
+    <title>Tight Shorts | Daily Short Sale Volume</title>
     <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="http://tightshorts.ru/">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbar" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item is-active" href="http://tightshorts.ru/">
+                    Tight Shorts
+                </a>
+
+                <a class="navbar-item" href="https://short-fork.herokuapp.com/">
+                    Short Fork
+                </a>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <a class="button is-light">
+                    ?
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar: ends -->
+
     <section class="section">
         <div class="container">
             <h1 class="title"> Tight Shorts </h1>
-            <p class="subtitle"> Запущен в тестовом режиме! </p>
+            <p class="subtitle"> Ежедневный график объёма коротких продаж (short selling volume) американских акций </p>
         </div>
     </section>
     <section class="section">
         <div class="container">
             <div class="columns">
                 <div class="column">
-
+                    <!-- Form -->
                     <form class="field has-addons" id="search">
                         <div class="control">
                             <input class="input" id="input_ticker" type="text" placeholder="Тикер">
                         </div>
                         <div class="control">
-                            <button class="button is-info" id="submit_button" type="submit" name="Поиск">Search</button>
+                            <button class="button is-link" id="submit_button" type="submit" name="Поиск">Поиск</button>
                         </div>
                     </form>
 
@@ -46,22 +82,52 @@
                     </div>
                 </div>
             </div>
+            <p>Дисклеймер: данные на графике ограничены совокупным объёмом торгов на NASDAQ, NYSE и OTC, о
+                котором было сообщено в службу торговой отчетности <a href="http://regsho.finra.org/regsho-Index.html"
+                    target="_blank" rel="nofollow" rel="noreferrer">FINRA</a>. Мы не даём никаких гарантий в отношении
+                точности данных. Информация представлена для ознакомления и не является индивидуальной инвестиционной
+                рекомендацией. </p>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>TightShorts.ru</strong> создан <a href="https://github.com/samgozman" target="_blank"
+                    rel="nofollow" rel="noreferrer">samgozman</a>. <br>
+                Профиль в Пульс: <a href="https://www.tinkoff.ru/invest/social/profile/aqua_disco/" target="_blank"
+                    rel="nofollow" rel="noreferrer">aqua_disco</a>.
+            </p>
+            <p>
+                Поддержать проект:
+            </p>
+            <p>
+                <a href="https://paypal.me/samgozman" target="_blank" rel="nofollow" rel="noreferrer">
+                    <button class="button is-link is-outlined">PayPal</button>
+                </a>
+                <a href="https://www.tinkoff.ru/rm/gozman.semen1/Ol0PS3882" target="_blank" rel="nofollow"
+                    rel="noreferrer">
+                    <button class="button is-dark is-outlined">Tinkoff</button>
+                </a>
+
+            </p>
+        </div>
+    </footer>
 
     <!-- Octocat -->
     <a href="https://github.com/samgozman/tightshorts" target="_blank" rel="nofollow" rel="noreferrer">
         <svg class="octocat" viewBox="0 0 250 250">
-            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-            <path class="octocat-arm"
+            <path transform="rotate(90 125 125)" d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path transform="rotate(90 125 125)" class="octocat-arm"
                 d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2">
             </path>
-            <path class="octocat-body"
+            <path transform="rotate(90 125 125)" class="octocat-body"
                 d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z">
             </path>
         </svg>
     </a>
 
+    <script src="./js/navbar.js"></script>
     <script src="./js/chart.mjs"></script>
 </body>
 

@@ -3,6 +3,11 @@
     text-transform: uppercase;
 }
 
+/* Navbar */
+.navbar {
+    background-color: transparent;
+}
+
 /* CHART */
 /* Legend */
 .legend {
@@ -25,7 +30,7 @@
     height: 3rem;
     position: fixed;
     right: 0;
-    top: 0;
+    bottom: 0;
     width: 3rem;
     z-index: 2;
 }
