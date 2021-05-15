@@ -21,7 +21,7 @@ const chartPercent = createChart(document.getElementById('chartPercent'), {
 		fontSize: 24,
 		horzAlign: 'center',
 		vertAlign: 'center',
-		color: 'rgba(171, 71, 188, 0.5)',
+		color: color.watermark,
 		text: 'TightShorts.ru, stock',
 	},
 	layout: {
@@ -53,7 +53,7 @@ const chartVolume = createChart(document.getElementById('chartVolume'), {
 		fontSize: 24,
 		horzAlign: 'center',
 		vertAlign: 'center',
-		color: 'rgba(171, 71, 188, 0.5)',
+		color: color.watermark,
 		text: 'TightShorts.ru, stock',
 	},
 	layout: {
