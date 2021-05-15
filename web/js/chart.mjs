@@ -3,6 +3,7 @@ import {
 } from 'lightweight-charts'
 import resizeDetector from 'element-resize-detector'
 import Legend from './Legend.mjs'
+import color from './color.mjs'
 
 // Define chart properties
 const chartPercent = createChart(document.getElementById('chartPercent'), {
@@ -71,9 +72,7 @@ const chartVolume = createChart(document.getElementById('chartVolume'), {
 
 // Chart series for ratios (percentage format)
 const series_shortVolumeRatio = chartPercent.addAreaSeries({
-	topColor: 'rgba(38,198,218, 0.56)',
-	bottomColor: 'rgba(38,198,218, 0.04)',
-	lineColor: 'rgba(38,198,218, 1)',
+	...color.shortVolumeArea,
 	lineWidth: 2,
 	priceFormat: {
 		type: 'percent',
@@ -81,9 +80,7 @@ const series_shortVolumeRatio = chartPercent.addAreaSeries({
 })
 
 const series_shortExemptVolumeRatio = chartPercent.addAreaSeries({
-	topColor: 'rgba(233, 16, 169, 0.35)',
-	bottomColor: 'rgba(233, 16, 169, 0)',
-	lineColor: 'rgba(233, 16, 169, 1)',
+	...color.shortExemptVolumeArea,
 	lineWidth: 2,
 	priceFormat: {
 		type: 'percent',
@@ -91,7 +88,6 @@ const series_shortExemptVolumeRatio = chartPercent.addAreaSeries({
 })
 
 const series_volumeHistogram = chartPercent.addHistogramSeries({
-	color: '#26a69a',
 	priceFormat: {
 		type: 'volume',
 	},
@@ -104,9 +100,7 @@ const series_volumeHistogram = chartPercent.addHistogramSeries({
 
 // Chart series with numbers (pure volume)
 const series_shortVolume = chartVolume.addAreaSeries({
-	topColor: 'rgba(38,198,218, 0.56)',
-	bottomColor: 'rgba(38,198,218, 0.04)',
-	lineColor: 'rgba(38,198,218, 1)',
+	...color.shortVolumeArea,
 	lineWidth: 2,
 	priceFormat: {
 		type: 'volume',
@@ -114,9 +108,7 @@ const series_shortVolume = chartVolume.addAreaSeries({
 })
 
 const series_shortExemptVolume = chartVolume.addAreaSeries({
-	topColor: 'rgba(233, 16, 169, 0.35)',
-	bottomColor: 'rgba(233, 16, 169, 0)',
-	lineColor: 'rgba(233, 16, 169, 1)',
+	...color.shortExemptVolumeArea,
 	lineWidth: 2,
 	priceFormat: {
 		type: 'volume',
@@ -124,9 +116,7 @@ const series_shortExemptVolume = chartVolume.addAreaSeries({
 })
 
 const series_volume = chartVolume.addAreaSeries({
-	topColor: 'rgba(233, 16, 169, 0.35)',
-	bottomColor: 'rgba(233, 16, 169, 0)',
-	lineColor: 'rgba(233, 16, 169, 1)',
+	...color.volumeArea,
 	lineWidth: 2,
 	priceFormat: {
 		type: 'volume',
@@ -153,14 +143,14 @@ resizer.listenTo(document.getElementById('chartVolume'), function (element) {
 })
 
 // Legend ratio
-const legend_shortVolumeRatio = new Legend('Short Volume Ratio', 'rgba(38,198,218, 1)', 'legend_shortVolumeRatio', 'legendRatio')
-const legend_shortExemptVolumeRatio = new Legend('Short Exempt Volume Ratio', 'rgba(233, 16, 169, 1)', 'legend_shortExemptVolumeRatio', 'legendRatio')
-const legend_volumeHist = new Legend('Volume', 'rgba(38,198,218, 1)', 'legend_volumeHist', 'legendRatio')
+const legend_shortVolumeRatio = new Legend('Short Volume Ratio', color.shortVolumeArea.lineColor, 'legend_shortVolumeRatio', 'legendRatio')
+const legend_shortExemptVolumeRatio = new Legend('Short Exempt Volume Ratio', color.shortExemptVolumeArea.lineColor, 'legend_shortExemptVolumeRatio', 'legendRatio')
+const legend_volumeHist = new Legend('Volume', color.volumeArea.lineColor, 'legend_volumeHist', 'legendRatio')
 
 // Legend volume
-const legend_shortVolume= new Legend('Short Volume', 'rgba(38,198,218, 1)', 'legend_shortVolume', 'legendVolume')
-const legend_shortExemptVolume = new Legend('Short Exempt Volume', 'rgba(233, 16, 169, 1)', 'legend_shortExemptVolume', 'legendVolume')
-const legend_volume = new Legend('Volume', 'rgba(38,198,218, 1)', 'legend_volume', 'legendVolume')
+const legend_volume = new Legend('Volume', color.volumeArea.lineColor, 'legend_volume', 'legendVolume')
+const legend_shortVolume= new Legend('Short Volume', color.shortVolumeArea.lineColor, 'legend_shortVolume', 'legendVolume')
+const legend_shortExemptVolume = new Legend('Short Exempt Volume', color.shortExemptVolumeArea.lineColor, 'legend_shortExemptVolume', 'legendVolume')
 
 chartPercent.subscribeCrosshairMove((param) => {
 	legend_shortVolumeRatio.setLegendText(param.seriesPrices.get(series_shortVolumeRatio) || 0)
@@ -169,9 +159,9 @@ chartPercent.subscribeCrosshairMove((param) => {
 })
 
 chartVolume.subscribeCrosshairMove((param) => {
+	legend_volume.setLegendText(param.seriesPrices.get(series_volume) || 0)
 	legend_shortVolume.setLegendText(param.seriesPrices.get(series_shortVolume) || 0)
 	legend_shortExemptVolume.setLegendText(param.seriesPrices.get(series_shortExemptVolume) || 0)
-	legend_volume.setLegendText(param.seriesPrices.get(series_volume) || 0)
 })
 
 // Get response from server side
@@ -225,7 +215,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 			data_volumeHist.push({
 				time: el.date,
 				value: el.totalVolume,
-				color: el.shortVolume < el.totalVolume / 2 ? 'rgba(0, 150, 136, 0.8)' : 'rgba(255,82,82, 0.8)'
+				color: el.shortVolume < el.totalVolume / 2 ? color.volumeHist.bull : color.volumeHist.bear
 			})
 			data_volume.push({
 				time: el.date,
