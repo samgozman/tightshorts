@@ -1,3 +1,10 @@
+/* Form */
+#input_ticker {
+    text-transform: uppercase;
+}
+
+/* CHART */
+/* Legend */
 .legend {
     width: 210px;
     height: 70px;
@@ -8,4 +15,22 @@
     text-align: left;
     z-index: 1000;
     pointer-events: none;
+}
+
+/* Octocat */
+.octocat {
+    border: 0;
+    color: #f4f5f6;
+    fill: #333;
+    height: 3rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 3rem;
+    z-index: 2;
+}
+
+.octocat .octocat-arm,
+.octocat .octocat-body {
+    fill: #f4f5f6;
 }
