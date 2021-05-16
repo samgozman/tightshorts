@@ -1,6 +1,6 @@
 {
   "name": "tightshorts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tight Shorts - Finra short sale volume",
   "main": "public/main.html",
   "scripts": {
