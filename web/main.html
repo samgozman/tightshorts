@@ -64,9 +64,48 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <a class="button is-light">
+                <a class="button is-light modal-button" data-target="help-modal">
                     ?
                 </a>
+                <!-- Modal ? message -->
+                <div class="modal" id="help-modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">What is it all about?</p>
+                            <button class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body content">
+                            <p>Short volume is the number of shares that have been borrowed to open short positions
+                                (when you sell one or more shares of a stock that you don’t own).</p>
+                            <p>TightShorts.ru aggregates data from FINRA and presents it in an easy-to-use way.</p>
+                            <h4>Terminology</h4>
+                            <ol>
+                                <li> <strong>Volume</strong> - number of shares of all
+                                    executed trades during regular trading hours</li>
+                                <li> <strong>Short Volume</strong> - number of shares that have been borrowed to open
+                                    short positions</li>
+                                <li> <strong>Short Exempt Volume</strong> - number of shares of all executed
+                                    short sale exempt trades during regular
+                                    trading hours</li>
+                                <li> <strong>Short Volume Ratio</strong> - percentage of short positions from the total
+                                    volume</li>
+                                <li> <strong>Short Exempt Volume Ratio</strong> - percentage of short short sale exempt
+                                    trades from the total volume</li>
+                            </ol>
+                            <p><strong>Disclaimer:</strong> The data on the TightShorts is limited to the combined
+                                trading
+                                volume on the NASDAQ, NYSE and OTC,
+                                which was reported to the <a href="http://regsho.finra.org/regsho-Index.html"
+                                    target="_blank" rel="nofollow" rel="noreferrer">FINRA</a> trade reporting facility.
+                                We make no guarantees as to the
+                                accuracy of the data. The information is provided for reference only and does not
+                                represent individual
+                                investment advice. </p>
+                        </section>
+                    </div>
+                </div>
+                <!-- Modal ? message: ends -->
             </div>
         </div>
     </nav>
@@ -81,10 +120,11 @@
                 <button class="delete" aria-label="close"></button>
             </header>
             <section class="modal-card-body">
-               <p>Stock <strong id="error-stock"></strong> is not found!</p>
+                <p>Stock <strong id="error-stock"></strong> is not found!</p>
             </section>
         </div>
     </div>
+    <!-- Error message: ends -->
 
     <section class="section">
         <div class="container">
@@ -107,10 +147,12 @@
                             <button class="button is-link" id="submit_button" type="submit">Find</button>
                         </div>
                     </form>
+                    <!-- Form: ends -->
 
                 </div>
             </div>
             <div class="columns">
+                <!-- Charts -->
                 <div class="column is-half is-full-mobile">
                     <p class="title is-5 has-text-left">Short Volume Ratio</p>
                     <div id="chartPercent">
@@ -123,14 +165,14 @@
                         <div id="legendVolume" class="legend"></div>
                     </div>
                 </div>
+                <!-- Charts: ends -->
             </div>
             <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
                 NASDAQ, NYSE and OTC,
                 which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
                     rel="nofollow" rel="noreferrer">FINRA</a> trade reporting facility. We make no guarantees as to the
                 accuracy of the data. The information is provided for reference only and does not represent individual
-                investment advice.
-                рекомендацией. </p>
+                investment advice. </p>
         </div>
     </section>
 
@@ -176,6 +218,7 @@
             </path>
         </svg>
     </a>
+    <!-- Octocat: ends -->
 
     <script src="./js/navbar.js"></script>
     <script src="./js/modal.js"></script>
