@@ -14,10 +14,10 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar container" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="http://tightshorts.ru/">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                <img src="./img/logo_header.png" width="154" height="48">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
@@ -29,14 +29,38 @@
 
         <div id="navbar" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item is-active" href="http://tightshorts.ru/">
-                    Tight Shorts
+                <a class="navbar-item is-active" href="/">
+                    Home
                 </a>
-
                 <a class="navbar-item" href="https://short-fork.herokuapp.com/">
                     Short Fork
                 </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Contacts
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://t.me/samgozman" target="_blank" rel="nofollow"
+                            rel="noreferrer">
+                            📨 Telegram
+                        </a>
+                        <a class="navbar-item" href="https://www.tinkoff.ru/invest/social/profile/aqua_disco/"
+                            target="_blank" rel="nofollow" rel="noreferrer">
+                            🪶 Tinkoff Pulse
+                        </a>
+                        <a class="navbar-item" href="#support">
+                            💰 Support Project
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="https://github.com/samgozman/tightshorts/issues" target="_blank"
+                            rel="nofollow" rel="noreferrer">
+                            ☢️ Report an issue
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
@@ -50,21 +74,23 @@
 
     <section class="section">
         <div class="container">
-            <h1 class="title"> Tight Shorts </h1>
-            <p class="subtitle"> Ежедневный график объёма коротких продаж (short selling volume) американских акций </p>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
+            <h1 class="title is-3"> Tight Shorts <sup class="is-size-7">
+                    <a href="https://github.com/samgozman/tightshorts/releases" target="_blank" rel="nofollow"
+                        rel="noreferrer">
+                        {{ version }}
+                    </a>
+                </sup>
+            </h1>
+            <p class="subtitle"> Daily short sale volume </p>
             <div class="columns">
                 <div class="column">
                     <!-- Form -->
                     <form class="field has-addons" id="search">
                         <div class="control">
-                            <input class="input" id="input_ticker" type="text" placeholder="Тикер">
+                            <input class="input" id="input_ticker" type="text" placeholder="Ticker">
                         </div>
                         <div class="control">
-                            <button class="button is-link" id="submit_button" type="submit" name="Поиск">Поиск</button>
+                            <button class="button is-link" id="submit_button" type="submit">Find</button>
                         </div>
                     </form>
 
@@ -84,10 +110,12 @@
                     </div>
                 </div>
             </div>
-            <p>Дисклеймер: данные на графике ограничены совокупным объёмом торгов на NASDAQ, NYSE и OTC, о
-                котором было сообщено в службу торговой отчетности <a href="http://regsho.finra.org/regsho-Index.html"
-                    target="_blank" rel="nofollow" rel="noreferrer">FINRA</a>. Мы не даём никаких гарантий в отношении
-                точности данных. Информация представлена для ознакомления и не является индивидуальной инвестиционной
+            <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
+                NASDAQ, NYSE and OTC,
+                which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
+                    rel="nofollow" rel="noreferrer">FINRA</a> trade reporting facility. We make no guarantees as to the
+                accuracy of the data. The information is provided for reference only and does not represent individual
+                investment advice.
                 рекомендацией. </p>
         </div>
     </section>
@@ -95,13 +123,13 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                <strong>TightShorts.ru</strong> создан <a href="https://github.com/samgozman" target="_blank"
-                    rel="nofollow" rel="noreferrer">samgozman</a>. <br>
-                Профиль в Пульс: <a href="https://www.tinkoff.ru/invest/social/profile/aqua_disco/" target="_blank"
+                <strong>TightShorts.ru</strong> by <a href="https://github.com/samgozman" target="_blank" rel="nofollow"
+                    rel="noreferrer">samgozman</a>. <br>
+                Tinkoff Pulse: <a href="https://www.tinkoff.ru/invest/social/profile/aqua_disco/" target="_blank"
                     rel="nofollow" rel="noreferrer">aqua_disco</a>.
             </p>
-            <p>
-                Поддержать проект:
+            <p id="support">
+                Support TightShorts 🤑
             </p>
             <p>
                 <a href="https://paypal.me/samgozman" target="_blank" rel="nofollow" rel="noreferrer">
@@ -111,7 +139,13 @@
                     rel="noreferrer">
                     <button class="button is-dark is-outlined">Tinkoff</button>
                 </a>
-
+                <br>
+                <br>
+                <a href="https://accounts.binance.com/ru/register?ref=61635677" target="_blank" rel="nofollow">
+                    Binance
+                </a> BTC:
+                <br>
+                <img src="./img/btc_qr.png" alt="Bitcoin wallet" class="qrcode">
             </p>
         </div>
     </footer>

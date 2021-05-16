@@ -8,6 +8,16 @@
     background-color: transparent;
 }
 
+.navbar-item img {
+    max-height: unset;
+    margin: -4px 0px;
+}
+
+a.navbar-item.is-active, 
+a.navbar-item.is-active:not(:focus):not(:hover) {
+    background-color: #fafafa;
+}
+
 /* CHART */
 /* Legend */
 .legend {
@@ -38,4 +48,10 @@
 .octocat .octocat-arm,
 .octocat .octocat-body {
     fill: #f4f5f6;
+}
+
+/* Footer */
+
+.qrcode {
+    max-width: 140px;
 }
