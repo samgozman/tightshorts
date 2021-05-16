@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <nav class="navbar container" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="http://tightshorts.ru/">
+            <a class="navbar-item" href="/">
                 <img src="./img/logo_header.png" width="154" height="48">
             </a>
 
@@ -71,6 +71,20 @@
         </div>
     </nav>
     <!-- Navbar: ends -->
+
+    <!-- Error message -->
+    <div class="modal" id="error-modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">🤬 Error!</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+               <p>Stock <strong id="error-stock"></strong> is not found!</p>
+            </section>
+        </div>
+    </div>
 
     <section class="section">
         <div class="container">
@@ -164,6 +178,7 @@
     </a>
 
     <script src="./js/navbar.js"></script>
+    <script src="./js/modal.js"></script>
     <script src="./js/chart.mjs"></script>
 </body>
 

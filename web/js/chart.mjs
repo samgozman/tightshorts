@@ -149,7 +149,7 @@ const legend_volumeHist = new Legend('Volume', color.volumeArea.lineColor, 'lege
 
 // Legend volume
 const legend_volume = new Legend('Volume', color.volumeArea.lineColor, 'legend_volume', 'legendVolume')
-const legend_shortVolume= new Legend('Short Volume', color.shortVolumeArea.lineColor, 'legend_shortVolume', 'legendVolume')
+const legend_shortVolume = new Legend('Short Volume', color.shortVolumeArea.lineColor, 'legend_shortVolume', 'legendVolume')
 const legend_shortExemptVolume = new Legend('Short Exempt Volume', color.shortExemptVolumeArea.lineColor, 'legend_shortExemptVolume', 'legendVolume')
 
 chartPercent.subscribeCrosshairMove((param) => {
@@ -189,9 +189,9 @@ const getResponse = async (ticker) => {
 // Form submit
 document.getElementById('search').addEventListener('submit', async (e) => {
 	e.preventDefault()
+	// Fetch data
+	const ticker = document.getElementById('input_ticker').value.toUpperCase()
 	try {
-		// Fetch data
-		const ticker = document.getElementById('input_ticker').value.toUpperCase()
 		// const _csrf = document.getElementById('_csrf').value
 		const response = await getResponse(ticker)
 
@@ -252,7 +252,8 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 			},
 		})
 	} catch (error) {
-		console.log(error)
+		document.getElementById('error-modal').classList.add('is-active')
+		document.getElementById('error-stock').innerHTML = ticker
 	}
 })
 
