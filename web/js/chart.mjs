@@ -8,7 +8,7 @@ import color from './color.mjs'
 // Define chart properties
 const chartPercent = createChart(document.getElementById('chartPercent'), {
 	width: 800,
-	height: 400,
+	height: 360,
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
@@ -40,7 +40,7 @@ const chartPercent = createChart(document.getElementById('chartPercent'), {
 
 const chartVolume = createChart(document.getElementById('chartVolume'), {
 	width: 800,
-	height: 400,
+	height: 360,
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
