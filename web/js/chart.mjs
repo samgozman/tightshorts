@@ -4,17 +4,10 @@ import {
 import resizeDetector from 'element-resize-detector'
 import Legend from './Legend.mjs'
 import color from './color.mjs'
-
-// Gen table
-const table_tbody = document.getElementById('table-body')
-
-const createTableRow = (table, data, sv, sev, vol) => {
-	let row = table.insertRow()
-	row.insertCell(0).innerHTML = data.replace(/T(.*)/g, '')
-	row.insertCell(1).innerHTML = sv
-	row.insertCell(2).innerHTML = sev
-	row.insertCell(3).innerHTML = vol
-}
+import {
+	generateTable,
+	clearTable
+} from './table.mjs'
 
 // Define chart properties
 const chartPercent = createChart(document.getElementById('chartPercent'), {
@@ -219,7 +212,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 		const data_shortExemptVolume = []
 
 		// Clear table
-		table_tbody.innerHTML = ''
+		clearTable()
 
 		// Prepare data
 		for (const el of response.volume) {
@@ -272,11 +265,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 		})
 
 		// Generate table
-		let reversed_array = response.volume
-		reversed_array.reverse()
-		for (const [i, el] of reversed_array.entries()) {
-			if (i < 30) createTableRow(table_tbody, el.date, el.shortVolume, el.shortExemptVolume, el.totalVolume)
-		}
+		generateTable(response)
 
 		// Load tragingview live chart
 		document.getElementById('iframe_chart').src = 'static/liveChart.html?stock=' + ticker
