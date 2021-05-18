@@ -1,6 +1,6 @@
 {
   "name": "tightshorts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tight Shorts - Finra short sale volume",
   "scripts": {
     "build": "parcel build web/main.html web/static/liveChart.html",
@@ -35,7 +35,6 @@
     "parcel": "^2.0.0-beta.2"
   },
   "devDependencies": {
-    "@parcel/transformer-webmanifest": "^2.0.0-beta.2",
     "eslint": "^7.26.0",
     "nodemon": "^2.0.7",
     "npm": "^7.12.1"
