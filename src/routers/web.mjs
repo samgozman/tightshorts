@@ -14,7 +14,9 @@ const __dirname = fileURLToPath(new URL('.',
 const public_dir = join(__dirname, '../../dist')
 
 // Setup static directory to serve
-webRouter.use(express.static(public_dir))
+webRouter.use(express.static(public_dir, {
+    dotfiles: 'allow'
+}))
 
 // root index page
 webRouter.get('', (req, res) => {
