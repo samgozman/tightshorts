@@ -2,9 +2,8 @@
   "name": "tightshorts",
   "version": "1.0.1",
   "description": "Tight Shorts - Finra short sale volume",
-  "main": "public/main.html",
   "scripts": {
-    "build": "parcel build web/main.html",
+    "build": "parcel build web/main.html web/static/liveChart.html",
     "start": "npm run build && node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
     "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
   },
@@ -40,6 +39,7 @@
     "npm": "^7.12.1"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.0.0",
+    "browsers": "> 0.25%"
   }
 }
