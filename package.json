@@ -5,7 +5,8 @@
   "scripts": {
     "build": "parcel build web/main.html web/static/liveChart.html",
     "start": "npm run build && node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
-    "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env"
+    "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env",
+    "clear": "rm -r dist .parcel-cache"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,6 @@
   },
   "engines": {
     "node": ">=16.0.0",
-    "browsers": "> 0.25%"
+    "browsers": "> 0.5%"
   }
 }
