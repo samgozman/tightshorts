@@ -49,6 +49,10 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     overflow-y: auto;
 }
 
+.csv-download {
+    padding: 0 .75em;
+}
+
 /* Octocat */
 .octocat {
     border: 0;
