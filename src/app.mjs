@@ -4,6 +4,7 @@ import cookieSession from 'cookie-session'
 import csurf from 'csurf'
 import webRouter from './routers/web.mjs'
 import stockRouter from './routers/stock.mjs'
+import helmet from 'helmet'
 
 const csrf = csurf({
     cookie: true
@@ -23,6 +24,9 @@ app.use(function (req, res, next) {
     next()
 })
 
+app.use(helmet({
+    contentSecurityPolicy: false,
+}))
 
 app.use(webRouter)
 app.use(stockRouter)

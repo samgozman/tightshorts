@@ -28,6 +28,7 @@
     "dotenv": "^9.0.2",
     "element-resize-detector": "^1.2.2",
     "express": "^4.17.1",
+    "helmet": "^4.6.0",
     "htmlnano": "^1.0.0",
     "install": "^0.13.0",
     "lightweight-charts": "^3.3.0",
