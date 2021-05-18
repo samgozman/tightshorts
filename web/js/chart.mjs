@@ -5,13 +5,24 @@ import resizeDetector from 'element-resize-detector'
 import Legend from './Legend.mjs'
 import color from './color.mjs'
 
+// Gen table
+const table_tbody = document.getElementById('table-body')
+
+const createTableRow = (table, data, sv, sev, vol) => {
+	let row = table.insertRow()
+	row.insertCell(0).innerHTML = data.replace(/T(.*)/g, '')
+	row.insertCell(1).innerHTML = sv
+	row.insertCell(2).innerHTML = sev
+	row.insertCell(3).innerHTML = vol
+}
+
 // Define chart properties
 const chartPercent = createChart(document.getElementById('chartPercent'), {
 	width: 800,
 	height: 360,
 	localization: {
-        locale: 'en-US',
-    },
+		locale: 'en-US',
+	},
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
@@ -45,8 +56,8 @@ const chartVolume = createChart(document.getElementById('chartVolume'), {
 	width: 800,
 	height: 360,
 	localization: {
-        locale: 'en-US',
-    },
+		locale: 'en-US',
+	},
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
@@ -198,7 +209,6 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 	// Fetch data
 	const ticker = document.getElementById('input_ticker').value.toUpperCase()
 	try {
-		// const _csrf = document.getElementById('_csrf').value
 		const response = await getResponse(ticker)
 
 		const data_shortVolumeRatio = []
@@ -207,6 +217,9 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 		const data_volume = []
 		const data_shortVolume = []
 		const data_shortExemptVolume = []
+
+		// Clear table
+		table_tbody.innerHTML = ''
 
 		// Prepare data
 		for (const el of response.volume) {
@@ -257,6 +270,13 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 				text: watermark,
 			},
 		})
+
+		// Generate table
+		let reversed_array = response.volume
+		reversed_array.reverse()
+		for (const [i, el] of reversed_array.entries()) {
+			if (i < 30) createTableRow(table_tbody, el.date, el.shortVolume, el.shortExemptVolume, el.totalVolume)
+		}
 
 		// Load tragingview live chart
 		document.getElementById('iframe_chart').src = 'static/liveChart.html?stock=' + ticker

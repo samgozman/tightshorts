@@ -13,7 +13,7 @@
     margin: -4px 0px;
 }
 
-a.navbar-item.is-active, 
+a.navbar-item.is-active,
 a.navbar-item.is-active:not(:focus):not(:hover) {
     background-color: #fafafa;
 }
@@ -43,6 +43,12 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     overflow: hidden;
 }
 
+/* Table */
+.table-container {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
 /* Octocat */
 .octocat {
     border: 0;
@@ -65,4 +71,11 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 .qrcode {
     max-width: 140px;
+}
+
+/* Responsive fixes */
+@media (max-width: 410px) {
+    .table>tbody {
+        font-size: 0.7em;
+    }
 }
