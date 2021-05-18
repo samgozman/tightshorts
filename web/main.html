@@ -176,6 +176,17 @@
                 </div>
                 <!-- Charts: ends -->
             </div>
+            <div class="columns">
+                <div class="column is-half is-full-mobile">
+                    <div class="tradingview_chart">
+                        <iframe scrolling="no" frameborder="0" id="iframe_chart"
+                            title="TradingView price chart"></iframe>
+                    </div>
+                </div>
+                <div class="column is-half is-full-mobile">
+                    <p>Placeholder for table</p>
+                </div>
+            </div>
             <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
                 NASDAQ, NYSE and OTC,
                 which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
@@ -231,7 +242,7 @@
 
     <script src="./js/navbar.js"></script>
     <script src="./js/modal.js"></script>
-    <script src="./js/chart.mjs"></script>
+    <script src="./js/chart.mjs" type="module"></script>
     <script src="./js/onload.js"></script>
 </body>
 

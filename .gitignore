@@ -106,3 +106,4 @@ dist
 config/dev.env
 .parcel-cache/
 public/
+config/prod.env

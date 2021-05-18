@@ -32,6 +32,17 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     pointer-events: none;
 }
 
+/* Tradingview chart */
+#iframe_chart {
+    width: 100%;
+    height: inherit;
+}
+
+.tradingview_chart {
+    height: 360px;
+    overflow: hidden;
+}
+
 /* Octocat */
 .octocat {
     border: 0;

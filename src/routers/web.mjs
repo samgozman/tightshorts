@@ -11,7 +11,7 @@ const webRouter = new express.Router()
 
 const __dirname = fileURLToPath(new URL('.',
     import.meta.url))
-const public_dir = join(__dirname, '../../public')
+const public_dir = join(__dirname, '../../dist')
 
 // Setup static directory to serve
 webRouter.use(express.static(public_dir))

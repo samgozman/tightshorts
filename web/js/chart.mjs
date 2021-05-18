@@ -9,6 +9,9 @@ import color from './color.mjs'
 const chartPercent = createChart(document.getElementById('chartPercent'), {
 	width: 800,
 	height: 360,
+	localization: {
+        locale: 'en-US',
+    },
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
@@ -41,6 +44,9 @@ const chartPercent = createChart(document.getElementById('chartPercent'), {
 const chartVolume = createChart(document.getElementById('chartVolume'), {
 	width: 800,
 	height: 360,
+	localization: {
+        locale: 'en-US',
+    },
 	rightPriceScale: {
 		scaleMargins: {
 			top: 0.1,
@@ -251,6 +257,9 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 				text: watermark,
 			},
 		})
+
+		// Load tragingview live chart
+		document.getElementById('iframe_chart').src = 'static/liveChart.html?stock=' + ticker
 	} catch (error) {
 		document.getElementById('error-modal').classList.add('is-active')
 		document.getElementById('error-stock').innerHTML = ticker
