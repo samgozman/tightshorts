@@ -1,6 +1,6 @@
 {
   "name": "tightshorts",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tight Shorts - Finra short sale volume",
   "scripts": {
     "build": "parcel build web/main.html web/static/liveChart.html",
