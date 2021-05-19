@@ -77,6 +77,66 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     max-width: 140px;
 }
 
+/* Cookie message */
+.cookie-message {
+    border-radius: 10px;
+    padding: 15px 0;
+    background: #f7f8fb;
+    border: 1px solid rgba(0, 0, 0, .15);
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, .05), 0 10px 10px 2px rgba(0, 0, 0, .05);
+    font-size: 12px;
+    line-height: 40px;
+    border-top: 1px solid #e4e4e4;
+    position: fixed;
+    z-index: 100;
+    bottom: 8%;
+    left: 2%;
+    margin: auto;
+    max-width: 540px;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.cookie-message img {
+    height: 35px;
+    width: 35px;
+    margin: 0 12px;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.cookie-message span {
+    display: inline-block;
+    line-height: 1.5;
+    font-size: 0.7rem;
+    padding-right: 16px;
+    border-right: 1px solid rgba(0, 0, 0, .1);
+}
+
+.cookie-message button.delete {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    border: none;
+    padding: 12px;
+    margin: 0 12px;
+    position: relative;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+    color: #919191;
+    transition: color 0.2s;
+}
+
+.cookie-message button.delete:hover {
+    color: #795548;
+}
+
+/* Helpers */
+.hide {
+    visibility: hidden;
+}
+
 /* Responsive fixes */
 @media (max-width: 410px) {
     .table>tbody {

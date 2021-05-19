@@ -10,26 +10,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tight Shorts | Daily Short Sale Volume</title>
     <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode
-                .insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter78914581 = new Ya.Metrika({
+                        id: 78914581,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true
+                    });
+                } catch (e) {}
+            });
 
-        ym(78914581, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
     </script>
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/78914581" style="position:absolute; left:-9999px;" alt="" /></div>
     </noscript>
+    <!-- /Yandex.Metrika counter -->
     <!-- /Yandex.Metrika counter -->
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
@@ -280,6 +294,17 @@
         </svg>
     </a>
     <!-- Octocat: ends -->
+
+    <!-- Cookie message -->
+    <div class="cookie-message hide" id="cookie-message">
+        <img src="./img/cookie.png">
+        <span>We use cookies for server authentication to get access for stocks data and to improve your browsing
+            experience on our website.</span>
+        <button id="cookie-close" class="delete" aria-label="close"></button>
+    </div>
+    <!-- Cookie message: ends -->
+    <!-- Cookie script -->
+    <script src="./js/cookie.js"></script>
 
     <script src="./js/navbar.js"></script>
     <script src="./js/modal.js"></script>
