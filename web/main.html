@@ -79,7 +79,7 @@
                 <a class="navbar-item" href="https://short-fork.herokuapp.com/">
                     Short Fork
                 </a>
-                <a class="navbar-item modal-button is-hidden-tablet" data-target="help-modal">
+                <a class="navbar-item modal-button is-hidden-desktop" data-target="help-modal">
                     What is it all about?
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -111,7 +111,7 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <a class="button is-light modal-button is-hidden-mobile" data-target="help-modal">
+                <a class="button is-light modal-button is-hidden-touch" data-target="help-modal">
                     ?
                 </a>
                 <!-- Modal ? message -->
@@ -175,16 +175,16 @@
 
     <section class="section">
         <div class="container is-max-widescreen">
-            <h1 class="title is-3"> Tight Shorts <sup class="is-size-7">
-                    <a href="https://github.com/samgozman/tightshorts/releases" target="_blank" rel="nofollow"
-                        rel="noreferrer">
-                        {{ version }}
-                    </a>
-                </sup>
-            </h1>
-            <p class="subtitle"> Daily short sale volume </p>
             <div class="columns">
-                <div class="column">
+                <div class="column is-half is-full-mobile">
+                    <h1 class="title is-3"> Tight Shorts <sup class="is-size-7">
+                            <a href="https://github.com/samgozman/tightshorts/releases" target="_blank" rel="nofollow"
+                                rel="noreferrer">
+                                {{ version }}
+                            </a>
+                        </sup>
+                    </h1>
+                    <p class="subtitle"> Daily short sale volume </p>
                     <!-- Form -->
                     <form class="field has-addons" id="search">
                         <div class="control">
@@ -195,6 +195,8 @@
                         </div>
                     </form>
                     <!-- Form: ends -->
+                </div>
+                <div class="column is-half is-full-mobile">
 
                 </div>
             </div>
