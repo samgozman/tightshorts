@@ -14,9 +14,15 @@ const createTableRow = (table, date, sv, svr, sev, sevr, vol) => {
     row.insertCell(5).innerHTML = vol
 }
 
-const createCSVfile = (ticker) => {
-    let csvContent = 'data:text/csv;charset=utf-8,' + array_for_csv.map(e => e.join(',')).join('\n')
-    const link = document.getElementById('csv-file')
+const createCSVfile = (link_id, ticker, semicolon = false) => {
+    let csvContent = ''
+    if (semicolon) {
+        csvContent = 'data:text/csv;charset=utf-8,' + array_for_csv.map(e => e.join(';')).join('\r\n').replace(/\./gm, ',')
+    } else {
+        csvContent = 'data:text/csv;charset=utf-8,' + array_for_csv.map(e => e.join(',')).join('\r\n')
+    }
+
+    const link = document.getElementById(link_id)
     link.setAttribute('href', encodeURI(csvContent))
     link.setAttribute('download', ticker + '_short_volume.csv')
 }
@@ -32,7 +38,8 @@ export const generateTable = (response) => {
         if (i < 30) createTableRow(table_tbody, date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume)
         array_for_csv.push([date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume])
     }
-    createCSVfile(response.ticker)
+    createCSVfile('csv-file-comma', response.ticker)
+    createCSVfile('csv-file-semicolon', response.ticker, true)
 }
 
 export const clearTable = () => {
