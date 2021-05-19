@@ -21,7 +21,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 /* CHART */
 /* Legend */
 .legend {
-    width: 210px;
+    width: auto;
     height: 70px;
     position: absolute;
     padding: 8px;
@@ -141,5 +141,9 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 @media (max-width: 410px) {
     .table>tbody {
         font-size: 0.7em;
+    }
+    .legend {
+        width: 220px;
+        font-size: 10px;
     }
 }

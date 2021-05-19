@@ -163,15 +163,18 @@ const legend_shortVolume = new Legend('Short Volume', color.shortVolumeArea.line
 const legend_shortExemptVolume = new Legend('Short Exempt Volume', color.shortExemptVolumeArea.lineColor, 'legend_shortExemptVolume', 'legendVolume')
 
 chartPercent.subscribeCrosshairMove((param) => {
-	legend_shortVolumeRatio.setLegendText(param.seriesPrices.get(series_shortVolumeRatio) || 0)
-	legend_shortExemptVolumeRatio.setLegendText(param.seriesPrices.get(series_shortExemptVolumeRatio) || 0)
+	legend_shortVolumeRatio.setLegendText(param.seriesPrices.get(series_shortVolumeRatio) || 0, '%')
+	legend_shortExemptVolumeRatio.setLegendText(param.seriesPrices.get(series_shortExemptVolumeRatio) || 0, '%')
 	legend_volumeHist.setLegendText(param.seriesPrices.get(series_volumeHistogram) || 0)
 })
 
 chartVolume.subscribeCrosshairMove((param) => {
-	legend_volume.setLegendText(param.seriesPrices.get(series_volume) || 0)
-	legend_shortVolume.setLegendText(param.seriesPrices.get(series_shortVolume) || 0)
-	legend_shortExemptVolume.setLegendText(param.seriesPrices.get(series_shortExemptVolume) || 0)
+	const vol = param.seriesPrices.get(series_volume) || 0,
+		sv = param.seriesPrices.get(series_shortVolume) || 0,
+		sev = param.seriesPrices.get(series_shortExemptVolume) || 0
+	legend_volume.setLegendText(vol)
+	legend_shortVolume.setLegendText(sv, '', sv ? (sv / vol * 100).toFixed(2) : 0)
+	legend_shortExemptVolume.setLegendText(sev, '', sev ? (sev / vol * 100).toFixed(2) : 0)
 })
 
 // Get response from server side
@@ -222,7 +225,7 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 			})
 			data_shortExemptVolumeRatio.push({
 				time: el.date,
-				value: (el.shortExemptVolume / el.shortVolume * 100).toFixed(2)
+				value: (el.shortExemptVolume / el.totalVolume * 100).toFixed(2)
 			})
 			data_volumeHist.push({
 				time: el.date,
