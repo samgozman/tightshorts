@@ -138,19 +138,9 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 /* Responsive fixes */
-@media (max-width: 410px) {
+@media (max-width: 1215px) {
     .table {
-        font-size: 0.5em;
-    }
-    .legend {
-        width: 220px;
-        font-size: 10px;
-    }
-}
-
-@media (max-width: 856px) {
-    .table {
-        font-size: 0.55em;
+        font-size: 0.7em;
     }
 }
 
@@ -160,8 +150,18 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     }
 }
 
-@media (max-width: 1215px) {
+@media (max-width: 856px) {
     .table {
-        font-size: 0.7em;
+        font-size: 0.55em;
+    }
+}
+
+@media (max-width: 410px) {
+    .table {
+        font-size: 0.5em;
+    }
+    .legend {
+        width: 220px;
+        font-size: 10px;
     }
 }
