@@ -139,11 +139,29 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 /* Responsive fixes */
 @media (max-width: 410px) {
-    .table>tbody {
-        font-size: 0.7em;
+    .table {
+        font-size: 0.5em;
     }
     .legend {
         width: 220px;
         font-size: 10px;
+    }
+}
+
+@media (max-width: 856px) {
+    .table {
+        font-size: 0.55em;
+    }
+}
+
+@media (max-width: 1023px) {
+    .table {
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 1215px) {
+    .table {
+        font-size: 0.7em;
     }
 }

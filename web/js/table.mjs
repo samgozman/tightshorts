@@ -1,15 +1,17 @@
 // Gen table
 const table_tbody = document.getElementById('table-body')
 const array_for_csv = [
-    ['Date', 'Short Volume', 'Short Exempt Volume', 'Total Volume']
+    ['Date', 'Short Volume', 'Short Volume Ratio (%)', 'Short Exempt Volume', 'Short Exempt Volume Ratio (%)', 'Total Volume']
 ]
 
-const createTableRow = (table, date, sv, sev, vol) => {
+const createTableRow = (table, date, sv, svr, sev, sevr, vol) => {
     let row = table.insertRow()
     row.insertCell(0).innerHTML = date
     row.insertCell(1).innerHTML = sv
-    row.insertCell(2).innerHTML = sev
-    row.insertCell(3).innerHTML = vol
+    row.insertCell(2).innerHTML = svr
+    row.insertCell(3).innerHTML = sev
+    row.insertCell(4).innerHTML = sevr
+    row.insertCell(5).innerHTML = vol
 }
 
 const createCSVfile = (ticker) => {
@@ -25,8 +27,10 @@ export const generateTable = (response) => {
     const reversed_array = response.volume.reverse()
     for (const [i, el] of reversed_array.entries()) {
         const date = el.date.replace(/T(.*)/g, '')
-        if (i < 30) createTableRow(table_tbody, date, el.shortVolume, el.shortExemptVolume, el.totalVolume)
-        array_for_csv.push([date, el.shortVolume, el.shortExemptVolume, el.totalVolume])
+        const svr = (el.shortVolume / el.totalVolume * 100).toFixed(2)
+        const sevr = (el.shortExemptVolume / el.totalVolume * 100).toFixed(2)
+        if (i < 30) createTableRow(table_tbody, date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume)
+        array_for_csv.push([date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume])
     }
     createCSVfile(response.ticker)
 }
