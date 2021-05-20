@@ -28,6 +28,10 @@ grid_button.addEventListener('click', () => {
     if (!grid) localStorage.setItem('grid', 'full')
 
     changeGrid(localStorage.getItem('grid'))
+
+    // ! Fix: activates chart resizer to fix bug (transition from full to half size)
+    document.getElementById('main-section').style.width = '101%'
+    document.getElementById('main-section').style.width = 'unset'
 })
 
 window.addEventListener('load', function(){
