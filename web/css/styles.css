@@ -3,6 +3,10 @@
     text-transform: uppercase;
 }
 
+.main-input {
+    width: 100%;
+}
+
 /* Navbar */
 .navbar {
     background-color: transparent;
