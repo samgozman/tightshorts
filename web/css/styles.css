@@ -30,11 +30,14 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     color: #3273dc;
 }
 
-.navbar-end > .navbar-item {
+.navbar-end>.navbar-item {
     padding: .5rem;
 }
 
-
+.navbar-item>ion-icon,
+.support-block ion-icon {
+    margin-right: 4px;
+}
 
 /* CHART */
 /* Legend */
