@@ -49,8 +49,20 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     overflow-y: auto;
 }
 
+#table-statistic {
+    width: auto;
+    margin-right: 0px;
+    margin-left: auto;
+}
+
 .csv-download {
     padding: 0 .75em;
+}
+
+.is-borderless td,
+.is-borderless th {
+    border: none;
+    border-width: 0px;
 }
 
 /* Octocat */
@@ -139,29 +151,42 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 /* Responsive fixes */
 @media (max-width: 1215px) {
-    .table {
+    .table-data {
         font-size: 0.7em;
     }
 }
 
 @media (max-width: 1023px) {
-    .table {
+    .table-data {
         font-size: 0.6em;
     }
 }
 
 @media (max-width: 856px) {
-    .table {
+    .table-data {
         font-size: 0.55em;
     }
 }
 
+@media (max-width: 768px) {
+    #table-statistic {
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 410px) {
-    .table {
+    .table-data {
         font-size: 0.5em;
     }
+
     .legend {
         width: 220px;
         font-size: 10px;
+    }
+}
+
+@media (max-width: 330px) {
+    #table-statistic {
+        font-size: 0.9em;
     }
 }

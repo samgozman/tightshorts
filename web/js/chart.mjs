@@ -8,6 +8,7 @@ import {
 	generateTable,
 	clearTable
 } from './table.mjs'
+import generateStatisticTable from './statisticsTable.mjs'
 
 // Define chart properties
 const chartPercent = createChart(document.getElementById('chartPercent'), {
@@ -269,6 +270,8 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 
 		// Generate table
 		generateTable(response)
+
+		generateStatisticTable(response)
 
 		// Load tragingview live chart
 		document.getElementById('iframe_chart').src = 'static/liveChart.html?stock=' + ticker
