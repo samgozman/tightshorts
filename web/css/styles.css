@@ -22,6 +22,20 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     background-color: #fafafa;
 }
 
+.navbar-item button {
+    padding: calc(.75em - 1px);
+}
+
+.navbar-item button.active {
+    color: #3273dc;
+}
+
+.navbar-end > .navbar-item {
+    padding: .5rem;
+}
+
+
+
 /* CHART */
 /* Legend */
 .legend {

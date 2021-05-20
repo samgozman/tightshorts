@@ -55,6 +55,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" href="./css/styles.css">
+    <!-- Fonts -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.1/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.5.1/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -111,9 +114,14 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <a class="button is-light modal-button is-hidden-touch" data-target="help-modal">
-                    ?
-                </a>
+                <button class="button is-light is-hidden-touch" id="change-grid">
+                    <ion-icon name="grid-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="navbar-item">
+                <button class="button is-light modal-button is-hidden-touch" data-target="help-modal">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                </button>
                 <!-- Modal ? message -->
                 <div class="modal" id="help-modal">
                     <div class="modal-background"></div>
@@ -130,14 +138,17 @@
                             <ol>
                                 <li> <strong>Volume (Vol)</strong> - number of shares of all
                                     executed trades during regular trading hours</li>
-                                <li> <strong>Short Volume (SV)</strong> - number of shares that have been borrowed to open
+                                <li> <strong>Short Volume (SV)</strong> - number of shares that have been borrowed to
+                                    open
                                     short positions</li>
                                 <li> <strong>Short Exempt Volume (SEV)</strong> - number of shares of all executed
                                     short sale exempt trades during regular
                                     trading hours</li>
-                                <li> <strong>Short Volume Ratio (SV,%)</strong> - percentage of short positions from the total
+                                <li> <strong>Short Volume Ratio (SV,%)</strong> - percentage of short positions from the
+                                    total
                                     volume. <i>Formula: SV / Vol * 100</i></li>
-                                <li> <strong>Short Exempt Volume Ratio (SEV,%)</strong> - percentage of short short sale exempt
+                                <li> <strong>Short Exempt Volume Ratio (SEV,%)</strong> - percentage of short short sale
+                                    exempt
                                     trades from the total volume. <i>Formula: SEV / Vol * 100</i></li>
                             </ol>
                             <p><strong>Disclaimer:</strong> The data on the TightShorts is limited to the combined
@@ -200,15 +211,15 @@
                     <table class="table is-narrow is-borderless" id="table-statistic"></table>
                 </div>
             </div>
-            <div class="columns">
+            <div class="columns is-multiline">
                 <!-- Charts -->
-                <div class="column is-half is-full-mobile">
+                <div class="column mixline is-half is-full-mobile">
                     <p class="title is-5 has-text-left">Short Volume Ratio</p>
                     <div id="chartPercent">
                         <div id="legendRatio" class="legend"></div>
                     </div>
                 </div>
-                <div class="column is-half is-full-mobile">
+                <div class="column mixline is-half is-full-mobile">
                     <p class="title is-5 has-text-left">Short Volume</p>
                     <div id="chartVolume">
                         <div id="legendVolume" class="legend"></div>
@@ -216,14 +227,14 @@
                 </div>
                 <!-- Charts: ends -->
             </div>
-            <div class="columns">
-                <div class="column is-half is-full-mobile">
+            <div class="columns is-multiline">
+                <div class="column mixline is-half is-full-mobile">
                     <div class="tradingview_chart">
                         <iframe scrolling="no" frameborder="0" id="iframe_chart"
                             title="TradingView price chart"></iframe>
                     </div>
                 </div>
-                <div class="column is-half is-full-mobile">
+                <div class="column mixline is-half is-full-mobile">
                     <!-- Table -->
                     <div class="table-container">
                         <table class="table table-data is-hoverable is-fullwidth">
@@ -312,8 +323,10 @@
     <!-- Cookie message: ends -->
     <!-- Cookie script -->
     <script src="./js/cookie.js"></script>
+
     <script src="./js/navbar.js"></script>
     <script src="./js/modal.js"></script>
+    <script src="./js/changeGrid.js"></script>
     <script src="./js/chart.mjs" type="module"></script>
     <script src="./js/onload.js"></script>
 </body>
