@@ -7,7 +7,10 @@ import stockRouter from './routers/stock.mjs'
 import helmet from 'helmet'
 
 const csrf = csurf({
-    cookie: true
+    cookie: {
+        httpOnly: true,
+        secure: true
+    }
 })
 
 const app = express()
