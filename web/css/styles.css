@@ -14,7 +14,7 @@
 
 .navbar-item img {
     max-height: unset;
-    margin: -4px 0px;
+    margin: -4px 0;
 }
 
 a.navbar-item.is-active,
@@ -23,7 +23,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 .navbar-item button {
-    padding: calc(.75em - 1px);
+    padding: calc(0.75em - 1px);
 }
 
 .navbar-item button.active {
@@ -31,7 +31,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 .navbar-end>.navbar-item {
-    padding: .5rem;
+    padding: 0.5rem;
 }
 
 .navbar-item>ion-icon,
@@ -40,6 +40,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 /* CHART */
+
 /* Legend */
 .legend {
     width: auto;
@@ -55,8 +56,8 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 /* Tradingview chart */
 #iframe_chart {
-    overflow:hidden;
-    border-width: 0px;
+    overflow: hidden;
+    border-width: 0;
     width: 100%;
     height: inherit;
 }
@@ -74,18 +75,18 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 #table-statistic {
     width: auto;
-    margin-right: 0px;
+    margin-right: 0;
     margin-left: auto;
 }
 
 .csv-download {
-    padding: 0 .75em;
+    padding: 0 0.75em;
 }
 
 .is-borderless td,
 .is-borderless th {
     border: none;
-    border-width: 0px;
+    border-width: 0;
 }
 
 /* Octocat */
