@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('keydown', function (event) {
-        const e = event || window.event
-        if (e.keyCode === 27) {
+        const e = event
+        if (e.code === 'Escape') {
             closeModals()
         }
     })
