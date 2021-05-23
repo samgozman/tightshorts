@@ -55,6 +55,8 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 
 /* Tradingview chart */
 #iframe_chart {
+    overflow:hidden;
+    border-width: 0px;
     width: 100%;
     height: inherit;
 }
