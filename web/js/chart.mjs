@@ -206,6 +206,9 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 	// Fetch data
 	const ticker = document.getElementById('input_ticker').value.toUpperCase()
 	try {
+		// Add loading class for button
+		document.getElementById('submit_button').classList.add('is-loading')
+
 		const response = await getResponse(ticker)
 
 		const data_shortVolumeRatio = []
@@ -275,6 +278,9 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 
 		// Load tragingview live chart
 		document.getElementById('iframe_chart').src = 'static/liveChart.html?stock=' + ticker
+
+		// Remove loading class from button
+		document.getElementById('submit_button').classList.remove('is-loading')
 	} catch (error) {
 		document.getElementById('error-modal').classList.add('is-active')
 		document.getElementById('error-stock').innerHTML = ticker
