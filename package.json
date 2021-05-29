@@ -25,7 +25,7 @@
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "csurf": "^1.11.0",
-    "dotenv": "^9.0.2",
+    "dotenv": "^10.0.0",
     "element-resize-detector": "^1.2.2",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
