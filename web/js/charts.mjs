@@ -5,8 +5,8 @@ import resizeDetector from 'element-resize-detector'
 import Legend from './Legend.mjs'
 import color from './color.mjs'
 
-// Define chart properties
-const chartPercent = createChart(document.getElementById('chartPercent'), {
+// General settings for basic charts
+const generalSettings = {
     width: 800,
     height: 360,
     localization: {
@@ -39,42 +39,11 @@ const chartPercent = createChart(document.getElementById('chartPercent'), {
             color: '#ffffff',
         },
     },
-})
+}
 
-const chartVolume = createChart(document.getElementById('chartVolume'), {
-    width: 800,
-    height: 360,
-    localization: {
-        locale: 'en-US',
-    },
-    rightPriceScale: {
-        scaleMargins: {
-            top: 0.1,
-            bottom: 0.1,
-        },
-        borderColor: 'rgba(197, 203, 206, 0.4)'
-    },
-    watermark: {
-        visible: true,
-        fontSize: 22,
-        horzAlign: 'center',
-        vertAlign: 'center',
-        color: color.watermark,
-        text: 'TightShorts.ru, stock',
-    },
-    layout: {
-        backgroundColor: '#ffffff',
-        textColor: '#333',
-    },
-    grid: {
-        horzLines: {
-            color: '#eee',
-        },
-        vertLines: {
-            color: '#ffffff',
-        },
-    },
-})
+// Define chart properties
+const chartPercent = createChart(document.getElementById('chartPercent'), generalSettings)
+const chartVolume = createChart(document.getElementById('chartVolume'), generalSettings)
 
 // Chart series for ratios (percentage format)
 const series_shortVolumeRatio = chartPercent.addAreaSeries({
