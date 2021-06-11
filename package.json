@@ -39,7 +39,7 @@
   "devDependencies": {
     "eslint": "^7.28.0",
     "nodemon": "^2.0.7",
-    "npm": "^7.16.0"
+    "npm": "^7.17.0"
   },
   "engines": {
     "node": ">=16.0.0",
