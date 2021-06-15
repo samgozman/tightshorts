@@ -52,7 +52,10 @@ export const getData = async (ticker) => {
 		document.getElementById('submit_button').classList.remove('is-loading')
 
 		// Change input value on sanitized one
-		document.getElementById('input_ticker').value = response.ticker
+		const input = document.getElementById('input_ticker')
+		if (input.value) {
+			input.value = response.ticker
+		}
 
 		return response.ticker
 	} catch (error) {
