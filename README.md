@@ -6,7 +6,7 @@ Tight Shorts - open-source stocks short volume charts. The service presents FINR
 
 **Tight Shorts** can be a great addition to your trading strategy!
 
-**[tightshorts.ru](https://tightshorts.ru/)**
+Link: **[tightshorts.ru](https://tightshorts.ru/)**
 
 ![Tight shorts main page](doc/01.png)
 
