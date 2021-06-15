@@ -13,4 +13,6 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 		Url: '/quote/' + ticker
 	}
 	window.history.pushState(link, link.Page, link.Url)
+
+	document.getElementById('menu_shortfork').setAttribute('href', `https://short-fork.herokuapp.com/?stock=${ticker}`)
 })
