@@ -4,6 +4,13 @@ import getData from './getData.mjs'
 document.getElementById('search').addEventListener('submit', async (e) => {
 	e.preventDefault()
 	// Fetch data
-	const ticker = document.getElementById('input_ticker').value.toUpperCase()
-	await getData(ticker)
+	let ticker = document.getElementById('input_ticker').value.toUpperCase()
+	ticker = await getData(ticker)
+
+	// Change window url
+	const link = {
+		Page: document.getElementsByTagName('title')[0].text,
+		Url: '/quote/' + ticker
+	}
+	window.history.pushState(link, link.Page, link.Url)
 })

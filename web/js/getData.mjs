@@ -46,10 +46,15 @@ export const getData = async (ticker) => {
 		generateStatisticTable(response)
 
 		// Load tragingview live chart
-		document.getElementById('iframe_chart').src = '../static/liveChart.html?stock=' + ticker
+		document.getElementById('iframe_chart').src = '../static/liveChart.html?stock=' + response.ticker
 
 		// Remove loading class from button
 		document.getElementById('submit_button').classList.remove('is-loading')
+
+		// Change input value on sanitized one
+		document.getElementById('input_ticker').value = response.ticker
+
+		return response.ticker
 	} catch (error) {
 		document.getElementById('error-modal').classList.add('is-active')
 		document.getElementById('error-stock').innerHTML = ticker
