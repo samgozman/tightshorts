@@ -28,6 +28,7 @@
     "dotenv": "^10.0.0",
     "element-resize-detector": "^1.2.2",
     "express": "^4.17.1",
+    "express-validator": "^6.12.0",
     "helmet": "^4.6.0",
     "htmlnano": "^1.0.0",
     "http": "^0.0.1-security",
