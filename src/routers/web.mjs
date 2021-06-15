@@ -23,7 +23,7 @@ const setCSRFandVersion = (page, req, ticker) => {
     // App version
     file = file.replace('{{ version }}', process.env.npm_package_version)
     // Stock meta
-    file = file.replace('{{ ticker }}', ticker || 'AAPL')
+    file = file.replace('{{ ticker }}', ticker)
     return file
 }
 
@@ -38,7 +38,7 @@ webRouter.get('', (req, res) => {
 })
 
 // Stock personal page
-webRouter.get('/:ticker',
+webRouter.get('/quote/:ticker',
     param('ticker').toUpperCase().whitelist('ABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789'),
     (req, res) => {
         const ticker = req.params.ticker
