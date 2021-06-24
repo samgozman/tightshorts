@@ -77,17 +77,21 @@
         <div id="navbar" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item is-active" href="/">
-                    Home
+                    <ion-icon name="home-outline" class="is-hidden-desktop"></ion-icon> Home
                 </a>
                 <a class="navbar-item" href="https://short-fork.herokuapp.com/" id="menu_shortfork">
                     <ion-icon name="open-outline"></ion-icon>Short Fork
                 </a>
                 <a class="navbar-item modal-button is-hidden-desktop" data-target="help-modal">
-                    What is it all about?
+                    <ion-icon name="information-circle-outline"></ion-icon> What is it all about?
+                </a>
+                <a class="navbar-item modal-button is-hidden-desktop" href="https://t.me/tightshorts_bot"
+                    target="_blank">
+                    <ion-icon name="flash-outline"></ion-icon> Telegram bot
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        Contacts
+                        <ion-icon name="link-outline" class="is-hidden-desktop"></ion-icon> Contacts
                     </a>
 
                     <div class="navbar-dropdown">
@@ -114,12 +118,18 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <button class="button is-light is-hidden-touch" id="change-grid">
+                <a class="button is-light is-hidden-touch" id="tgbot" href="https://t.me/tightshorts_bot"
+                    target="_blank" title="Telegram Bot">
+                    <ion-icon name="flash-outline" style="color: #0088cc"></ion-icon>
+                </a>
+            </div>
+            <div class="navbar-item">
+                <button class="button is-light is-hidden-touch" id="change-grid" title="Change grid">
                     <ion-icon name="grid-outline"></ion-icon>
                 </button>
             </div>
             <div class="navbar-item">
-                <button class="button is-light modal-button is-hidden-touch" data-target="help-modal">
+                <button class="button is-light modal-button is-hidden-touch" data-target="help-modal" title="About">
                     <ion-icon name="information-circle-outline"></ion-icon>
                 </button>
                 <!-- Modal ? message -->
@@ -155,7 +165,8 @@
                                 trading
                                 volume on the NASDAQ, NYSE and OTC,
                                 which was reported to the <a href="http://regsho.finra.org/regsho-Index.html"
-                                    target="_blank" rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade reporting facility.
+                                    target="_blank" rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade
+                                reporting facility.
                                 We make no guarantees as to the
                                 accuracy of the data. The information is provided for reference only and does not
                                 represent individual
@@ -235,8 +246,7 @@
             <div class="columns is-multiline">
                 <div class="column mixline is-half is-full-mobile">
                     <div class="tradingview_chart">
-                        <iframe id="iframe_chart"
-                            title="TradingView price chart"></iframe>
+                        <iframe id="iframe_chart" title="TradingView price chart"></iframe>
                     </div>
                 </div>
                 <div class="column mixline is-half is-full-mobile">
@@ -268,7 +278,8 @@
             <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
                 NASDAQ, NYSE and OTC,
                 which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
-                    rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade reporting facility. We make no guarantees as to the
+                    rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade reporting facility. We make no
+                guarantees as to the
                 accuracy of the data. The information is provided for reference only and does not represent individual
                 investment advice. </p>
         </div>

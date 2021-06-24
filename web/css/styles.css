@@ -22,7 +22,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     background-color: #fafafa;
 }
 
-.navbar-item button {
+.navbar-item .button {
     padding: calc(0.75em - 1px);
 }
 
