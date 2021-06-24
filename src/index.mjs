@@ -2,6 +2,7 @@ import app from './app.mjs'
 import http from 'http'
 import https from 'https'
 import fs from 'fs'
+import isURL from 'validator/lib/isURL.js'
 
 const port = process.env.PORT
 
@@ -17,10 +18,13 @@ if (process.env.NODE_ENV === 'production') {
 
     // Redirect from 80 to 443
     http.createServer(function (req, res) {
-        res.writeHead(301, {
-            'Location': 'https://' + req.headers['host'] + req.url
-        })
-        res.end()
+        const link = 'https://' + req.headers['host'] + req.url
+        if (isURL(link)) {
+            res.writeHead(301, {
+                'Location': link
+            })
+            res.end()
+        }
     }).listen(80)
 } else {
     app.listen(port, () => {

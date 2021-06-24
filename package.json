@@ -35,7 +35,8 @@
     "https": "^1.0.0",
     "install": "^0.13.0",
     "lightweight-charts": "^3.3.0",
-    "parcel": "^2.0.0-beta.2"
+    "parcel": "^2.0.0-beta.2",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
