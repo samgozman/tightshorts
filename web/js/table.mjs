@@ -1,3 +1,5 @@
+import round from './round.mjs'
+
 // Gen table
 const table_tbody = document.getElementById('table-body')
 const array_for_csv = [
@@ -33,8 +35,8 @@ export const generateTable = (response) => {
     const reversed_array = response.volume.reverse()
     for (const [i, el] of reversed_array.entries()) {
         const date = el.date.replace(/T(.*)/g, '')
-        const svr = (el.shortVolume / el.totalVolume * 100).toFixed(2)
-        const sevr = (el.shortExemptVolume / el.totalVolume * 100).toFixed(2)
+        const svr = round(el.shortVolume / el.totalVolume * 100)
+        const sevr = round(el.shortExemptVolume / el.totalVolume * 100)
         if (i < 30) createTableRow(table_tbody, date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume)
         array_for_csv.push([date, el.shortVolume, svr, el.shortExemptVolume, sevr, el.totalVolume])
     }

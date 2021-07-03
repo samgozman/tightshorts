@@ -1,3 +1,5 @@
+import round from './round.mjs'
+
 const table_statistic = document.getElementById('table-statistic')
 
 const createStatisticTableRow = (title, value) => {
@@ -21,7 +23,7 @@ const getAvgShortVolume = (response, days = 5) => {
         return el.shortVolume
     })
 
-    return (average(shortVolume) / average(totalVolume) * 100).toFixed(2)
+    return round(average(shortVolume) / average(totalVolume) * 100).toFixed(2)
 }
 
 const generateStatisticTable = (response) => {

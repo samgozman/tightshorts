@@ -4,6 +4,7 @@ import {
 import resizeDetector from 'element-resize-detector'
 import Legend from './Legend.mjs'
 import color from './color.mjs'
+import round from './round.mjs'
 
 // General settings for basic charts
 const generalSettings = {
@@ -138,8 +139,8 @@ chartVolume.subscribeCrosshairMove((param) => {
         sv = param.seriesPrices.get(series_shortVolume) || 0,
         sev = param.seriesPrices.get(series_shortExemptVolume) || 0
     legend_volume.setLegendText(vol)
-    legend_shortVolume.setLegendText(sv, '', sv ? (sv / vol * 100).toFixed(2) : 0)
-    legend_shortExemptVolume.setLegendText(sev, '', sev ? (sev / vol * 100).toFixed(2) : 0)
+    legend_shortVolume.setLegendText(sv, '', sv ? round(sv / vol * 100) : 0)
+    legend_shortExemptVolume.setLegendText(sev, '', sev ? round(sev / vol * 100) : 0)
 })
 
 // Fill all space
@@ -162,11 +163,11 @@ const loadData = (response) => {
     for (const el of response.volume) {
         data_shortVolumeRatio.push({
             time: el.date,
-            value: (el.shortVolume / el.totalVolume * 100).toFixed(2)
+            value: round(el.shortVolume / el.totalVolume * 100)
         })
         data_shortExemptVolumeRatio.push({
             time: el.date,
-            value: (el.shortExemptVolume / el.totalVolume * 100).toFixed(2)
+            value: round(el.shortExemptVolume / el.totalVolume * 100)
         })
         data_volumeHist.push({
             time: el.date,
