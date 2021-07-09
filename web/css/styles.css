@@ -35,6 +35,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 .navbar-item>ion-icon,
+.navbar-link>ion-icon,
 .support-block ion-icon {
     margin-right: 4px;
 }

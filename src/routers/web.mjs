@@ -45,4 +45,10 @@ webRouter.get('/quote/:ticker',
         return res.send(setCSRFandVersion('/main.html', req, ticker))
     })
 
+// root index page
+webRouter.get('/screener', (req, res) => {
+    return res.send(setCSRFandVersion('/screener.html', req))
+})
+
+
 export default webRouter

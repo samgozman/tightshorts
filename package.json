@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "Tight Shorts - Finra short sale volume",
   "scripts": {
-    "build": "parcel build web/main.html web/static/liveChart.html",
+    "build": "parcel build web/main.html web/screener.html web/static/liveChart.html",
     "start": "npm run build && node -r dotenv/config src/index.mjs dotenv_config_path=config/prod.env ",
     "dev": "npm run build && nodemon -r dotenv/config src/index.mjs -e js,mjs,hbs,css dotenv_config_path=config/dev.env",
     "clear": "rm -r dist .parcel-cache"
@@ -39,6 +39,7 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "@parcel/transformer-pug": "^2.0.0-beta.2",
     "eslint": "^7.30.0",
     "nodemon": "^2.0.10",
     "npm": "^7.19.1"
