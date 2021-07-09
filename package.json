@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "eslint": "^7.30.0",
-    "nodemon": "^2.0.9",
+    "nodemon": "^2.0.10",
     "npm": "^7.19.1"
   },
   "engines": {
