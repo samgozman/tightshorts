@@ -1,4 +1,6 @@
 import express from 'express'
+import { create } from 'express-handlebars'
+import { fileURLToPath } from 'url'
 import cookieParser from 'cookie-parser'
 import cookieSession from 'cookie-session'
 import csurf from 'csurf'
@@ -13,7 +15,21 @@ const csrf = csurf({
     }
 })
 
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+const hbs = create({
+    extname: 'hbs',
+    partialsDir: __dirname + '/../web/views/partials',
+    layoutsDir: __dirname + '/../web/views/layouts',
+})
+
 const app = express()
+
+// Register `hbs.engine` with the Express app.
+app.set('views', __dirname + '/../web/views')
+app.engine('.hbs', hbs.engine)
+app.set('view engine', '.hbs')
+
+// Set cookie
 app.use(cookieParser(process.env.COOKIE_KEY))
 app.use(cookieSession({
     secret: process.env.COOKIE_SESSION_KEY

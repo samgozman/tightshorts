@@ -46,15 +46,15 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
-    <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#26a69a">
-    <link rel="shortcut icon" href="./img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="/img/favicon/safari-pinned-tab.svg" color="#26a69a">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <meta name="theme-color" content="#ffffff">
     <!-- Styles -->
-    <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <!-- Fonts -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.1/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.5.1/dist/ionicons/ionicons.js"></script>
@@ -65,7 +65,7 @@
     <nav class="navbar container is-max-widescreen" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="./img/logo_header.png" width="154" height="48" alt="Tight Shorts logo">
+                <img src="/img/logo_header.png" width="154" height="48" alt="Tight Shorts logo">
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
                 <span aria-hidden="true"></span>
@@ -200,95 +200,7 @@
     </div>
     <!-- Error message: ends -->
 
-    <!-- Main section -->
-    <section class="section" id="main-section">
-        <div class="container is-max-widescreen">
-            <div class="columns">
-                <div class="column is-half is-full-mobile">
-                    <h1 class="title is-3"> Tight Shorts <sup class="is-size-7">
-                            <a href="https://github.com/samgozman/tightshorts/releases" target="_blank" rel="nofollow"
-                                rel="noreferrer" rel="noopener">
-                                {{ version }}
-                            </a>
-                        </sup>
-                    </h1>
-                    <p class="subtitle"> Daily short sale volume </p>
-                    <!-- Form -->
-                    <form class="field has-addons" id="search">
-                        <div class="control main-input has-icons-right">
-                            <input class="input" id="input_ticker" type="text" placeholder="Ticker">
-                            <span class="icon is-small is-right">
-                                <ion-icon name="search-outline"></ion-icon>
-                            </span>
-                        </div>
-                        <div class="control">
-                            <button class="button is-link" id="submit_button" type="submit">Find</button>
-                        </div>
-                    </form>
-                    <!-- Form: ends -->
-                </div>
-                <div class="column is-half is-full-mobile">
-                    <table class="table is-narrow is-borderless" id="table-statistic"></table>
-                </div>
-            </div>
-            <div class="columns is-multiline">
-                <!-- Charts -->
-                <div class="column mixline is-half is-full-mobile">
-                    <p class="title is-5 has-text-left">Short Volume Ratio</p>
-                    <div id="chartPercent">
-                        <div id="legendRatio" class="legend"></div>
-                    </div>
-                </div>
-                <div class="column mixline is-half is-full-mobile">
-                    <p class="title is-5 has-text-left">Short Volume</p>
-                    <div id="chartVolume">
-                        <div id="legendVolume" class="legend"></div>
-                    </div>
-                </div>
-                <!-- Charts: ends -->
-            </div>
-            <div class="columns is-multiline">
-                <div class="column mixline is-half is-full-mobile">
-                    <div class="tradingview_chart">
-                        <iframe id="iframe_chart" title="TradingView price chart"></iframe>
-                    </div>
-                </div>
-                <div class="column mixline is-half is-full-mobile">
-                    <!-- Table -->
-                    <div class="table-container">
-                        <table class="table table-data is-hoverable is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th><abbr title="Short Volume">SV</abbr></th>
-                                    <th><abbr title="Short Volume Ratio">SV,%</abbr></th>
-                                    <th><abbr title="Short Exempt Volume">SEV</abbr></th>
-                                    <th><abbr title="Short Exempt Volume Ratio">SEV,%</abbr></th>
-                                    <th><abbr title="Total volume">Vol</abbr></th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body">
-                                <!-- Table: elements -->
-                            </tbody>
-                        </table>
-                        <p class="csv-download">Download full data: <br>
-                            <a href="" id="csv-file-comma">CSV (comma separated)</a> or <a href=""
-                                id="csv-file-semicolon">CSV (semicolon separated)</a>
-                        </p>
-                    </div>
-                    <!-- Table: ends -->
-                </div>
-            </div>
-            <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
-                NASDAQ, NYSE and OTC,
-                which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
-                    rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade reporting facility. We make no
-                guarantees as to the
-                accuracy of the data. The information is provided for reference only and does not represent individual
-                investment advice. </p>
-        </div>
-    </section>
-    <!-- Main section: ends -->
+	{{{body}}}
 
     <!-- Footer -->
     <footer class="footer">
@@ -323,7 +235,7 @@
                     Binance
                 </a> BTC (ERC20):
                 <br>
-                <img src="./img/btc_qr.png" alt="Bitcoin wallet" class="qrcode">
+                <img src="/img/btc_qr.png" alt="Bitcoin wallet" class="qrcode">
             </p>
         </div>
     </footer>
@@ -346,20 +258,14 @@
 
     <!-- Cookie message -->
     <div class="cookie-message hide" id="cookie-message">
-        <img src="./img/cookie.png">
+        <img src="/img/cookie.png">
         <span>We use cookies for server authentication to get access for stocks data and to improve your browsing
             experience on our website.</span>
         <button id="cookie-close" class="delete" aria-label="close"></button>
     </div>
     <!-- Cookie message: ends -->
-    <!-- Cookie script -->
-    <script src="./js/cookie.js"></script>
-
-    <script src="./js/navbar.js"></script>
-    <script src="./js/modal.js"></script>
-    <script src="./js/changeGrid.js"></script>
-    <script src="./js/app.mjs" type="module"></script>
-    <script src="./js/onload.mjs" type="module"></script>
+    <script src="/js/main.js"></script>
+    
 </body>
 
 </html>

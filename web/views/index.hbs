@@ -1,0 +1,89 @@
+    <!-- Main section -->
+    <section class="section" id="main-section">
+        <div class="container is-max-widescreen">
+            <div class="columns">
+                <div class="column is-half is-full-mobile">
+                    <h1 class="title is-3"> Tight Shorts <sup class="is-size-7">
+                            <a href="https://github.com/samgozman/tightshorts/releases" target="_blank" rel="nofollow"
+                                rel="noreferrer" rel="noopener">
+                                {{ version }}
+                            </a>
+                        </sup>
+                    </h1>
+                    <p class="subtitle"> Daily short sale volume </p>
+                    <!-- Form -->
+                    <form class="field has-addons" id="search">
+                        <div class="control main-input has-icons-right">
+                            <input class="input" id="input_ticker" type="text" placeholder="Ticker">
+                            <span class="icon is-small is-right">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </span>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link" id="submit_button" type="submit">Find</button>
+                        </div>
+                    </form>
+                    <!-- Form: ends -->
+                </div>
+                <div class="column is-half is-full-mobile">
+                    <table class="table is-narrow is-borderless" id="table-statistic"></table>
+                </div>
+            </div>
+            <div class="columns is-multiline">
+                <!-- Charts -->
+                <div class="column mixline is-half is-full-mobile">
+                    <p class="title is-5 has-text-left">Short Volume Ratio</p>
+                    <div id="chartPercent">
+                        <div id="legendRatio" class="legend"></div>
+                    </div>
+                </div>
+                <div class="column mixline is-half is-full-mobile">
+                    <p class="title is-5 has-text-left">Short Volume</p>
+                    <div id="chartVolume">
+                        <div id="legendVolume" class="legend"></div>
+                    </div>
+                </div>
+                <!-- Charts: ends -->
+            </div>
+            <div class="columns is-multiline">
+                <div class="column mixline is-half is-full-mobile">
+                    <div class="tradingview_chart">
+                        <iframe id="iframe_chart" title="TradingView price chart"></iframe>
+                    </div>
+                </div>
+                <div class="column mixline is-half is-full-mobile">
+                    <!-- Table -->
+                    <div class="table-container">
+                        <table class="table table-data is-hoverable is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th><abbr title="Short Volume">SV</abbr></th>
+                                    <th><abbr title="Short Volume Ratio">SV,%</abbr></th>
+                                    <th><abbr title="Short Exempt Volume">SEV</abbr></th>
+                                    <th><abbr title="Short Exempt Volume Ratio">SEV,%</abbr></th>
+                                    <th><abbr title="Total volume">Vol</abbr></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Table: elements -->
+                            </tbody>
+                        </table>
+                        <p class="csv-download">Download full data: <br>
+                            <a href="" id="csv-file-comma">CSV (comma separated)</a> or <a href=""
+                                id="csv-file-semicolon">CSV (semicolon separated)</a>
+                        </p>
+                    </div>
+                    <!-- Table: ends -->
+                </div>
+            </div>
+            <p><strong>Disclaimer:</strong> The data on the chart is limited to the combined trading volume on the
+                NASDAQ, NYSE and OTC,
+                which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank"
+                    rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade reporting facility. We make no
+                guarantees as to the
+                accuracy of the data. The information is provided for reference only and does not represent individual
+                investment advice. </p>
+        </div>
+    </section>
+    <!-- Main section: ends -->
