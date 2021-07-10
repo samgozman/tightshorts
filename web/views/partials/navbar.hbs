@@ -1,0 +1,121 @@
+<!-- Navbar -->
+<nav class="navbar container is-max-widescreen" role="navigation" aria-label="main navigation">
+	<div class="navbar-brand">
+		<a class="navbar-item" href="/">
+			<img src="/img/logo_header.png" width="154" height="48" alt="Tight Shorts logo">
+		</a>
+		<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+		</a>
+	</div>
+
+	<div id="navbar" class="navbar-menu">
+		<div class="navbar-start">
+			<a class="navbar-item is-active" href="/">
+				<ion-icon name="home-outline"></ion-icon> Home
+			</a>
+			<a class="navbar-item" href="/screener">
+				<ion-icon name="options-outline"></ion-icon> Screener
+			</a>
+			<a class="navbar-item" href="https://short-fork.herokuapp.com/" id="menu_shortfork">
+				<ion-icon name="open-outline"></ion-icon>Short Fork
+			</a>
+			<a class="navbar-item modal-button is-hidden-desktop" data-target="help-modal">
+				<ion-icon name="information-circle-outline"></ion-icon> What is it all about?
+			</a>
+			<a class="navbar-item modal-button is-hidden-desktop" href="https://t.me/tightshorts_bot"
+				target="_blank">
+				<ion-icon name="flash-outline"></ion-icon> Telegram bot
+			</a>
+			<div class="navbar-item has-dropdown is-hoverable">
+				<a class="navbar-link">
+					<ion-icon name="link-outline"></ion-icon> Contacts
+				</a>
+
+				<div class="navbar-dropdown">
+					<a class="navbar-item" href="https://t.me/samgozman" target="_blank" rel="nofollow"
+						rel="noreferrer" rel="noopener">
+						<ion-icon name="send-outline"></ion-icon> Telegram
+					</a>
+					<a class="navbar-item" href="https://www.tinkoff.ru/invest/social/profile/aqua_disco/"
+						target="_blank" rel="nofollow" rel="noreferrer" rel="noopener">
+						<ion-icon name="pulse-outline"></ion-icon> Tinkoff Pulse
+					</a>
+					<a class="navbar-item" href="#support">
+						<ion-icon name="cash-outline"></ion-icon> Support Project
+					</a>
+					<hr class="navbar-divider">
+					<a class="navbar-item" href="https://github.com/samgozman/tightshorts/issues" target="_blank"
+						rel="nofollow" rel="noreferrer" rel="noopener">
+						<ion-icon name="bug-outline"></ion-icon> Report an issue
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="navbar-end">
+		<div class="navbar-item">
+			<a class="button is-light is-hidden-touch" id="tgbot" href="https://t.me/tightshorts_bot"
+				target="_blank" title="Telegram Bot">
+				<ion-icon name="flash-outline" style="color: #0088cc"></ion-icon>
+			</a>
+		</div>
+		<div class="navbar-item">
+			<button class="button is-light is-hidden-touch" id="change-grid" title="Change grid">
+				<ion-icon name="grid-outline"></ion-icon>
+			</button>
+		</div>
+		<div class="navbar-item">
+			<button class="button is-light modal-button is-hidden-touch" data-target="help-modal" title="About">
+				<ion-icon name="information-circle-outline"></ion-icon>
+			</button>
+			<!-- Modal ? message -->
+			<div class="modal" id="help-modal">
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<header class="modal-card-head">
+						<p class="modal-card-title">What is it all about?</p>
+						<button class="delete" aria-label="close"></button>
+					</header>
+					<section class="modal-card-body content">
+						<p>Short volume is the number of shares that have been borrowed to open short positions
+							(when you sell one or more shares of a stock that you don’t own).</p>
+						<p>TightShorts.ru aggregates data from FINRA and presents it in an easy-to-use way.</p>
+						<h4>Terminology</h4>
+						<ol>
+							<li> <strong>Volume (Vol)</strong> - number of shares of all
+								executed trades during regular trading hours</li>
+							<li> <strong>Short Volume (SV)</strong> - number of shares that have been borrowed to
+								open
+								short positions</li>
+							<li> <strong>Short Exempt Volume (SEV)</strong> - number of shares of all executed
+								short sale exempt trades during regular
+								trading hours</li>
+							<li> <strong>Short Volume Ratio (SV,%)</strong> - percentage of short positions from the
+								total
+								volume. <em>Formula: SV / Vol * 100</em></li>
+							<li> <strong>Short Exempt Volume Ratio (SEV,%)</strong> - percentage of short short sale
+								exempt
+								trades from the total volume. <em>Formula: SEV / Vol * 100</em></li>
+						</ol>
+						<p><strong>Disclaimer:</strong> The data on the TightShorts is limited to the combined
+							trading
+							volume on the NASDAQ, NYSE and OTC,
+							which was reported to the <a href="http://regsho.finra.org/regsho-Index.html"
+								target="_blank" rel="nofollow" rel="noreferrer" rel="noopener">FINRA</a> trade
+							reporting facility.
+							We make no guarantees as to the
+							accuracy of the data. The information is provided for reference only and does not
+							represent individual
+							investment advice. </p>
+					</section>
+				</div>
+			</div>
+			<!-- Modal ? message: ends -->
+		</div>
+	</div>
+</nav>
+<!-- Navbar: ends -->

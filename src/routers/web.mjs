@@ -45,7 +45,7 @@ webRouter.get('/quote/:ticker',
 // root index page
 webRouter.get('/screener', (req, res) => {
     return res.render('screener', {
-            layout: 'tightshorts-ui',
+            layout: 'screener-ui',
             version: process.env.npm_package_version,
             csrf: req.csrfToken()
         })

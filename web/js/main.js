@@ -1,6 +1,3 @@
-import './src/cookie'
-import './src/navbar'
-import './src/modal'
 import './src/changeGrid'
 import './src/app.mjs'
 import './src/onload.mjs'
