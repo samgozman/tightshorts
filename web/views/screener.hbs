@@ -2,9 +2,15 @@
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column is-full">
-				<h2 class="title">
-					Screener
-				</h2>
+				{{> title }}
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column is-four-fifths">
+				{{>screener_table}}
+			</div>
+			<div class="column is-one-fifth">
+				<p><ion-icon name="filter-outline"></ion-icon> Filters</p>
 			</div>
 		</div>
 	</div>

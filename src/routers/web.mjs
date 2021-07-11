@@ -24,6 +24,7 @@ webRouter.use(express.static(public_dir, {
 webRouter.get('', (req, res) => {
     return res.render('index', {
         layout: 'tightshorts-ui',
+        title: 'Tight Shorts',
         version: process.env.npm_package_version,
         ticker: 'undefined',
         csrf: req.csrfToken()
@@ -36,6 +37,7 @@ webRouter.get('/quote/:ticker',
     (req, res) => {
         return res.render('index', {
             layout: 'tightshorts-ui',
+            title: 'Tight Shorts',
             version: process.env.npm_package_version,
             ticker: req.params.ticker,
             csrf: req.csrfToken()
@@ -46,6 +48,7 @@ webRouter.get('/quote/:ticker',
 webRouter.get('/screener', (req, res) => {
     return res.render('screener', {
             layout: 'screener-ui',
+            title: 'Tight Shorts: Screener',
             version: process.env.npm_package_version,
             csrf: req.csrfToken()
         })
