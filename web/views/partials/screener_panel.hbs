@@ -1,0 +1,65 @@
+<nav class="panel">
+	<p class="panel-heading">
+		<ion-icon name="filter-outline"></ion-icon> Filters
+	</p>
+
+	<p class="panel-block panel-separator">
+		<span class="panel-icon">
+			<ion-icon name="cog-outline"></ion-icon>
+		</span>
+		Settings
+	</p>
+	{{#each filters.settings}}
+	<label class="panel-block">
+		{{#if this.iconClass}}
+			<span class="panel-icon">
+				<ion-icon name="{{this.iconClass}}"></ion-icon>
+			</span>
+		{{/if}}
+		<input type="checkbox" class="{{@key}}">
+		{{this.title}}
+	</label>
+	{{/each}}
+
+	<p class="panel-block panel-separator">
+		<span class="panel-icon">
+			<ion-icon name="cellular-outline"></ion-icon>
+		</span>
+		In-line sequence of 3 days
+	</p>
+	{{#each filters.sequence3D}}
+	<label class="panel-block">
+		{{#if this.iconClass}}
+			<span class="panel-icon">
+				<ion-icon name="{{this.iconClass}}"></ion-icon>
+			</span>
+		{{/if}}
+		<input type="checkbox" class="{{@key}}">
+		{{this.title}}
+	</label>
+	{{/each}}
+
+	<p class="panel-block panel-separator">
+		<span class="panel-icon">
+			<ion-icon name="cellular-outline"></ion-icon>
+		</span>
+		In-line sequence of 5 days
+	</p>
+	{{#each filters.sequence5D}}
+	<label class="panel-block">
+		{{#if this.iconClass}}
+			<span class="panel-icon">
+				<ion-icon name="{{this.iconClass}}"></ion-icon>
+			</span>
+		{{/if}}
+		<input type="checkbox" class="{{@key}}">
+		{{this.title}}
+	</label>
+	{{/each}}
+
+	<div class="panel-block">
+		<button class="button is-link is-outlined is-fullwidth">
+			Reset all filters
+		</button>
+	</div>
+</nav>

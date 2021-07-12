@@ -49,12 +49,104 @@ webRouter.get('/quote/:ticker',
 // root index page
 webRouter.get('/screener', (req, res) => {
     return res.render('screener', {
-            layout: 'screener-ui',
-            isScreener: true,
-            title: 'Tight Shorts: Screener',
-            version: process.env.npm_package_version,
-            csrf: req.csrfToken()
-        })
+        layout: 'screener-ui',
+        isScreener: true,
+        title: 'Tight Shorts: Screener',
+        version: process.env.npm_package_version,
+        csrf: req.csrfToken(),
+        filters: {
+            settings: {
+                onTinkoff: {
+                    title: 'Available on Tinkoff broker',
+                    iconClass: 'extension-puzzle-outline'
+                }
+            },
+            sequence3D: {
+                shortVolGrows3D: {
+                    title: 'Short volume up 3d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortVolDecreases3D: {
+                    title: 'Short volume down 3d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortVolRatioGrows3D: {
+                    title: 'Short volume %% up 3d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortVoRatiolDecreases3D: {
+                    title: 'Short volume %% down 3d',
+                    iconClass: 'trending-down-outline'
+                },
+                totalVolGrows3D: {
+                    title: 'Total volume up 3d',
+                    iconClass: 'trending-up-outline'
+                },
+                totalVolDecreases3D: {
+                    title: 'Total volume down 3d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortExemptVolGrows3D: {
+                    title: 'Short exempt volume up 3d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortExemptVolDecreases3D: {
+                    title: 'Short exempt volume down 3d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortExemptVolRatioGrows3D: {
+                    title: 'Short exempt volume %% up 3d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortExemptVolRatioDecreases3D: {
+                    title: 'Short exempt volume %% down 3d',
+                    iconClass: 'trending-down-outline'
+                }
+            },
+            sequence5D: {
+                shortVolGrows5D: {
+                    title: 'Short volume up 5d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortVolDecreases5D: {
+                    title: 'Short volume down 5d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortVolRatioGrows5D: {
+                    title: 'Short volume %% up 5d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortVoRatiolDecreases5D: {
+                    title: 'Short volume %% down 5d',
+                    iconClass: 'trending-down-outline'
+                },
+                totalVolGrows5D: {
+                    title: 'Total volume up 5d',
+                    iconClass: 'trending-up-outline'
+                },
+                totalVolDecreases5D: {
+                    title: 'Total volume down 5d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortExemptVolGrows5D: {
+                    title: 'Short exempt volume up 5d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortExemptVolDecreases5D: {
+                    title: 'Short exempt volume down 5d',
+                    iconClass: 'trending-down-outline'
+                },
+                shortExemptVolRatioGrows5D: {
+                    title: 'Short exempt volume %% up 5d',
+                    iconClass: 'trending-up-outline'
+                },
+                shortExemptVolRatioDecreases5D: {
+                    title: 'Short exempt volume %% down 5d',
+                    iconClass: 'trending-down-outline'
+                }
+            }
+        }
+    })
 })
 
 

@@ -192,6 +192,23 @@ table.screener {
     border-width: inherit;
 }
 
+.table tbody td {
+    padding: 1em 0.75em;
+}
+
+.panel-heading {
+    font-size: 1em;
+}
+
+.panel-block {
+    font-size: 0.7em;
+}
+
+.panel-separator {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
 /* SCREENER: END */
 
 /* Responsive fixes */
