@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session'
 import csurf from 'csurf'
 import webRouter from './routers/web.mjs'
 import stockRouter from './routers/stock.mjs'
+import screenerRouter from './routers/screener.mjs'
 import helmet from 'helmet'
 
 const csrf = csurf({
@@ -49,5 +50,6 @@ app.use(helmet({
 
 app.use(webRouter)
 app.use(stockRouter)
+app.use(screenerRouter)
 
 export default app

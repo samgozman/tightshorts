@@ -15,17 +15,25 @@ const plugins = [nodeResolve({
 }), commonjs(), globals(), terser()]
 
 export default [{
-  input: ['web/js/main.js'],
-  output: {
-    dir: 'dist/js',
-    format: 'iife',
-  },
-  plugins
-}, {
-  input: ['web/js/basics.js'],
-  output: {
-    dir: 'dist/js',
-    format: 'iife',
-  },
-  plugins
-}]
+    input: ['web/js/main.js'],
+    output: {
+      dir: 'dist/js',
+      format: 'iife',
+    },
+    plugins
+  }, {
+    input: ['web/js/basics.js'],
+    output: {
+      dir: 'dist/js',
+      format: 'iife',
+    },
+    plugins
+  }, {
+    input: ['web/js/screener.js'],
+    output: {
+      dir: 'dist/js',
+      format: 'iife',
+    },
+    plugins
+  }
+]

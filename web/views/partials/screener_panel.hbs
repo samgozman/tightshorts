@@ -16,7 +16,7 @@
 				<ion-icon name="{{this.iconClass}}"></ion-icon>
 			</span>
 		{{/if}}
-		<input type="checkbox" class="{{@key}}">
+		<input type="checkbox" id="{{@key}}">
 		{{this.title}}
 	</label>
 	{{/each}}
@@ -34,7 +34,7 @@
 				<ion-icon name="{{this.iconClass}}"></ion-icon>
 			</span>
 		{{/if}}
-		<input type="checkbox" class="{{@key}}">
+		<input type="checkbox" id="{{@key}}">
 		{{this.title}}
 	</label>
 	{{/each}}
@@ -52,13 +52,13 @@
 				<ion-icon name="{{this.iconClass}}"></ion-icon>
 			</span>
 		{{/if}}
-		<input type="checkbox" class="{{@key}}">
+		<input type="checkbox" id="{{@key}}">
 		{{this.title}}
 	</label>
 	{{/each}}
 
 	<div class="panel-block">
-		<button class="button is-link is-outlined is-fullwidth">
+		<button class="button is-link is-outlined is-fullwidth" id="resetFilters">
 			Reset all filters
 		</button>
 	</div>

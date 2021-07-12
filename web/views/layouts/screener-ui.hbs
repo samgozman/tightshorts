@@ -3,6 +3,7 @@
 
 <head>
     <title>Tight Shorts | Short Volume Screener</title>
+    <meta name="filters" content="{{#each filters.settings}}{{@key}},{{/each}}{{#each filters.sequence3D}}{{@key}},{{/each}}{{#each filters.sequence5D}}{{@key}},{{/each}}">
     {{>head}}
 </head>
 
@@ -10,13 +11,14 @@
 
     {{>navbar}}
 
-	{{{body}}}
+    {{{body}}}
 
     {{>footer}}
 
     {{>cookie}}
 
     <script src="/js/basics.js"></script>
+    <script src="/js/screener.js"></script>
 </body>
 
 </html>
