@@ -3,11 +3,13 @@
 		<div class="columns">
 			<div class="column is-full">
 				{{> title }}
+				<h5 class="subtitle is-5">Total: <span id="totalStocks"></span></h5>
 			</div>
 		</div>
 		<div class="columns">
 			<div class="column is-three-quarters">
 				{{>screener_table}}
+				{{>screener_pagination}}
 			</div>
 			<div class="column is-one-quarter">
 				{{>screener_panel}}

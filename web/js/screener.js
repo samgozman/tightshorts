@@ -1,20 +1,44 @@
 import Url from 'url-parse'
+import {
+	paginate
+} from './src/paginate.mjs'
+
+// Page elements
 const screener = document.getElementById('screenerBody')
+const totalStocks = document.getElementById('totalStocks')
+const paginationList = document.getElementById('paginationList')
+const controlButtons = document.getElementById('controlButtons')
 
 // Get all availible filters from meta
 const allFilters = (document.querySelector('meta[name="filters"]').content).split(',').filter(Boolean)
 
+// Get url params for filter
+const getUrlFilter = () => {
+	const {
+		skip,
+		limit,
+		sort,
+		filters
+	} = (new Url(window.location.href, true)).query
+
+	return {
+		skip: skip || '',
+		limit: limit || '',
+		sort: sort || '',
+		filters: filters || ''
+	}
+}
+
 const getFiltredFromServer = async () => {
 	try {
 		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-		const url = new Url(window.location.href, true)
 		const {
 			skip,
 			limit,
 			sort,
 			filters
-		} = url.query
-		const resp = await fetch(`/screener/filter?limit=${limit || ''}&skip=${skip || ''}&sort=${sort || ''}&filters=${filters || ''}`, {
+		} = getUrlFilter()
+		const resp = await fetch(`/screener/filter?limit=${limit}&skip=${skip}&sort=${sort}&filters=${filters}`, {
 			credentials: 'same-origin',
 			headers: {
 				'CSRF-Token': token,
@@ -32,9 +56,54 @@ const getFiltredFromServer = async () => {
 	}
 }
 
+const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
+	const thisPage = Math.ceil(skip/pageSize) + 1
+	const {pages, currentPage, totalPages} = paginate(totalItems, thisPage, pageSize)
+	// Clear before initiate
+	paginationList.innerHTML = ''
+	controlButtons.innerHTML = ''
+
+	// Create control buttons //
+	const prevIcon = '<span class="icon"><ion-icon name="chevron-back-outline" size="large"></ion-icon></span>'
+	const nextIcon = '<span class="icon"><ion-icon name="chevron-forward-outline" size="large"></ion-icon></span>'
+	// Prev button
+	if(thisPage !== 1) {
+		controlButtons.innerHTML += `<a class="button pagination-previous" id="prevButton">${prevIcon}</a>`
+	} else {
+		controlButtons.innerHTML += `<a class="button pagination-previous" disabled id="prevButton">${prevIcon}</a>`
+	}
+	// Next button
+	if(thisPage !== totalPages) {
+		controlButtons.innerHTML += `<a class="button pagination-next" id="nextButton">${nextIcon}</a>`
+	} else {
+		controlButtons.innerHTML += `<a class="button pagination-next" disabled id="nextButton">${nextIcon}</a>`
+	}
+
+	// create link for start page
+	if(pages[0] !== 1) {
+		paginationList.innerHTML += '<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>' 
+		paginationList.innerHTML += pages[0] !== 2 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>': ''
+	}
+
+	// create links to pages
+	for (const page of pages) {
+		paginationList.innerHTML += `<li><a class="pagination-link ${page === currentPage ? 'is-current': ''}" aria-label="Goto page ${page}">${page}</a></li>`
+	}
+
+	// create link for end page
+	if(pages.slice(-1)[0] < totalPages) {
+		paginationList.innerHTML += pages.slice(-1)[0] !== totalPages - 1 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>' : ''
+		paginationList.innerHTML += `<li><a class="pagination-link" aria-label="Goto page ${totalPages}">${totalPages}</a></li>`
+	}
+}
+
 const generateScreenerTable = async () => {
 	screener.innerHTML = ''
 	const result = await getFiltredFromServer()
+	totalStocks.textContent = result.count
+	const {skip} = getUrlFilter()
+	generatePagination(result.count, result.stocks.length, skip)
+
 	if (result.count > 0) {
 		for (const stock of result.stocks) {
 			const row = screener.insertRow()
@@ -74,8 +143,8 @@ window.onload = async () => {
 	// Parse url string and mark checked filters
 	const {
 		filters
-	} = (new Url(window.location.href, true)).query
-	if(filters){
+	} = getUrlFilter()
+	if (filters) {
 		const fls = filters.split(',')
 		for (const filter of fls) {
 			document.getElementById(filter).checked = true
