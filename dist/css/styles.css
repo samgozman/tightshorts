@@ -212,11 +212,11 @@ table.screener {
     display: none;
 }
 
-.columns-names>th.is-active.desc>abbr>span>.up>ion-icon {
+.columns-names>th.is-active.asc>abbr>span>.up>ion-icon {
     display: inline-block;
 }
 
-.columns-names>th.is-active.asc>abbr>span>.down>ion-icon {
+.columns-names>th.is-active.desc>abbr>span>.down>ion-icon {
     display: inline-block;
 }
 
