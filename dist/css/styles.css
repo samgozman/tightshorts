@@ -192,6 +192,34 @@ table.screener {
     border-width: inherit;
 }
 
+.columns-names>th {
+    cursor: pointer;
+}
+
+.columns-names>th>abbr>span {
+    width: 1.25em;
+    height: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.columns-names>th>abbr>span>div,
+.columns-names>th>abbr>span>div>ion-icon {
+    height: 0.6em;
+}
+
+.columns-names>th>abbr>span>div>ion-icon {
+    display: none;
+}
+
+.columns-names>th.is-active.desc>abbr>span>.up>ion-icon {
+    display: inline-block;
+}
+
+.columns-names>th.is-active.asc>abbr>span>.down>ion-icon {
+    display: inline-block;
+}
+
 .table tbody td {
     padding: 1em 0.75em;
 }

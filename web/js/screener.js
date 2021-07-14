@@ -16,7 +16,7 @@ const allFilters = (document.querySelector('meta[name="filters"]').content).spli
 // Change skip value in url and update table
 const changeSkip = async (skipValue, btn = undefined) => {
 	// don't run if button is disabled
-	if(btn && btn.hasAttribute('disabled')) return
+	if (btn && btn.hasAttribute('disabled')) return
 
 	const windowUrl = new URLSearchParams(window.location.search)
 	windowUrl.set('skip', skipValue >= 0 ? skipValue : 0)
@@ -26,7 +26,7 @@ const changeSkip = async (skipValue, btn = undefined) => {
 
 // Format big numbers to K, like 10k
 function kFormatter(num) {
-    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+	return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : (Math.sign(num) * Math.abs(num)).toFixed(1)
 }
 
 // Get url params for filter
@@ -91,7 +91,7 @@ const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 	} else {
 		prevButton.removeAttribute('disabled')
 	}
-	
+
 	// Next button
 	if (thisPage === totalPages) {
 		nextButton.setAttribute('disabled', 'disabled')
@@ -175,8 +175,8 @@ const generateScreenerTable = async () => {
 			row.insertCell(0).innerHTML = `<a href="/quote/${ticker}">${ticker}</a>`
 			// today
 			row.insertCell(1).innerHTML = totalVolLast ? kFormatter(totalVolLast) : 0
-			row.insertCell(2).innerHTML = (shortVolRatioLast ? shortVolRatioLast.toFixed(2): 0) + '%'
-			row.insertCell(3).innerHTML = (shortExemptVolRatioLast ? shortExemptVolRatioLast.toFixed(2): 0) + '%'
+			row.insertCell(2).innerHTML = (shortVolRatioLast ? shortVolRatioLast.toFixed(2) : 0) + '%'
+			row.insertCell(3).innerHTML = (shortExemptVolRatioLast ? shortExemptVolRatioLast.toFixed(2) : 0) + '%'
 			// 3 days
 			row.insertCell(4).innerHTML = totalVol5DAVG ? kFormatter(totalVol5DAVG) : 0
 			row.insertCell(5).innerHTML = (shortVolRatio5DAVG ? shortVolRatio5DAVG.toFixed(2) : 0) + '%'
@@ -204,6 +204,50 @@ document.getElementById('resetFilters').addEventListener('click', async () => {
 		document.getElementById(filter).checked = false
 	}
 })
+
+// Sorter
+const sorter = () => {
+	const ids = ['ticker', 'totalVolLast', 'shortVolRatioLast', 'shortExemptVolRatioLast',
+		'totalVol5DAVG', 'shortVolRatio5DAVG', 'shortExemptVolRatio5DAVG', 'totalVol20DAVG',
+		'shortVolRatio20DAVG', 'shortExemptVolRatio20DAVG'
+	]
+
+	// Remove classes from other sorting columns
+	const clearSorter = () => {
+		ids.forEach((id) => {
+			document.getElementById(id).classList.remove('is-active', 'asc', 'desc')
+		})
+	}
+
+	// Set sorter url arg
+	const changeSorter = async (sort = 'totalVolLast', dir = 'desc') => {
+		const windowUrl = new URLSearchParams(window.location.search)
+		windowUrl.set('sort', `${sort}:${dir}`)
+		history.replaceState(null, null, '?' + windowUrl.toString())
+		await generateScreenerTable()
+	}
+
+	ids.forEach((id) => {
+		document.getElementById(id).addEventListener('click', function () {
+			const isActive = this.classList.contains('is-active')
+			const isDesc = this.classList.contains('desc')
+			const isAsc = this.classList.contains('asc')
+
+			// Mark active to show that item was activated
+			if (!isActive && !isDesc && !isAsc) {
+				clearSorter()
+				this.classList.add('is-active', 'desc')
+				changeSorter(id, 'desc')
+			} else if (isActive && isDesc){
+				this.classList.replace('desc', 'asc')
+				changeSorter(id, 'asc')
+			} else if (isActive && isAsc) {
+				this.classList.replace('asc', 'desc')
+				changeSorter(id, 'desc')
+			}
+		})
+	})
+}
 
 window.onload = async () => {
 	// Parse url string and mark checked filters
@@ -240,4 +284,5 @@ window.onload = async () => {
 
 	await generateScreenerTable()
 	await nextPrevListeners()
+	sorter()
 }
