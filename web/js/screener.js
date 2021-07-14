@@ -13,6 +13,17 @@ const nextButton = document.getElementById('nextButton')
 // Get all availible filters from meta
 const allFilters = (document.querySelector('meta[name="filters"]').content).split(',').filter(Boolean)
 
+// Change skip value in url and update table
+const changeSkip = async (skipValue, btn = undefined) => {
+	// don't run if button is disabled
+	if(btn && btn.hasAttribute('disabled')) return
+
+	const windowUrl = new URLSearchParams(window.location.search)
+	windowUrl.set('skip', skipValue >= 0 ? skipValue : 0)
+	history.replaceState(null, null, '?' + windowUrl.toString())
+	await generateScreenerTable()
+}
+
 // Get url params for filter
 const getUrlFilter = () => {
 	const {
@@ -64,6 +75,7 @@ const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 		currentPage,
 		totalPages
 	} = paginate(totalItems, thisPage, pageSize)
+
 	// Clear before initiate
 	paginationList.innerHTML = ''
 
@@ -74,6 +86,7 @@ const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 	} else {
 		prevButton.removeAttribute('disabled')
 	}
+	
 	// Next button
 	if (thisPage === totalPages) {
 		nextButton.setAttribute('disabled', 'disabled')
@@ -97,32 +110,30 @@ const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 		paginationList.innerHTML += pages.slice(-1)[0] !== totalPages - 1 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>' : ''
 		paginationList.innerHTML += `<li><a class="pagination-link" aria-label="Goto page ${totalPages}">${totalPages}</a></li>`
 	}
+
+	Array.from(document.getElementsByClassName('pagination-link')).forEach(async function (link) {
+		const skipValue = (parseInt(link.textContent) - 1) * pageSize
+		link.addEventListener('click', async () => await changeSkip(skipValue))
+	})
 }
 
-const createPaginationListeners = async () => {
-	const changeSkip = async (skipValue) => {
-		const windowUrl = new URLSearchParams(window.location.search)
-		windowUrl.set('skip', skipValue >= 0 ? skipValue : 0)
-		history.replaceState(null, null, '?' + windowUrl.toString())
-		await generateScreenerTable()
-	}
-
-	prevButton.addEventListener('click', async () => {
+const nextPrevListeners = async () => {
+	prevButton.addEventListener('click', async function () {
 		const {
 			skip,
 			limit
 		} = getUrlFilter()
 		const skipValue = (parseInt(skip) || 25) - (parseInt(limit) || 25)
-		await changeSkip(skipValue)
+		await changeSkip(skipValue, this)
 	})
 
-	nextButton.addEventListener('click', async () => {
+	nextButton.addEventListener('click', async function () {
 		const {
 			skip,
 			limit
 		} = getUrlFilter()
-		const skipValue = (parseInt(skip) || 25) + (parseInt(limit) || 25)
-		await changeSkip(skipValue)
+		const skipValue = (parseInt(skip) || 0) + (parseInt(limit) || 25)
+		await changeSkip(skipValue, this)
 	})
 }
 
@@ -131,29 +142,42 @@ const generateScreenerTable = async () => {
 	const result = await getFiltredFromServer()
 	totalStocks.textContent = result.count
 	const {
-		skip
+		skip,
+		limit
 	} = getUrlFilter()
 
 	if (result.count > 0) {
 		for (const stock of result.stocks) {
 			const row = screener.insertRow()
-			row.insertCell(0).innerHTML = `<a href="/quote/${stock.ticker}">${stock.ticker}</a>`
+			const {
+				ticker,
+				totalVolLast,
+				shortVolRatioLast,
+				shortExemptVolRatioLast,
+				totalVol5DAVG,
+				shortVolRatio5DAVG,
+				shortExemptVolRatio5DAVG,
+				totalVol20DAVG,
+				shortVolRatio20DAVG,
+				shortExemptVolRatio20DAVG
+			} = stock
+			row.insertCell(0).innerHTML = `<a href="/quote/${ticker}">${ticker}</a>`
 			// today
-			row.insertCell(1).innerHTML = stock.totalVolLast.toFixed(0)
-			row.insertCell(2).innerHTML = stock.shortVolRatioLast.toFixed(2)
-			row.insertCell(3).innerHTML = stock.shortExemptVolRatioLast.toFixed(2)
+			row.insertCell(1).innerHTML = totalVolLast ? totalVolLast.toFixed(0) : 0
+			row.insertCell(2).innerHTML = shortVolRatioLast ? shortVolRatioLast.toFixed(2): 0
+			row.insertCell(3).innerHTML = shortExemptVolRatioLast ? shortExemptVolRatioLast.toFixed(2): 0
 			// 3 days
-			row.insertCell(4).innerHTML = stock.totalVol5DAVG.toFixed(0)
-			row.insertCell(5).innerHTML = stock.shortVolRatio5DAVG.toFixed(2)
-			row.insertCell(6).innerHTML = stock.shortExemptVolRatio5DAVG.toFixed(2)
+			row.insertCell(4).innerHTML = totalVol5DAVG ? totalVol5DAVG.toFixed(0) : 0
+			row.insertCell(5).innerHTML = shortVolRatio5DAVG ? shortVolRatio5DAVG.toFixed(2) : 0
+			row.insertCell(6).innerHTML = shortExemptVolRatio5DAVG ? shortExemptVolRatio5DAVG.toFixed(2) : 0
 			// 20 days
-			row.insertCell(7).innerHTML = stock.totalVol20DAVG.toFixed(0)
-			row.insertCell(8).innerHTML = stock.shortVolRatio20DAVG.toFixed(2)
-			row.insertCell(9).innerHTML = stock.shortExemptVolRatio20DAVG.toFixed(2)
+			row.insertCell(7).innerHTML = totalVol20DAVG ? totalVol20DAVG.toFixed(0) : 0
+			row.insertCell(8).innerHTML = shortVolRatio20DAVG ? shortVolRatio20DAVG.toFixed(2) : 0
+			row.insertCell(9).innerHTML = shortExemptVolRatio20DAVG ? shortExemptVolRatio20DAVG.toFixed(2) : 0
 		}
 	}
 
-	generatePagination(result.count, result.stocks.length, skip)
+	generatePagination(result.count, limit || 25, skip)
 }
 
 // Reset button
@@ -201,5 +225,5 @@ window.onload = async () => {
 	}
 
 	await generateScreenerTable()
-	await createPaginationListeners()
+	await nextPrevListeners()
 }
