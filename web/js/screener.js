@@ -191,6 +191,7 @@ document.getElementById('resetFilters').addEventListener('click', async () => {
 	const windowUrl = new URLSearchParams(window.location.search)
 	windowUrl.delete('filters')
 	history.replaceState(null, null, '?' + windowUrl.toString())
+	await changeSkip(0)
 	await generateScreenerTable()
 
 	// uncheck all inputs
@@ -224,6 +225,8 @@ window.onload = async () => {
 				windowUrl.set('filters', fls.replace(regex, ''))
 				history.replaceState(null, null, '?' + windowUrl.toString())
 			}
+
+			await changeSkip(0)
 
 			// Regenerate table after each filter change
 			await generateScreenerTable()
