@@ -24,6 +24,11 @@ const changeSkip = async (skipValue, btn = undefined) => {
 	await generateScreenerTable()
 }
 
+// Format big numbers to K, like 10k
+function kFormatter(num) {
+    return Math.abs(num) > 999 ? Math.sign(num)*((Math.abs(num)/1000).toFixed(1)) + 'k' : Math.sign(num)*Math.abs(num)
+}
+
 // Get url params for filter
 const getUrlFilter = () => {
 	const {
@@ -169,17 +174,17 @@ const generateScreenerTable = async () => {
 			} = stock
 			row.insertCell(0).innerHTML = `<a href="/quote/${ticker}">${ticker}</a>`
 			// today
-			row.insertCell(1).innerHTML = totalVolLast ? totalVolLast.toFixed(0) : 0
-			row.insertCell(2).innerHTML = shortVolRatioLast ? shortVolRatioLast.toFixed(2): 0
-			row.insertCell(3).innerHTML = shortExemptVolRatioLast ? shortExemptVolRatioLast.toFixed(2): 0
+			row.insertCell(1).innerHTML = totalVolLast ? kFormatter(totalVolLast) : 0
+			row.insertCell(2).innerHTML = (shortVolRatioLast ? shortVolRatioLast.toFixed(2): 0) + '%'
+			row.insertCell(3).innerHTML = (shortExemptVolRatioLast ? shortExemptVolRatioLast.toFixed(2): 0) + '%'
 			// 3 days
-			row.insertCell(4).innerHTML = totalVol5DAVG ? totalVol5DAVG.toFixed(0) : 0
-			row.insertCell(5).innerHTML = shortVolRatio5DAVG ? shortVolRatio5DAVG.toFixed(2) : 0
-			row.insertCell(6).innerHTML = shortExemptVolRatio5DAVG ? shortExemptVolRatio5DAVG.toFixed(2) : 0
+			row.insertCell(4).innerHTML = totalVol5DAVG ? kFormatter(totalVol5DAVG) : 0
+			row.insertCell(5).innerHTML = (shortVolRatio5DAVG ? shortVolRatio5DAVG.toFixed(2) : 0) + '%'
+			row.insertCell(6).innerHTML = (shortExemptVolRatio5DAVG ? shortExemptVolRatio5DAVG.toFixed(2) : 0) + '%'
 			// 20 days
-			row.insertCell(7).innerHTML = totalVol20DAVG ? totalVol20DAVG.toFixed(0) : 0
-			row.insertCell(8).innerHTML = shortVolRatio20DAVG ? shortVolRatio20DAVG.toFixed(2) : 0
-			row.insertCell(9).innerHTML = shortExemptVolRatio20DAVG ? shortExemptVolRatio20DAVG.toFixed(2) : 0
+			row.insertCell(7).innerHTML = totalVol20DAVG ? kFormatter(totalVol20DAVG) : 0
+			row.insertCell(8).innerHTML = (shortVolRatio20DAVG ? shortVolRatio20DAVG.toFixed(2) : 0) + '%'
+			row.insertCell(9).innerHTML = (shortExemptVolRatio20DAVG ? shortExemptVolRatio20DAVG.toFixed(2) : 0) + '%'
 		}
 	}
 
