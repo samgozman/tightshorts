@@ -7,7 +7,8 @@ import {
 const screener = document.getElementById('screenerBody')
 const totalStocks = document.getElementById('totalStocks')
 const paginationList = document.getElementById('paginationList')
-const controlButtons = document.getElementById('controlButtons')
+const prevButton = document.getElementById('prevButton')
+const nextButton = document.getElementById('nextButton')
 
 // Get all availible filters from meta
 const allFilters = (document.querySelector('meta[name="filters"]').content).split(',').filter(Boolean)
@@ -57,32 +58,33 @@ const getFiltredFromServer = async () => {
 }
 
 const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
-	const thisPage = Math.ceil(skip/pageSize) + 1
-	const {pages, currentPage, totalPages} = paginate(totalItems, thisPage, pageSize)
+	const thisPage = Math.ceil(skip / pageSize) + 1
+	const {
+		pages,
+		currentPage,
+		totalPages
+	} = paginate(totalItems, thisPage, pageSize)
 	// Clear before initiate
 	paginationList.innerHTML = ''
-	controlButtons.innerHTML = ''
 
 	// Create control buttons //
-	const prevIcon = '<span class="icon"><ion-icon name="chevron-back-outline" size="large"></ion-icon></span>'
-	const nextIcon = '<span class="icon"><ion-icon name="chevron-forward-outline" size="large"></ion-icon></span>'
 	// Prev button
-	if(thisPage !== 1) {
-		controlButtons.innerHTML += `<a class="button pagination-previous" id="prevButton">${prevIcon}</a>`
+	if (thisPage === 1) {
+		prevButton.setAttribute('disabled', 'disabled')
 	} else {
-		controlButtons.innerHTML += `<a class="button pagination-previous" disabled id="prevButton">${prevIcon}</a>`
+		prevButton.removeAttribute('disabled')
 	}
 	// Next button
-	if(thisPage !== totalPages) {
-		controlButtons.innerHTML += `<a class="button pagination-next" id="nextButton">${nextIcon}</a>`
+	if (thisPage === totalPages) {
+		nextButton.setAttribute('disabled', 'disabled')
 	} else {
-		controlButtons.innerHTML += `<a class="button pagination-next" disabled id="nextButton">${nextIcon}</a>`
+		nextButton.removeAttribute('disabled')
 	}
 
 	// create link for start page
-	if(pages[0] !== 1) {
-		paginationList.innerHTML += '<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>' 
-		paginationList.innerHTML += pages[0] !== 2 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>': ''
+	if (pages[0] !== 1) {
+		paginationList.innerHTML += '<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>'
+		paginationList.innerHTML += pages[0] !== 2 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>' : ''
 	}
 
 	// create links to pages
@@ -91,18 +93,46 @@ const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 	}
 
 	// create link for end page
-	if(pages.slice(-1)[0] < totalPages) {
+	if (pages.slice(-1)[0] < totalPages) {
 		paginationList.innerHTML += pages.slice(-1)[0] !== totalPages - 1 ? '<li><span class="pagination-ellipsis">&hellip;</span></li>' : ''
 		paginationList.innerHTML += `<li><a class="pagination-link" aria-label="Goto page ${totalPages}">${totalPages}</a></li>`
 	}
+}
+
+const createPaginationListeners = async () => {
+	const changeSkip = async (skipValue) => {
+		const windowUrl = new URLSearchParams(window.location.search)
+		windowUrl.set('skip', skipValue >= 0 ? skipValue : 0)
+		history.replaceState(null, null, '?' + windowUrl.toString())
+		await generateScreenerTable()
+	}
+
+	prevButton.addEventListener('click', async () => {
+		const {
+			skip,
+			limit
+		} = getUrlFilter()
+		const skipValue = (parseInt(skip) || 25) - (parseInt(limit) || 25)
+		await changeSkip(skipValue)
+	})
+
+	nextButton.addEventListener('click', async () => {
+		const {
+			skip,
+			limit
+		} = getUrlFilter()
+		const skipValue = (parseInt(skip) || 25) + (parseInt(limit) || 25)
+		await changeSkip(skipValue)
+	})
 }
 
 const generateScreenerTable = async () => {
 	screener.innerHTML = ''
 	const result = await getFiltredFromServer()
 	totalStocks.textContent = result.count
-	const {skip} = getUrlFilter()
-	generatePagination(result.count, result.stocks.length, skip)
+	const {
+		skip
+	} = getUrlFilter()
 
 	if (result.count > 0) {
 		for (const stock of result.stocks) {
@@ -122,6 +152,8 @@ const generateScreenerTable = async () => {
 			row.insertCell(9).innerHTML = stock.shortExemptVolRatio20DAVG.toFixed(2)
 		}
 	}
+
+	generatePagination(result.count, result.stocks.length, skip)
 }
 
 // Reset button
@@ -138,8 +170,6 @@ document.getElementById('resetFilters').addEventListener('click', async () => {
 })
 
 window.onload = async () => {
-	await generateScreenerTable()
-
 	// Parse url string and mark checked filters
 	const {
 		filters
@@ -169,4 +199,7 @@ window.onload = async () => {
 			await generateScreenerTable()
 		})
 	}
+
+	await generateScreenerTable()
+	await createPaginationListeners()
 }
