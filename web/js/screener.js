@@ -4,7 +4,7 @@ import {
 } from './src/paginate.mjs'
 
 // Page elements
-const screener = document.getElementById('screenerBody')
+const screenerBody = document.getElementById('screenerBody')
 const totalStocks = document.getElementById('totalStocks')
 const paginationList = document.getElementById('paginationList')
 const prevButton = document.getElementById('prevButton')
@@ -138,7 +138,13 @@ const nextPrevListeners = async () => {
 }
 
 const generateScreenerTable = async () => {
-	screener.innerHTML = ''
+	// Set section min-height to prevernt from flickering
+	const mainSection = document.getElementById('main-section')
+	mainSection.style = `min-height: ${mainSection.offsetHeight}px;`
+
+	// Clear table
+	screenerBody.innerHTML = ''
+
 	const result = await getFiltredFromServer()
 	totalStocks.textContent = result.count
 	const {
@@ -148,7 +154,7 @@ const generateScreenerTable = async () => {
 
 	if (result.count > 0) {
 		for (const stock of result.stocks) {
-			const row = screener.insertRow()
+			const row = screenerBody.insertRow()
 			const {
 				ticker,
 				totalVolLast,
