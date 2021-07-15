@@ -59,6 +59,10 @@ webRouter.get('/screener', (req, res) => {
                 onTinkoff: {
                     title: 'Available on Tinkoff broker',
                     iconClass: 'extension-puzzle-outline'
+                },
+                isNotGarbage: {
+                    title: 'Is not complete garbage',
+                    iconClass: 'trash-bin-outline'
                 }
             },
             sequence3D: {
