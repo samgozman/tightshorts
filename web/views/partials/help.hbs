@@ -1,0 +1,67 @@
+<div class="modal-background"></div>
+<div class="modal-card">
+	<header class="modal-card-head">
+		<p class="modal-card-title">What is it all about?</p>
+		<button class="delete" aria-label="close"></button>
+	</header>
+	<section class="modal-card-body content">
+		<p>Short volume is the number of shares that have been borrowed to open short positions
+			(when you sell one or more shares of a stock that you don’t own).</p>
+		<p>TightShorts.ru aggregates data from FINRA and presents it in an easy-to-use way.</p>
+		<h4>Terminology</h4>
+		<ol>
+			<li> <strong>Volume, Total Volume (Vol or TV)</strong> - number of shares of all
+				executed trades during regular trading hours</li>
+			<li> <strong>Short Volume (SV)</strong> - number of shares that have been borrowed to
+				open
+				short positions</li>
+			<li> <strong>Short Exempt Volume (SEV)</strong> - number of shares of all executed
+				short sale exempt trades during regular
+				trading hours</li>
+			<li> <strong>Short Volume Ratio (SV,%)</strong> - percentage of short positions from the
+				total
+				volume. <em>Formula: SV / Vol * 100</em></li>
+			<li> <strong>Short Exempt Volume Ratio (SEV,%)</strong> - percentage of short short sale
+				exempt
+				trades from the total volume. <em>Formula: SEV / Vol * 100</em></li>
+			<li><strong>TV5, SV5,%, SEV5,%</strong> - average Total Volume (TV) / Short Volume (SV) / Short Exempt
+				Volume (SEV) for the last <strong>5 trading days</strong> </li>
+			<li><strong>TV20, SV20,%, SEV20,%</strong> - average Total Volume (TV) / Short Volume (SV) / Short Exempt
+				Volume (SEV) for the last <strong>20 trading days</strong> </li>
+		</ol>
+		<h4>Filters</h4>
+		<ol>
+			<li>
+				<strong>Available on Tinkoff broker</strong> - show only stocks available on <a
+					href="https://www.tinkoff.ru/sl/2B3oswsCDnJ" target="_blank" rel="noopener noreferrer">🇷🇺 Tinkoff
+					broker</a>
+			</li>
+			<li>
+				<strong>Is not complete garbage</strong> - show only stocks that meet the condition: there is trading
+				data for at least 5 last trading days, there should be no gaps in volume (zero values) for the last 5
+				days, the average volume for 5 days is not less than 5000.
+				This filter can remove, among other things, very expensive securities, for example, <a
+					href="/quote/BRK.A" target="_blank">BRK.A</a>. Since the sale of even one share in it is a huge
+				event.
+			</li>
+			<li>
+				<strong>In-line sequence of 3 days</strong> - the filter value rose or fell continuously for <strong>3 days</strong>. That
+				is, the value of each day was greater or less than the previous one.
+			</li>
+			<li>
+				<strong>In-line sequence of 5 days</strong> - the filter value rose or fell continuously for <strong>5 days</strong>. That
+				is, the value of each day was greater or less than the previous one.
+			</li>
+		</ol>
+		<p><strong>Disclaimer:</strong> The data on the TightShorts is limited to the combined
+			trading
+			volume on the NASDAQ, NYSE and OTC,
+			which was reported to the <a href="http://regsho.finra.org/regsho-Index.html" target="_blank" rel="nofollow"
+				rel="noreferrer" rel="noopener">FINRA</a> trade
+			reporting facility.
+			We make no guarantees as to the
+			accuracy of the data. The information is provided for reference only and does not
+			represent individual
+			investment advice. </p>
+	</section>
+</div>
