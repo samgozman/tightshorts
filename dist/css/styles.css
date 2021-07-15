@@ -40,6 +40,11 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
     margin-right: 4px;
 }
 
+.navbar-item ion-icon,
+.panel-heading ion-icon {
+    min-width: 16px;
+}
+
 /* CHART */
 
 /* Legend */
