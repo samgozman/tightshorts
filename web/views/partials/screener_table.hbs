@@ -1,26 +1,36 @@
-<table class="table is-fullwidth screener">
-	<thead>
-		<tr class="title-head">
-			<th><ion-icon name="funnel-outline"></ion-icon></th>
-			<th colspan="3" align="center">Last day values</th>
-			<th colspan="3" align="center">5 days average</th>
-			<th colspan="3" align="center">20 days average</th>
-		</tr>
-		<tr class="columns-names">
-			<th id="ticker"><abbr title="Stock ticker">Ticker {{>sortChevron}}</abbr></th>
-			{{!-- Tod --}}
-			<th id="totalVolLast"><abbr title="Last day Total Volume Average">TV {{>sortChevron}}</abbr></th>
-			<th id="shortVolRatioLast"><abbr title="Last day Short Volume Average, %">SV,% {{>sortChevron}}</abbr></th>
-			<th id="shortExemptVolRatioLast"><abbr title="Last day Short Exempt Voume Average, %">SEV,% {{>sortChevron}}</abbr></th>
-			{{!-- 5 days--}}
-			<th id="totalVol5DAVG"><abbr title="5 days Total Volume Average">TV5 {{>sortChevron}}</abbr></th>
-			<th id="shortVolRatio5DAVG"><abbr title="5 days Short Volume Average, %">SV5,% {{>sortChevron}}</abbr></th>
-			<th id="shortExemptVolRatio5DAVG"><abbr title="5 days Short Exempt Voume Average, %">SEV5,% {{>sortChevron}}</abbr></th>
-			{{!-- 20 days --}}
-			<th id="totalVol20DAVG"><abbr title="20 days Total Volume Average">TV20 {{>sortChevron}}</abbr></th>
-			<th id="shortVolRatio20DAVG"><abbr title="20 days Short Volume Average, %">SV20,% {{>sortChevron}}</abbr></th>
-			<th id="shortExemptVolRatio20DAVG"><abbr title="20 days Short Exempt Voume Average, %">SEV20,% {{>sortChevron}}</abbr></th>
-		</tr>
-	</thead>
-	<tbody id="screenerBody"></tbody>
-</table>
+<div class="table-container">
+	<table class="table is-fullwidth screener">
+		<thead>
+			<tr class="title-head">
+				<th>
+					<ion-icon name="funnel-outline"></ion-icon>
+				</th>
+				<th colspan="3" align="center">Last day values</th>
+				<th colspan="3" align="center">5 days average</th>
+				<th colspan="3" align="center">20 days average</th>
+			</tr>
+			<tr class="columns-names">
+				<th id="ticker"><abbr title="Stock ticker">Ticker {{>sortChevron}}</abbr></th>
+				{{!-- Tod --}}
+				<th id="totalVolLast"><abbr title="Last day Total Volume Average">TV {{>sortChevron}}</abbr></th>
+				<th id="shortVolRatioLast"><abbr title="Last day Short Volume Average, %">SV,% {{>sortChevron}}</abbr>
+				</th>
+				<th id="shortExemptVolRatioLast"><abbr title="Last day Short Exempt Voume Average, %">SEV,%
+						{{>sortChevron}}</abbr></th>
+				{{!-- 5 days--}}
+				<th id="totalVol5DAVG"><abbr title="5 days Total Volume Average">TV5 {{>sortChevron}}</abbr></th>
+				<th id="shortVolRatio5DAVG"><abbr title="5 days Short Volume Average, %">SV5,% {{>sortChevron}}</abbr>
+				</th>
+				<th id="shortExemptVolRatio5DAVG"><abbr title="5 days Short Exempt Voume Average, %">SEV5,%
+						{{>sortChevron}}</abbr></th>
+				{{!-- 20 days --}}
+				<th id="totalVol20DAVG"><abbr title="20 days Total Volume Average">TV20 {{>sortChevron}}</abbr></th>
+				<th id="shortVolRatio20DAVG"><abbr title="20 days Short Volume Average, %">SV20,%
+						{{>sortChevron}}</abbr></th>
+				<th id="shortExemptVolRatio20DAVG"><abbr title="20 days Short Exempt Voume Average, %">SEV20,%
+						{{>sortChevron}}</abbr></th>
+			</tr>
+		</thead>
+		<tbody id="screenerBody"></tbody>
+	</table>
+</div>

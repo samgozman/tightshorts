@@ -69,7 +69,7 @@ a.navbar-item.is-active:not(:focus):not(:hover) {
 }
 
 /* Table */
-.table-container {
+.volume-csv {
     max-height: 360px;
     overflow-y: auto;
 }
@@ -194,6 +194,7 @@ table.screener {
 
 .columns-names>th {
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .columns-names>th>abbr>span {
@@ -262,6 +263,10 @@ table.screener {
     #table-statistic {
         margin-left: 0;
     }
+
+    .section {
+        padding: 2rem 1.5rem;
+    }
 }
 
 @media (max-width: 410px) {
@@ -272,6 +277,20 @@ table.screener {
     .legend {
         width: 220px;
         font-size: 10px;
+    }
+
+    .pagination-link,
+    .pagination-next,
+    .pagination-previous {
+        min-width: 1.5em;
+    }
+
+    .title.is-3 {
+        font-size: 1.4rem;
+    }
+
+    .section {
+        padding: 1rem 1.5rem;
     }
 }
 
