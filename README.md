@@ -10,4 +10,8 @@ Link: **[tightshorts.ru](https://tightshorts.ru/)**
 
 ![Tight shorts main page](doc/01.png)
 
+## Short volume screener
+
+![Tight shorts: stock shorts screener](doc/02.png)
+
 **Disclaimer:** The data that we use is limited to the combined trading volume on the NASDAQ, NYSE and OTC, which was reported to the [FINRA](http://regsho.finra.org/regsho-Index.html) trade reporting facility. We make no guarantees as to the accuracy of the data. The information is provided for reference only and does not represent individual investment advice.
