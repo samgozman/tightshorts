@@ -43,7 +43,7 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "eslint": "^7.30.0",
     "nodemon": "^2.0.12",
-    "npm": "^7.19.1",
+    "npm": "^7.20.0",
     "rollup": "^2.53.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-terser": "^7.0.2"
