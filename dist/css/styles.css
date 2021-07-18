@@ -14,7 +14,7 @@
 
 .navbar-item img {
     max-height: unset;
-    margin: -4px 0;
+    margin: -0.25em -0.75rem;
 }
 
 a.navbar-item.is-active,
@@ -271,6 +271,11 @@ table.screener {
 
     .section {
         padding: 2rem 1.5rem;
+    }
+
+    .navbar-item img {
+        max-height: unset;
+        margin: -0.25em 0;
     }
 }
 
