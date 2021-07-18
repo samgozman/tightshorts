@@ -1,4 +1,5 @@
 import round from './round.mjs'
+import kFormatter from './utils/kFormatter.mjs'
 
 // Gen table
 const table_tbody = document.getElementById('table-body')
@@ -9,11 +10,11 @@ const array_for_csv = [
 const createTableRow = (table, date, sv, svr, sev, sevr, vol) => {
     let row = table.insertRow()
     row.insertCell(0).innerHTML = date
-    row.insertCell(1).innerHTML = sv
+    row.insertCell(1).innerHTML = kFormatter(sv)
     row.insertCell(2).innerHTML = svr
-    row.insertCell(3).innerHTML = sev
+    row.insertCell(3).innerHTML = kFormatter(sev)
     row.insertCell(4).innerHTML = sevr
-    row.insertCell(5).innerHTML = vol
+    row.insertCell(5).innerHTML = kFormatter(vol)
 }
 
 const createCSVfile = (link_id, ticker, semicolon = false) => {

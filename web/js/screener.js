@@ -1,4 +1,5 @@
 import Url from 'url-parse'
+import kFormatter from './src/utils/kFormatter.mjs'
 import {
 	paginate
 } from './src/paginate.mjs'
@@ -22,11 +23,6 @@ const changeSkip = async (skipValue, btn = undefined) => {
 	windowUrl.set('skip', skipValue >= 0 ? skipValue : 0)
 	history.replaceState(null, null, '?' + windowUrl.toString())
 	await generateScreenerTable()
-}
-
-// Format big numbers to K, like 10k
-function kFormatter(num) {
-	return Math.abs(num) > 999 ? Math.sign(num) * ((Math.abs(num) / 1000).toFixed(1)) + 'k' : (Math.sign(num) * Math.abs(num)).toFixed(1)
 }
 
 // Get url params for filter
