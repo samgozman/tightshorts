@@ -39,7 +39,7 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-commonjs": "^19.0.2",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "eslint": "^7.31.0",
     "nodemon": "^2.0.12",
