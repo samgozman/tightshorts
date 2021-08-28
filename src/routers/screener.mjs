@@ -10,17 +10,18 @@ const screenerRouter = new express.Router()
 screenerRouter.post('/screener/filter',
     query('ticker').toUpperCase().whitelist('ABCDEFGHIJKLMNOPQRSTUVWXYZ.0123456789'),
     async (req, res) => {
-        const limit = req.query.limit || ''
-        const skip = req.query.skip || ''
-        const sort = req.query.sort || ''
-        const filters = decodeURI(req.query.filters) || ''
+        const limit = req.query.limit ? `limit=${req.query.limit}` : ''
+        const skip = req.query.skip ? `&skip=${req.query.skip}` : ''
+        const sortby = req.query.sortby ? `&sortby=${req.query.sortby}`: ''
+        const sortdir = req.query.sortdir ? `&sortdir=${req.query.sortdir}`: ''
+        const filters = decodeURI(req.query.filters) ? `&filters=${decodeURI(req.query.filters)}` : ''
         try {
             // const ticker = req.query.ticker
             const config = {
                 method: 'get',
-                url: `${process.env.API_URL}/filter?limit=${limit}&skip=${skip}&sort=${sort}&filters=${filters}`,
+                url: `${process.env.API_URL}/filter?${limit}${skip}${sortby}${sortdir}${filters}`,
                 headers: {
-                    'Authorization': `Bearer ${process.env.API_KEY}`,
+                    'token': process.env.API_KEY,
                     'Content-Type': 'application/json'
                 }
             }

@@ -30,14 +30,16 @@ const getUrlFilter = () => {
 	const {
 		skip,
 		limit,
-		sort,
+		sortby,
+		sortdir,
 		filters
 	} = (new Url(window.location.href, true)).query
 
 	return {
 		skip: skip || '',
 		limit: limit || '',
-		sort: sort || '',
+		sortby: sortby || '',
+		sortdir: sortdir || '',
 		filters: filters || ''
 	}
 }
@@ -46,12 +48,14 @@ const getFiltredFromServer = async () => {
 	try {
 		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 		const {
-			skip,
-			limit,
-			sort,
-			filters
+		skip,
+		limit,
+		sortby,
+		sortdir,
+		filters
 		} = getUrlFilter()
-		const resp = await fetch(`/screener/filter?limit=${limit}&skip=${skip}&sort=${sort}&filters=${filters}`, {
+
+		const resp = await fetch(`/screener/filter?limit=${limit}&skip=${skip}&sortby=${sortby}&sortdir=${sortdir}&filters=${filters}`, {
 			credentials: 'same-origin',
 			headers: {
 				'CSRF-Token': token,
@@ -218,13 +222,14 @@ const sorter = () => {
 	// Set sorter url arg
 	const changeSorter = async (sort = 'totalVolLast', dir = 'desc') => {
 		const windowUrl = new URLSearchParams(window.location.search)
-		windowUrl.set('sort', `${sort}:${dir}`)
+		windowUrl.set('sortby', sort)
+		windowUrl.set('sortdir', dir)
 		history.replaceState(null, null, '?' + windowUrl.toString())
 		await generateScreenerTable()
 	}
 
 	ids.forEach((id) => {
-		document.getElementById(id).addEventListener('click', function () {
+		document.getElementById(id).addEventListener('click', async function () {
 			const isActive = this.classList.contains('is-active')
 			const isDesc = this.classList.contains('desc')
 			const isAsc = this.classList.contains('asc')
@@ -233,13 +238,13 @@ const sorter = () => {
 			if (!isActive && !isDesc && !isAsc) {
 				clearSorter()
 				this.classList.add('is-active', 'desc')
-				changeSorter(id, 'desc')
+				await changeSorter(id, 'desc')
 			} else if (isActive && isDesc){
 				this.classList.replace('desc', 'asc')
-				changeSorter(id, 'asc')
+				await changeSorter(id, 'asc')
 			} else if (isActive && isAsc) {
 				this.classList.replace('asc', 'desc')
-				changeSorter(id, 'desc')
+				await changeSorter(id, 'desc')
 			}
 		})
 	})

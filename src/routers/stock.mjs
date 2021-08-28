@@ -16,7 +16,7 @@ stockRouter.post('/stock',
                 method: 'get',
                 url: `${process.env.API_URL}/stock?ticker=${ticker}`,
                 headers: {
-                    'Authorization': `Bearer ${process.env.API_KEY}`,
+                    'token': process.env.API_KEY,
                     'Content-Type': 'application/json'
                 }
             }
