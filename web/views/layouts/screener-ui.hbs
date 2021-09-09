@@ -3,7 +3,8 @@
 
 <head>
     <title>Tight Shorts | Short Volume Screener</title>
-    <meta name="filters" content="{{#each filters.settings}}{{@key}},{{/each}}{{#each filters.sequence3D}}{{@key}},{{/each}}{{#each filters.sequence5D}}{{@key}},{{/each}}">
+    <meta name="filters" content="{{#each filters.settings}}{{@key}},{{/each}}{{#each filters.sequence3D}}{{this.upId}},{{this.downId}},{{/each}}{{#each filters.sequence5D}}{{this.upId}},{{this.downId}},{{/each}}">
+    <meta name="radio_groups" content="{{#each filters.sequence3D}}{{@key}},{{/each}}{{#each filters.sequence5D}}{{@key}},{{/each}}">
     {{>head}}
 </head>
 

@@ -238,6 +238,29 @@ table.screener {
     font-size: 0.7em;
 }
 
+.panel-block>.filter-title {
+    width: 100%;
+}
+
+.panel-block>.control {
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.panel-block>.control>.radio {
+    vertical-align: middle;
+}
+
+.panel-block>.control>.radio>input {
+    display: inline-block;
+}
+
+.panel-block>.control>.radio>ion-icon {
+    font-size: 13px;
+    margin-top: -3px;
+    --ionicon-stroke-width: 48px;
+}
+
 .panel-separator {
     font-size: 0.9em;
     font-weight: 500;

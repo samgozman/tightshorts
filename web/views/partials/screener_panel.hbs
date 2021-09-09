@@ -12,9 +12,9 @@
 	{{#each filters.settings}}
 	<label class="panel-block">
 		{{#if this.iconClass}}
-			<span class="panel-icon">
-				<ion-icon name="{{this.iconClass}}"></ion-icon>
-			</span>
+		<span class="panel-icon">
+			<ion-icon name="{{this.iconClass}}"></ion-icon>
+		</span>
 		{{/if}}
 		<input type="checkbox" id="{{@key}}">
 		{{this.title}}
@@ -29,13 +29,18 @@
 	</p>
 	{{#each filters.sequence3D}}
 	<label class="panel-block">
-		{{#if this.iconClass}}
-			<span class="panel-icon">
-				<ion-icon name="{{this.iconClass}}"></ion-icon>
-			</span>
-		{{/if}}
-		<input type="checkbox" id="{{@key}}">
-		{{this.title}}
+		<input type="checkbox" id="{{@key}}" value="group">
+		<span class="filter-title">{{this.title}}</span>
+		<div class="control">
+			<label class="radio has-text-success">
+				<input type="radio" name="{{@key}}" id="{{this.upId}}">
+				<ion-icon name="trending-up-outline"></ion-icon>
+			</label>
+			<label class="radio has-text-danger">
+				<input type="radio" name="{{@key}}" id="{{this.downId}}">
+				<ion-icon name="trending-down-outline"></ion-icon>
+			</label>
+		</div>
 	</label>
 	{{/each}}
 
@@ -47,13 +52,18 @@
 	</p>
 	{{#each filters.sequence5D}}
 	<label class="panel-block">
-		{{#if this.iconClass}}
-			<span class="panel-icon">
-				<ion-icon name="{{this.iconClass}}"></ion-icon>
-			</span>
-		{{/if}}
-		<input type="checkbox" id="{{@key}}">
-		{{this.title}}
+		<input type="checkbox" id="{{@key}}" value="group">
+		<span class="filter-title">{{this.title}}</span>
+		<div class="control">
+			<label class="radio has-text-success">
+				<input type="radio" name="{{@key}}" id="{{this.upId}}">
+				<ion-icon name="trending-up-outline"></ion-icon>
+			</label>
+			<label class="radio has-text-danger">
+				<input type="radio" name="{{@key}}" id="{{this.downId}}">
+				<ion-icon name="trending-down-outline"></ion-icon>
+			</label>
+		</div>
 	</label>
 	{{/each}}
 

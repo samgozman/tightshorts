@@ -13,6 +13,7 @@ const nextButton = document.getElementById('nextButton')
 
 // Get all availible filters from meta
 const allFilters = (document.querySelector('meta[name="filters"]').content).split(',').filter(Boolean)
+const allRadioGroups = (document.querySelector('meta[name="radio_groups"]').content).split(',').filter(Boolean)
 
 // Change skip value in url and update table
 const changeSkip = async (skipValue, btn = undefined) => {
@@ -48,11 +49,11 @@ const getFiltredFromServer = async () => {
 	try {
 		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 		const {
-		skip,
-		limit,
-		sortby,
-		sortdir,
-		filters
+			skip,
+			limit,
+			sortby,
+			sortdir,
+			filters
 		} = getUrlFilter()
 
 		const resp = await fetch(`/screener/filter?limit=${limit}&skip=${skip}&sortby=${sortby}&sortdir=${sortdir}&filters=${filters}`, {
@@ -203,6 +204,12 @@ document.getElementById('resetFilters').addEventListener('click', async () => {
 	for (const filter of allFilters) {
 		document.getElementById(filter).checked = false
 	}
+
+	// uncheck all radio groups
+	for(const group of allRadioGroups) {
+		document.getElementById(group).checked = false
+	}
+
 })
 
 // Sorter
@@ -239,7 +246,7 @@ const sorter = () => {
 				clearSorter()
 				this.classList.add('is-active', 'desc')
 				await changeSorter(id, 'desc')
-			} else if (isActive && isDesc){
+			} else if (isActive && isDesc) {
 				this.classList.replace('desc', 'asc')
 				await changeSorter(id, 'asc')
 			} else if (isActive && isAsc) {
@@ -262,9 +269,84 @@ window.onload = async () => {
 		}
 	}
 
+	/**
+	 * Find query params in the page url and replace them with new ones
+	 * @param {string} stringToReplace String to find in url params and replace
+	 * @param {string} newString New string to replace previous one
+	 */
+	function filterQueryParams(stringToReplace, newString) {
+			const windowUrl = new URLSearchParams(window.location.search)
+			const filtersQuery = windowUrl.get('filters') || ''
+
+			const regex = new RegExp(`(${stringToReplace},|,${stringToReplace}|${stringToReplace})`)
+			const newFilters = filtersQuery.replace(regex, '')
+			if(newString !== '') {
+				windowUrl.set('filters', `${newFilters ? newFilters + ',': ''}${newString}`)
+			} else {
+				windowUrl.set('filters', newFilters)
+			}
+			history.replaceState(null, null, '?' + windowUrl.toString())
+	}
+
+
+	// Radio
+	for (const radioGroup of allRadioGroups) {
+		const radios = document.getElementsByName(radioGroup)
+		const checkbox = document.getElementById(radioGroup)
+
+		// Toggle checkbox onload if any radio is used
+		if(radios[0].checked || radios[1].checked) {
+			checkbox.checked = true
+		}
+
+		checkbox.addEventListener('change', async () => {
+			if(checkbox.checked && !radios[0].checked && !radios[1].checked) {
+				radios[0].click()
+			} else if(!checkbox.checked) {
+				// Remove radios checks
+				radios[0].checked = false
+				radios[1].checked = false
+
+				// Clear url params from them
+				filterQueryParams(radios[0].id, '')
+				filterQueryParams(radios[1].id, '')
+
+				// Regenerate table
+				await changeSkip(0)
+				await generateScreenerTable()
+			}
+		})
+
+		// Iterate radio elements
+		for (const radio of radios) {
+			radio.addEventListener('change', async () => {
+				// If first radio (up) is checked: uncheck the opposite 
+				if (radios[0].checked) {
+					checkbox.checked = true
+					filterQueryParams(radios[1].id, radios[0].id)
+				} else if (radios[1].checked) {
+					checkbox.checked = true
+					filterQueryParams(radios[0].id, radios[1].id)
+				}
+
+				// Regenerate table
+				await changeSkip(0)
+				await generateScreenerTable()
+
+			})
+		}
+	}
+
 	// Set event listeners for each input
 	for (const filter of allFilters) {
-		document.getElementById(filter).addEventListener('change', async (event) => {
+		const input = document.getElementById(filter)
+
+		if (input.type !== 'checkbox') {
+			continue
+		}
+
+		// Checkbox
+		input.addEventListener('change', async (event) => {
 			const windowUrl = new URLSearchParams(window.location.search)
 			const fls = windowUrl.get('filters')
 			if (event.currentTarget.checked) {
@@ -281,6 +363,7 @@ window.onload = async () => {
 			// Regenerate table after each filter change
 			await generateScreenerTable()
 		})
+
 	}
 
 	await generateScreenerTable()

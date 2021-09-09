@@ -66,89 +66,59 @@ webRouter.get('/screener', (req, res) => {
                 }
             },
             sequence3D: {
-                shortVolGrows3D: {
-                    title: 'Short volume up 3d',
-                    iconClass: 'trending-up-outline'
+                shortVol3D: {
+                    title: 'Short volume 3d',
+                    upId: 'shortVolGrows3D',
+                    downId: 'shortVolDecreases3D'
                 },
-                shortVolDecreases3D: {
-                    title: 'Short volume down 3d',
-                    iconClass: 'trending-down-outline'
+                shortVolRatio3D: {
+                    title: 'Short volume %% 3d',
+                    upId: 'shortVolRatioGrows3D',
+                    downId: 'shortVoRatiolDecreases3D'
                 },
-                shortVolRatioGrows3D: {
-                    title: 'Short volume %% up 3d',
-                    iconClass: 'trending-up-outline'
+                totalVol3D: {
+                    title: 'Total volume 3d',
+                    upId: 'totalVolGrows3D',
+                    downId: 'totalVolDecreases3D'
                 },
-                shortVoRatiolDecreases3D: {
-                    title: 'Short volume %% down 3d',
-                    iconClass: 'trending-down-outline'
+                shortExemptVol3D: {
+                    title: 'Short exempt volume 3d',
+                    upId: 'shortExemptVolGrows3D',
+                    downId: 'shortExemptVolDecreases3D'
                 },
-                totalVolGrows3D: {
-                    title: 'Total volume up 3d',
-                    iconClass: 'trending-up-outline'
-                },
-                totalVolDecreases3D: {
-                    title: 'Total volume down 3d',
-                    iconClass: 'trending-down-outline'
-                },
-                shortExemptVolGrows3D: {
-                    title: 'Short exempt volume up 3d',
-                    iconClass: 'trending-up-outline'
-                },
-                shortExemptVolDecreases3D: {
-                    title: 'Short exempt volume down 3d',
-                    iconClass: 'trending-down-outline'
-                },
-                shortExemptVolRatioGrows3D: {
-                    title: 'Short exempt volume %% up 3d',
-                    iconClass: 'trending-up-outline'
-                },
-                shortExemptVolRatioDecreases3D: {
-                    title: 'Short exempt volume %% down 3d',
-                    iconClass: 'trending-down-outline'
+                shortExemptVolRatio3D: {
+                    title: 'Short exempt volume %% 3d',
+                    upId: 'shortExemptVolRatioGrows3D',
+                    downId: 'shortExemptVolRatioDecreases3D'
                 }
             },
             sequence5D: {
-                shortVolGrows5D: {
-                    title: 'Short volume up 5d',
-                    iconClass: 'trending-up-outline'
+                shortVol5D: {
+                    title: 'Short volume 5d',
+                    upId: 'shortVolGrows5D',
+                    downId: 'shortVolDecreases5D'
                 },
-                shortVolDecreases5D: {
-                    title: 'Short volume down 5d',
-                    iconClass: 'trending-down-outline'
+                shortVolRatio5D: {
+                    title: 'Short volume %% 5d',
+                    upId: 'shortVolRatioGrows5D',
+                    downId: 'shortVoRatiolDecreases5D'
                 },
-                shortVolRatioGrows5D: {
-                    title: 'Short volume %% up 5d',
-                    iconClass: 'trending-up-outline'
+                totalVol5D: {
+                    title: 'Total volume 5d',
+                    upId: 'totalVolGrows5D',
+                    downId: 'totalVolDecreases5D'
                 },
-                shortVoRatiolDecreases5D: {
-                    title: 'Short volume %% down 5d',
-                    iconClass: 'trending-down-outline'
+                shortExemptVol5D: {
+                    title: 'Short exempt volume 5d',
+                    upId: 'shortExemptVolGrows5D',
+                    downId: 'shortExemptVolDecreases5D'
                 },
-                totalVolGrows5D: {
-                    title: 'Total volume up 5d',
-                    iconClass: 'trending-up-outline'
-                },
-                totalVolDecreases5D: {
-                    title: 'Total volume down 5d',
-                    iconClass: 'trending-down-outline'
-                },
-                shortExemptVolGrows5D: {
-                    title: 'Short exempt volume up 5d',
-                    iconClass: 'trending-up-outline'
-                },
-                shortExemptVolDecreases5D: {
-                    title: 'Short exempt volume down 5d',
-                    iconClass: 'trending-down-outline'
-                },
-                shortExemptVolRatioGrows5D: {
-                    title: 'Short exempt volume %% up 5d',
-                    iconClass: 'trending-up-outline'
-                },
-                shortExemptVolRatioDecreases5D: {
-                    title: 'Short exempt volume %% down 5d',
-                    iconClass: 'trending-down-outline'
+                shortExemptVolRatio5D: {
+                    title: 'Short exempt volume %% 5d',
+                    upId: 'shortExemptVolRatioGrows5D',
+                    downId: 'shortExemptVolRatioDecreases5D'
                 }
-            }
+            },
         }
     })
 })
