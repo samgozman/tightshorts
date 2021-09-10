@@ -40,18 +40,24 @@
 				<strong>Is not complete garbage</strong> - show only stocks that meet the condition: there is trading
 				data for at least 5 last trading days, there should be no gaps in volume (zero values) for the last 5
 				days, the average volume for 5 days is not less than 5000.
-				This filter can remove, among other things, very expensive securities, for example, <a
-					href="/quote/BRK.A" target="_blank">BRK.A</a>. Since the sale of even one share in it is a huge
+				This filter can remove, among other things, very expensive securities, for example, <a href="/quote/BRK.A"
+					target="_blank">BRK.A</a>. Since the sale of even one share in it is a huge
 				event.
 			</li>
 			<li>
-				<strong>In-line sequence of 3 days</strong> - the filter value rose or fell continuously for <strong>3 days</strong>. That
+				<strong>In-line sequence of 3 days</strong> - the filter value rose or fell continuously for <strong>3
+					days</strong>. That
 				is, the value of each day was greater or less than the previous one.
 			</li>
 			<li>
-				<strong>In-line sequence of 5 days</strong> - the filter value rose or fell continuously for <strong>5 days</strong>. That
+				<strong>In-line sequence of 5 days</strong> - the filter value rose or fell continuously for <strong>5
+					days</strong>. That
 				is, the value of each day was greater or less than the previous one.
 			</li>
+			<li>
+				<strong>Abnormal volume (from 20avg)</strong> - the filter value (short volume, total volume or SEV) on the last
+				trading day
+				was 3 times more or less than the average volume for 20 trading days (20avg).
 		</ol>
 		<p><strong>Disclaimer:</strong> The data on the TightShorts is limited to the combined
 			trading
