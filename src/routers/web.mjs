@@ -119,6 +119,23 @@ webRouter.get('/screener', (req, res) => {
                     downId: 'shortExemptVolRatioDecreases5D'
                 }
             },
+            abnormal: {
+                abnormalShortlVol: {
+                    title: 'x3 short volume',
+                    upId: 'abnormalShortlVolGrows',
+                    downId: 'abnormalShortVolDecreases'
+                },
+                abnormalTotalVol: {
+                    title: 'x3 total volume',
+                    upId: 'abnormalTotalVolGrows',
+                    downId: 'abnormalTotalVolDecreases'
+                },
+                abnormalShortExemptVol: {
+                    title: 'x3 short exempt volume',
+                    upId: 'abnormalShortExemptVolGrows',
+                    downId: 'abnormalShortExemptVolDecreases'
+                },
+            },
         }
     })
 })

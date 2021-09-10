@@ -67,6 +67,29 @@
 	</label>
 	{{/each}}
 
+	<p class="panel-block panel-separator">
+		<span class="panel-icon">
+			<ion-icon name="rocket-outline"></ion-icon>
+		</span>
+		Abnormal volume (from 20avg) 
+	</p>
+	{{#each filters.abnormal}}
+	<label class="panel-block">
+		<input type="checkbox" id="{{@key}}" value="group">
+		<span class="filter-title">{{this.title}}</span>
+		<div class="control">
+			<label class="radio has-text-success">
+				<input type="radio" name="{{@key}}" id="{{this.upId}}">
+				<ion-icon name="trending-up-outline"></ion-icon>
+			</label>
+			<label class="radio has-text-danger">
+				<input type="radio" name="{{@key}}" id="{{this.downId}}">
+				<ion-icon name="trending-down-outline"></ion-icon>
+			</label>
+		</div>
+	</label>
+	{{/each}}
+
 	<div class="panel-block">
 		<button class="button is-link is-outlined is-fullwidth" id="resetFilters">
 			Reset all filters
