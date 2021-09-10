@@ -34,7 +34,7 @@
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "install": "^0.13.0",
-    "lightweight-charts": "^3.5.0",
+    "lightweight-charts": "^3.6.0",
     "url-parse": "^1.5.3",
     "validator": "^13.6.0"
   },
