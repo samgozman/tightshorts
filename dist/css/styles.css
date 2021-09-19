@@ -249,6 +249,7 @@ table.screener {
 }
 
 .panel-block>.control>.radio {
+    font-size: 1em;
     vertical-align: middle;
 }
 
@@ -258,7 +259,6 @@ table.screener {
 
 .panel-block>.control>.radio>ion-icon {
     font-size: 13px;
-    margin-top: -3px;
     --ionicon-stroke-width: 48px;
 }
 
