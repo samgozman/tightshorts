@@ -36,6 +36,6 @@ lerna-debug.log*
 
 # Project related
 .parcel-cache
-config/dev.env
-config/prod.env
+config/*.env
+config/*.env
 dist/js
