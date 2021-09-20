@@ -1,6 +1,7 @@
 <nav class="panel">
 	<p class="panel-heading">
-		<ion-icon name="filter-outline"></ion-icon> Filters
+		<ion-icon name="filter-outline"></ion-icon>
+		Filters
 	</p>
 
 	<p class="panel-block panel-separator">
@@ -10,15 +11,15 @@
 		Settings
 	</p>
 	{{#each filters.settings}}
-	<label class="panel-block">
-		{{#if this.iconClass}}
-		<span class="panel-icon">
-			<ion-icon name="{{this.iconClass}}"></ion-icon>
-		</span>
-		{{/if}}
-		<input type="checkbox" id="{{@key}}">
-		{{this.title}}
-	</label>
+		<label class="panel-block">
+			{{#if this.iconClass}}
+				<span class="panel-icon">
+					<ion-icon name="{{this.iconClass}}"></ion-icon>
+				</span>
+			{{/if}}
+			<input type="checkbox" id="{{@key}}" />
+			{{this.title}}
+		</label>
 	{{/each}}
 
 	<p class="panel-block panel-separator">
@@ -28,20 +29,20 @@
 		In-line sequence of 3 days
 	</p>
 	{{#each filters.sequence3D}}
-	<label class="panel-block">
-		<input type="checkbox" id="{{@key}}" value="group">
-		<span class="filter-title">{{this.title}}</span>
-		<div class="control">
-			<label class="radio has-text-success">
-				<input type="radio" name="{{@key}}" id="{{this.upId}}">
-				<ion-icon name="trending-up-outline"></ion-icon>
-			</label>
-			<label class="radio has-text-danger">
-				<input type="radio" name="{{@key}}" id="{{this.downId}}">
-				<ion-icon name="trending-down-outline"></ion-icon>
-			</label>
-		</div>
-	</label>
+		<label class="panel-block">
+			<input type="checkbox" id="{{@key}}" value="group" />
+			<span class="filter-title">{{this.title}}</span>
+			<div class="control">
+				<label class="radio has-text-success">
+					<input type="radio" name="{{@key}}" id="{{this.upId}}" />
+					<ion-icon name="trending-up-outline"></ion-icon>
+				</label>
+				<label class="radio has-text-danger">
+					<input type="radio" name="{{@key}}" id="{{this.downId}}" />
+					<ion-icon name="trending-down-outline"></ion-icon>
+				</label>
+			</div>
+		</label>
 	{{/each}}
 
 	<p class="panel-block panel-separator">
@@ -51,43 +52,43 @@
 		In-line sequence of 5 days
 	</p>
 	{{#each filters.sequence5D}}
-	<label class="panel-block">
-		<input type="checkbox" id="{{@key}}" value="group">
-		<span class="filter-title">{{this.title}}</span>
-		<div class="control">
-			<label class="radio has-text-success">
-				<input type="radio" name="{{@key}}" id="{{this.upId}}">
-				<ion-icon name="trending-up-outline"></ion-icon>
-			</label>
-			<label class="radio has-text-danger">
-				<input type="radio" name="{{@key}}" id="{{this.downId}}">
-				<ion-icon name="trending-down-outline"></ion-icon>
-			</label>
-		</div>
-	</label>
+		<label class="panel-block">
+			<input type="checkbox" id="{{@key}}" value="group" />
+			<span class="filter-title">{{this.title}}</span>
+			<div class="control">
+				<label class="radio has-text-success">
+					<input type="radio" name="{{@key}}" id="{{this.upId}}" />
+					<ion-icon name="trending-up-outline"></ion-icon>
+				</label>
+				<label class="radio has-text-danger">
+					<input type="radio" name="{{@key}}" id="{{this.downId}}" />
+					<ion-icon name="trending-down-outline"></ion-icon>
+				</label>
+			</div>
+		</label>
 	{{/each}}
 
 	<p class="panel-block panel-separator">
 		<span class="panel-icon">
 			<ion-icon name="rocket-outline"></ion-icon>
 		</span>
-		Abnormal volume (from 20avg) 
+		Abnormal volume (from 20avg)
 	</p>
 	{{#each filters.abnormal}}
-	<label class="panel-block">
-		<input type="checkbox" id="{{@key}}" value="group">
-		<span class="filter-title">{{this.title}}</span>
-		<div class="control">
-			<label class="radio has-text-success">
-				<input type="radio" name="{{@key}}" id="{{this.upId}}">
-				<ion-icon name="trending-up-outline"></ion-icon>
-			</label>
-			<label class="radio has-text-danger">
-				<input type="radio" name="{{@key}}" id="{{this.downId}}">
-				<ion-icon name="trending-down-outline"></ion-icon>
-			</label>
-		</div>
-	</label>
+		<label class="panel-block">
+			<input type="checkbox" id="{{@key}}" value="group" />
+			<span class="filter-title">{{this.title}}</span>
+			<div class="control">
+				<label class="radio has-text-success">
+					<input type="radio" name="{{@key}}" id="{{this.upId}}" />
+					<ion-icon name="trending-up-outline"></ion-icon>
+				</label>
+				<label class="radio has-text-danger">
+					<input type="radio" name="{{@key}}" id="{{this.downId}}" />
+					<ion-icon name="trending-down-outline"></ion-icon>
+				</label>
+			</div>
+		</label>
 	{{/each}}
 
 	<div class="panel-block">
