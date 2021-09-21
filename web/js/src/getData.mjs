@@ -1,67 +1,67 @@
-import loadData from './charts.mjs'
-import {
-	generateTable,
-	clearTable
-} from './table.mjs'
-import generateStatisticTable from './statisticsTable.mjs'
+import loadData from './charts.mjs';
+import { generateTable, clearTable } from './table.mjs';
+import generateStatisticTable from './statisticsTable.mjs';
 
 // Get response from server side
 const getResponse = async (ticker) => {
 	try {
-		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-		const resp = await fetch('/stock?ticker=' + ticker, {
+		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+		const resp = await fetch('/api/quote', {
+			body: JSON.stringify({
+				ticker,
+			}),
 			credentials: 'same-origin',
 			headers: {
 				'CSRF-Token': token,
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
 			},
-			method: 'POST'
-		})
-		if (resp.status !== 200) {
-			throw new Error(resp.status)
+			method: 'POST',
+		});
+		if (resp.status !== 201) {
+			throw new Error(resp.status);
 		}
-		return resp.json()
+		return resp.json();
 	} catch (error) {
-		return error
+		return error;
 	}
-}
+};
 
 export const getData = async (ticker) => {
 	try {
 		// Add loading class for button
-		document.getElementById('submit_button').classList.add('is-loading')
+		document.getElementById('submit_button').classList.add('is-loading');
 
-		const response = await getResponse(ticker)
+		const response = await getResponse(ticker);
 
 		// Clear table
-		clearTable()
+		clearTable();
 
 		// Push data to charts
-		loadData(response)
+		loadData(response);
 
 		// Generate table
-		generateTable(response)
+		generateTable(response);
 
-		generateStatisticTable(response)
+		generateStatisticTable(response);
 
 		// Load tragingview live chart
-		document.getElementById('iframe_chart').src = '../static/liveChart.html?stock=' + response.ticker
+		document.getElementById('iframe_chart').src = '../static/liveChart.html?stock=' + response.ticker;
 
 		// Remove loading class from button
-		document.getElementById('submit_button').classList.remove('is-loading')
+		document.getElementById('submit_button').classList.remove('is-loading');
 
 		// Change input value on sanitized one
-		const input = document.getElementById('input_ticker')
+		const input = document.getElementById('input_ticker');
 		if (input.value) {
-			input.value = response.ticker
+			input.value = response.ticker;
 		}
 
-		return response.ticker
+		return response.ticker;
 	} catch (error) {
-		document.getElementById('error-modal').classList.add('is-active')
-		document.getElementById('error-stock').innerHTML = ticker
+		document.getElementById('error-modal').classList.add('is-active');
+		document.getElementById('error-stock').innerHTML = ticker;
 	}
-}
+};
 
-export default getData
+export default getData;
