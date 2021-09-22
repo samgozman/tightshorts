@@ -1,3 +1,3 @@
-import './src/cookie'
-import './src/navbar'
-import './src/modal'
+import './src/cookie';
+import './src/navbar';
+import './src/modal';
