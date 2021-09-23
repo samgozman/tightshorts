@@ -1,0 +1,31 @@
+name: TightShorts Node.js
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['16']
+    name: Node ${{ matrix.node }} sample
+    env:
+      PORT: ${{ secrets.PORT }}
+      API_URL: ${{ secrets.API_URL }}
+      API_KEY: ${{ secrets.API_KEY }}
+      COOKIE_KEY: ${{ secrets.COOKIE_KEY }}
+      COOKIE_SESSION_KEY: ${{ secrets.COOKIE_SESSION_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm run build
+      - run: npm run test:github
+      - run: npm run test:e2e:github
