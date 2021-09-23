@@ -28,7 +28,6 @@ export class ApiService {
 
 	async getFiltered(getFilteredDto: GetFilteredDto): Promise<FilteredStocksDto> {
 		try {
-			const { limit, skip, sortby, sortdir, filters } = getFilteredDto;
 			const config: AxiosRequestConfig = {
 				method: 'get',
 				url: `${this.configService.get('API_URL')}/filter`,
