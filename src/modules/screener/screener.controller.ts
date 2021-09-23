@@ -1,14 +1,10 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
 import { Response, Request } from 'express';
-import { ScreenerService } from './screener.service';
 
 @Controller('screener')
 export class ScreenerController {
-	constructor(private readonly screenerService: ScreenerService) {}
-
 	@Get()
 	getScreener(@Res() res: Response, @Req() req: Request) {
-		// this.screenerService.getScreener();
 		return res.render('screener', {
 			layout: 'screener-ui',
 			isScreener: true,

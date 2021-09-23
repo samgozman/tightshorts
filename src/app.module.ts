@@ -5,7 +5,6 @@ import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { APP_PIPE } from '@nestjs/core';
 
 @Module({
@@ -21,7 +20,7 @@ import { APP_PIPE } from '@nestjs/core';
 	],
 	controllers: [AppController],
 	providers: [
-		AppService, // Apply this pipe on any request that flows into the application (instead of main.ts file)
+		// Apply this pipe on any request that flows into the application (instead of main.ts file)
 		{
 			provide: APP_PIPE,
 			useValue: new ValidationPipe({
