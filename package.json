@@ -27,7 +27,7 @@
     "dotenv": "^10.0.0",
     "element-resize-detector": "^1.2.2",
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.3",
+    "express-handlebars": "^5.3.4",
     "express-validator": "^6.12.1",
     "helmet": "^4.6.0",
     "htmlnano": "^1.1.1",
