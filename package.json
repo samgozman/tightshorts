@@ -27,7 +27,7 @@
 		"@nestjs/common": "^8.0.6",
 		"@nestjs/config": "^1.0.1",
 		"@nestjs/core": "^8.0.6",
-		"@nestjs/platform-express": "^8.0.6",
+		"@nestjs/platform-express": "^8.0.8",
 		"axios": "^0.21.4",
 		"class-transformer": "^0.4.0",
 		"class-validator": "^0.13.1",
