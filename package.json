@@ -26,7 +26,7 @@
 		"@hapi/joi": "^17.1.1",
 		"@nestjs/common": "^8.0.6",
 		"@nestjs/config": "^1.0.1",
-		"@nestjs/core": "^8.0.6",
+		"@nestjs/core": "^8.0.9",
 		"@nestjs/platform-express": "^8.0.6",
 		"axios": "^0.21.4",
 		"class-transformer": "^0.4.0",
