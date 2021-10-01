@@ -63,6 +63,22 @@ const getFiltredFromServer = async () => {
 	}
 };
 
+/**
+ * Disable screener during the table generation
+ * @param {Boolean} lock def: true. If false - unlock
+ */
+function lockScreener(lock = true) {
+	// lock all inputs
+	for (const filter of allFilters) {
+		document.getElementById(filter).disabled = lock;
+	}
+
+	// lock all radio groups
+	for (const group of allRadioGroups) {
+		document.getElementById(group).disabled = lock;
+	}
+}
+
 const generatePagination = (totalItems, pageSize = 25, skip = 0) => {
 	const thisPage = Math.ceil(skip / pageSize) + 1;
 	const { pages, currentPage, totalPages } = paginate(totalItems, thisPage, pageSize);
@@ -129,6 +145,7 @@ const nextPrevListeners = async () => {
 };
 
 const generateScreenerTable = async () => {
+	lockScreener();
 	// Set section min-height to prevernt from flickering
 	const mainSection = document.getElementById('main-section');
 	mainSection.style = `min-height: ${mainSection.offsetHeight}px;`;
@@ -174,6 +191,7 @@ const generateScreenerTable = async () => {
 	}
 
 	generatePagination(result.count, limit || 25, skip);
+	lockScreener(false);
 };
 
 // Reset button
