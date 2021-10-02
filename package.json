@@ -1,6 +1,6 @@
 {
 	"name": "tightshorts",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Tight Shorts - Finra short sale volume",
 	"author": "Sam Gozman <sam@gozman.space>",
 	"license": "MIT",
@@ -48,7 +48,7 @@
 		"@nestjs/cli": "^8.1.1",
 		"@nestjs/schematics": "^8.0.3",
 		"@nestjs/testing": "^8.0.6",
-		"@rollup/plugin-commonjs": "^20.0.0",
+		"@rollup/plugin-commonjs": "^21.0.0",
 		"@rollup/plugin-node-resolve": "^13.0.5",
 		"@types/cookie-parser": "^1.4.2",
 		"@types/cookie-session": "^2.0.43",
