@@ -264,6 +264,14 @@ const sorter = () => {
 			}
 		});
 	});
+
+	// Set sorter icon onload
+	const windowUrl = new URLSearchParams(window.location.search);
+	const sortby = windowUrl.get('sortby');
+	const sortdir = windowUrl.get('sortdir');
+	if (sortby && sortdir) {
+		document.getElementById(sortby).classList.add('is-active', sortdir);
+	}
 };
 
 window.onload = async () => {
