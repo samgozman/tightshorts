@@ -1,4 +1,4 @@
-name: TightShorts Node.js
+name: Test TightShorts
 
 on:
   push:
