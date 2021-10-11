@@ -41,7 +41,7 @@
 		"lightweight-charts": "^3.6.1",
 		"reflect-metadata": "^0.1.13",
 		"rimraf": "^3.0.2",
-		"rxjs": "^7.3.0",
+		"rxjs": "^7.4.0",
 		"url-parse": "^1.5.3"
 	},
 	"devDependencies": {
