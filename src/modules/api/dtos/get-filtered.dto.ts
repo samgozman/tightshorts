@@ -15,4 +15,7 @@ export class GetFilteredDto {
 
 	@IsOptional()
 	filters?: string;
+
+	@IsOptional()
+	tickers?: string;
 }

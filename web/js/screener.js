@@ -26,7 +26,7 @@ const changeSkip = async (skipValue, btn = undefined) => {
 
 // Get url params for filter
 const getUrlFilter = () => {
-	const { skip, limit, sortby, sortdir, filters } = new Url(window.location.href, true).query;
+	const { skip, limit, sortby, sortdir, filters, tickers } = new Url(window.location.href, true).query;
 
 	return {
 		skip: skip || '',
@@ -34,16 +34,17 @@ const getUrlFilter = () => {
 		sortby: sortby || '',
 		sortdir: sortdir || '',
 		filters: filters || '',
+		tickers: tickers || '',
 	};
 };
 
 const getFiltredFromServer = async () => {
 	try {
 		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-		const { skip, limit, sortby, sortdir, filters } = getUrlFilter();
+		const { skip, limit, sortby, sortdir, filters, tickers } = getUrlFilter();
 
 		const resp = await fetch(
-			`/api/filter?limit=${limit}&skip=${skip}&sortby=${sortby}&sortdir=${sortdir}&filters=${filters}`,
+			`/api/filter?limit=${limit}&skip=${skip}&tickers=${tickers}&sortby=${sortby}&sortdir=${sortdir}&filters=${filters}`,
 			{
 				credentials: 'same-origin',
 				headers: {
@@ -194,6 +195,25 @@ const generateScreenerTable = async () => {
 	lockScreener(false);
 };
 
+/**
+ * Find query params in the page url and replace them with new ones
+ * @param {string} stringToReplace String to find in url params and replace
+ * @param {string} newString New string to replace previous one
+ */
+function filterQueryParams(stringToReplace, newString) {
+	const windowUrl = new URLSearchParams(window.location.search);
+	const filtersQuery = windowUrl.get('filters') || '';
+
+	const regex = new RegExp(`(${stringToReplace},|,${stringToReplace}|${stringToReplace})`);
+	const newFilters = filtersQuery.replace(regex, '');
+	if (newString !== '') {
+		windowUrl.set('filters', `${newFilters ? newFilters + ',' : ''}${newString}`);
+	} else {
+		windowUrl.set('filters', newFilters);
+	}
+	history.replaceState(null, null, '?' + windowUrl.toString());
+}
+
 // Reset button
 document.getElementById('resetFilters').addEventListener('click', async () => {
 	const windowUrl = new URLSearchParams(window.location.search);
@@ -211,6 +231,22 @@ document.getElementById('resetFilters').addEventListener('click', async () => {
 	for (const group of allRadioGroups) {
 		document.getElementById(group).checked = false;
 	}
+});
+
+// Find button
+document.getElementById('sreener_search_button').addEventListener('click', async (e) => {
+	e.preventDefault();
+	const tickers = String(document.getElementById('input_screener_tickers').value)
+		.toUpperCase()
+		.replace(/\s/g, '');
+
+	const windowUrl = new URLSearchParams(window.location.search);
+	windowUrl.set('tickers', tickers);
+	history.replaceState(null, null, '?' + windowUrl.toString());
+
+	// Regenerate table
+	await changeSkip(0);
+	await generateScreenerTable();
 });
 
 // Sorter
@@ -276,7 +312,7 @@ const sorter = () => {
 
 window.onload = async () => {
 	// Parse url string and mark checked filters
-	const { filters } = getUrlFilter();
+	const { filters, tickers } = getUrlFilter();
 	if (filters) {
 		const fls = filters.split(',');
 		for (const filter of fls) {
@@ -284,24 +320,8 @@ window.onload = async () => {
 		}
 	}
 
-	/**
-	 * Find query params in the page url and replace them with new ones
-	 * @param {string} stringToReplace String to find in url params and replace
-	 * @param {string} newString New string to replace previous one
-	 */
-	function filterQueryParams(stringToReplace, newString) {
-		const windowUrl = new URLSearchParams(window.location.search);
-		const filtersQuery = windowUrl.get('filters') || '';
-
-		const regex = new RegExp(`(${stringToReplace},|,${stringToReplace}|${stringToReplace})`);
-		const newFilters = filtersQuery.replace(regex, '');
-		if (newString !== '') {
-			windowUrl.set('filters', `${newFilters ? newFilters + ',' : ''}${newString}`);
-		} else {
-			windowUrl.set('filters', newFilters);
-		}
-		history.replaceState(null, null, '?' + windowUrl.toString());
-	}
+	// Set tickers from url
+	document.getElementById('input_screener_tickers').value = tickers;
 
 	// Radio
 	for (const radioGroup of allRadioGroups) {
