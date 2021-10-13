@@ -238,7 +238,8 @@ document.getElementById('sreener_search_button').addEventListener('click', async
 	e.preventDefault();
 	const tickers = String(document.getElementById('input_screener_tickers').value)
 		.toUpperCase()
-		.replace(/\s/g, '');
+		.replace(/\s/g, '')
+		.replace(/(,$)|(^,)/g, '');
 
 	const windowUrl = new URLSearchParams(window.location.search);
 	windowUrl.set('tickers', tickers);
