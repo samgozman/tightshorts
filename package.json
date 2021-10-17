@@ -24,7 +24,7 @@
 	},
 	"dependencies": {
 		"@hapi/joi": "^17.1.1",
-		"@nestjs/common": "^8.1.0",
+		"@nestjs/common": "^8.1.1",
 		"@nestjs/config": "^1.0.2",
 		"@nestjs/core": "^8.1.0",
 		"@nestjs/platform-express": "^8.1.0",
@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@nestjs/cli": "^8.1.2",
 		"@nestjs/schematics": "^8.0.3",
-		"@nestjs/testing": "^8.1.0",
+		"@nestjs/testing": "^8.1.1",
 		"@rollup/plugin-commonjs": "^21.0.0",
 		"@rollup/plugin-node-resolve": "^13.0.5",
 		"@types/cookie-parser": "^1.4.2",
@@ -57,7 +57,7 @@
 		"@types/express-handlebars": "^5.3.1",
 		"@types/hapi__joi": "^17.1.7",
 		"@types/jest": "^27.0.1",
-		"@types/node": "^16.9.2",
+		"@types/node": "^16.11.0",
 		"@types/supertest": "^2.0.11",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
 		"@typescript-eslint/parser": "^4.33.0",
