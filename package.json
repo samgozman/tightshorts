@@ -57,7 +57,7 @@
 		"@types/express-handlebars": "^5.3.1",
 		"@types/hapi__joi": "^17.1.7",
 		"@types/jest": "^27.0.1",
-		"@types/node": "^16.11.0",
+		"@types/node": "^16.11.1",
 		"@types/supertest": "^2.0.11",
 		"@typescript-eslint/eslint-plugin": "^4.31.1",
 		"@typescript-eslint/parser": "^4.33.0",
