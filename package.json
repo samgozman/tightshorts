@@ -48,7 +48,7 @@
 		"@nestjs/cli": "^8.1.2",
 		"@nestjs/schematics": "^8.0.3",
 		"@nestjs/testing": "^8.1.1",
-		"@rollup/plugin-commonjs": "^21.0.0",
+		"@rollup/plugin-commonjs": "^21.0.1",
 		"@rollup/plugin-node-resolve": "^13.0.5",
 		"@types/cookie-parser": "^1.4.2",
 		"@types/cookie-session": "^2.0.43",
