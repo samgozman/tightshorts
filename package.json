@@ -46,7 +46,7 @@
 	},
 	"devDependencies": {
 		"@nestjs/cli": "^8.1.2",
-		"@nestjs/schematics": "^8.0.3",
+		"@nestjs/schematics": "^8.0.4",
 		"@nestjs/testing": "^8.1.1",
 		"@rollup/plugin-commonjs": "^21.0.1",
 		"@rollup/plugin-node-resolve": "^13.0.6",
