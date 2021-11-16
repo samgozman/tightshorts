@@ -35,7 +35,7 @@
 		"cookie-session": "^1.4.0",
 		"csurf": "^1.11.0",
 		"element-resize-detector": "^1.2.3",
-		"express-handlebars": "^5.3.3",
+		"express-handlebars": "^6.0.1",
 		"helmet": "^4.6.0",
 		"htmlnano": "^1.1.1",
 		"lightweight-charts": "^3.7.0",
