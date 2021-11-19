@@ -1,7 +1,9 @@
-import { Controller, Get, Param, Req, Res } from '@nestjs/common';
+import { Controller, Get, Param, Req, Res, UseInterceptors } from '@nestjs/common';
 import { Response, Request } from 'express';
+import { SentryInterceptor } from '@ntegral/nestjs-sentry';
 
 @Controller('quote')
+@UseInterceptors(new SentryInterceptor())
 export class QuoteController {
 	@Get(':ticker')
 	getQuote(@Res() res: Response, @Req() req: Request, @Param('ticker') ticker: string) {

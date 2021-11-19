@@ -10,6 +10,7 @@ import http from 'http';
 import https from 'https';
 import csurf from 'csurf';
 import helmet from 'helmet';
+import { SentryService } from '@ntegral/nestjs-sentry';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
@@ -25,6 +26,7 @@ const csrf = csurf({
 async function bootstrap() {
 	const server = express();
 	const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter(server));
+	const sentryService = app.get<SentryService>(SentryService);
 	const config = app.get<ConfigService>(ConfigService);
 
 	// Set Handlebars
@@ -35,6 +37,11 @@ async function bootstrap() {
 	});
 
 	app.setBaseViewsDir(join(__dirname, '/../web/views'));
+
+	// Set Sentry for Express
+	app.use(sentryService.instance().Handlers.requestHandler());
+	app.use(sentryService.instance().Handlers.tracingHandler());
+
 	app.use(express.static(join(__dirname, '/../dist')));
 	app.engine('.hbs', hbs.engine);
 	app.setViewEngine('hbs');
