@@ -27,7 +27,7 @@
 		"@nestjs/common": "^8.2.0",
 		"@nestjs/config": "^1.1.0",
 		"@nestjs/core": "^8.2.2",
-		"@nestjs/platform-express": "^8.2.1",
+		"@nestjs/platform-express": "^8.2.3",
 		"@ntegral/nestjs-sentry": "^3.0.6",
 		"@sentry/node": "^6.15.0",
 		"@sentry/tracing": "^6.15.0",
