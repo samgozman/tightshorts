@@ -4,6 +4,7 @@ dist/js
 Dockerfile
 build/
 doc/
+data/
 .git/
 .gitignore
 .github
