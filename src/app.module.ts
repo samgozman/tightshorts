@@ -13,7 +13,7 @@ import { LogLevel } from '@sentry/types';
 	imports: [
 		ConfigModule.forRoot({
 			isGlobal: true,
-			envFilePath: `config/.${process.env.NODE_ENV}.env`,
+			envFilePath: `config/web.${process.env.NODE_ENV}.env`,
 			validationSchema: process.env.NODE_ENV !== 'github' ? configValidationSchema : undefined,
 		}),
 		SentryModule.forRootAsync({
