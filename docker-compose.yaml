@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  tightshorts:
+    ports:
+      - '3000:3000'
+    build: ./
+    volumes:
+      - ./dist:/dist
+    env_file:
+      - ./config/web.development.env
+    depends_on:
+      - finra-short-api
+
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - ./data:/data/db
+    env_file:
+      - ./config/api.production.env
+
+  finra-short-api:
+    image: 'ghcr.io/samgozman/finra-short-api:dev'
+    ports:
+      - '3001:3001'
+    env_file:
+      - ./config/api.production.env
+    depends_on:
+      - mongodb
