@@ -15,6 +15,7 @@ import { join } from 'path';
 import { AppModule } from './app.module';
 import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
 import { isURL } from 'class-validator';
+import { ApiConnectService } from './modules/api/api-connect.service';
 
 const csrf = csurf({
 	cookie: {
@@ -28,6 +29,12 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter(server));
 	const sentryService = app.get<SentryService>(SentryService);
 	const config = app.get<ConfigService>(ConfigService);
+	const apiConnectService = app.get<ApiConnectService>(ApiConnectService);
+
+	// Sets API_KEY env
+	await apiConnectService.call();
+
+	console.log(config.get('API_KEY'));
 
 	// Set Handlebars
 	const hbs = create({
