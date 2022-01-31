@@ -28,7 +28,7 @@
 		"@nestjs/core": "^8.2.3",
 		"@nestjs/platform-express": "^8.2.3",
 		"@ntegral/nestjs-sentry": "^3.0.6",
-		"@sentry/node": "^6.15.0",
+		"@sentry/node": "^6.17.3",
 		"@sentry/tracing": "^6.15.0",
 		"axios": "^0.24.0",
 		"class-transformer": "^0.5.1",
