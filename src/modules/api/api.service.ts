@@ -18,7 +18,7 @@ export class ApiService {
 				method: 'get',
 				url: `${this.configService.get('API_URL')}/stock?ticker=${ticker}`,
 				headers: {
-					token: this.configService.get('API_KEY'),
+					token: process.env['API_KEY'],
 					'Content-Type': 'application/json',
 				},
 			};
@@ -40,7 +40,7 @@ export class ApiService {
 					...Object.entries(getFilteredDto).reduce((a, [k, v]) => (v ? ((a[k] = v), a) : a), {}),
 				},
 				headers: {
-					token: this.configService.get('API_KEY'),
+					token: process.env['API_KEY'],
 					'Content-Type': 'application/json',
 				},
 			};

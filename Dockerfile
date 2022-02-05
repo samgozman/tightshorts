@@ -9,11 +9,10 @@ RUN npm install
 COPY . ./
 
 ARG PORT=80
-ARG API_URL=http://localhost:3000
+ARG API_URL=http://finra-short-api:3001
 
 ENV PORT ${PORT}
 ENV API_URL=${API_URL}
-ENV API_KEY=''
 ENV COOKIE_KEY=''
 ENV COOKIE_SESSION_KEY=''
 ENV SENTRY_DSN=''

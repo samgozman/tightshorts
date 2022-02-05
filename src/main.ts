@@ -34,8 +34,6 @@ async function bootstrap() {
 	// Sets API_KEY env
 	await apiConnectService.call();
 
-	console.log(config.get('API_KEY'));
-
 	// Set Handlebars
 	const hbs = create({
 		extname: 'hbs',

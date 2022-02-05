@@ -14,6 +14,9 @@ export class ApiConnectService {
 		this.login = this.configService.get('API_USER_LOGIN');
 	}
 
+	/**
+	 * Run startup script to initiate user creation process
+	 */
 	async call() {
 		const users = await this.apiService.getUsers();
 		let user = users.find((e) => e.login === this.login);
