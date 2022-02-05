@@ -5,6 +5,7 @@ services:
     ports:
       - '3000:3000'
     build: ./
+    restart: unless-stopped
     volumes:
       - ./dist:/dist
     env_file:
@@ -14,10 +15,22 @@ services:
 
   mongodb:
     image: 'mongo'
+    restart: unless-stopped
     volumes:
       - ./data:/data/db
     env_file:
       - ./config/api.production.env
+
+  webserver:
+    image: nginx:mainline-alpine
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - tightshorts
 
   finra-short-api:
     image: 'ghcr.io/samgozman/finra-short-api:dev'

@@ -76,33 +76,35 @@ async function bootstrap() {
 
 	await app.init();
 
+	await app.listen(config.get('PORT'));
+
 	// Setup HTTPS connection for production server
-	if (config.get('NODE_ENV') === 'production') {
-		// https settings
-		const httpsOptions: HttpsOptions = {
-			key: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/privkey.pem'),
-			cert: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/cert.pem'),
-			ca: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/chain.pem'),
-		};
+	// if (config.get('NODE_ENV') === 'production') {
+	// 	// https settings
+	// 	const httpsOptions: HttpsOptions = {
+	// 		key: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/privkey.pem'),
+	// 		cert: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/cert.pem'),
+	// 		ca: fs.readFileSync('/etc/letsencrypt/live/tightshorts.ru/chain.pem'),
+	// 	};
 
-		// HTTPS server
-		https.createServer(httpsOptions, server).listen(443);
+	// 	// HTTPS server
+	// 	https.createServer(httpsOptions, server).listen(443);
 
-		// Redirect from 80 to 443
-		http
-			.createServer(function (req, res) {
-				const link = 'https://' + req.headers['host'] + req.url;
-				if (isURL(link)) {
-					res.writeHead(301, {
-						Location: link,
-					});
-					res.end();
-				}
-			})
-			.listen(80);
-	} else {
-		// http dev server
-		http.createServer(server).listen(config.get('PORT'));
-	}
+	// 	// Redirect from 80 to 443
+	// 	http
+	// 		.createServer(function (req, res) {
+	// 			const link = 'https://' + req.headers['host'] + req.url;
+	// 			if (isURL(link)) {
+	// 				res.writeHead(301, {
+	// 					Location: link,
+	// 				});
+	// 				res.end();
+	// 			}
+	// 		})
+	// 		.listen(80);
+	// } else {
+	// 	// http dev server
+	// 	http.createServer(server).listen(config.get('PORT'));
+	// }
 }
 bootstrap();
