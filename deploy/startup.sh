@@ -61,7 +61,7 @@ EOL
 
 # Start nginx as a service and enable it on boot
 systemctl start nginx
-systemctl status nginx
+systemctl enable nginx
 
 # Install certbot (for certificates renewal) via snap
 # snap should be available in ubuntu 20.04 and above
