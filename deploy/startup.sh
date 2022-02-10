@@ -6,6 +6,8 @@ ufw disable
 
 # TODO: setup swap size half of the current RAM
 
+# TODO 1: wget tightshorts github
+
 apt-get update
 
 # Install Nginx dependencies for dynamic build from source
@@ -61,6 +63,8 @@ PrivateTmp=true
 WantedBy=multi-user.target
 EOL
 
+# TODO 2: copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
+
 # Start nginx as a service and enable it on boot
 systemctl start nginx
 systemctl enable nginx
@@ -89,3 +93,39 @@ crontab crontab_new
 rm crontab_new
 
 # TODO: Install docker and docker-compose
+# Install dependencies for docker
+apt-get install \
+  ca-certificates \
+  url \
+  gnupg \
+  lsb-release
+
+# Add Docker’s official GPG key
+curl \
+  -fsSL https://download.docker.com/linux/ubuntu/gpg \
+  | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Set up the stable repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] \
+  https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+  | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker engine
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io
+
+# Install dependencies for docker-compose
+# ! Check their existence in ubuntu 20.04
+apt-get install py-pip python3-dev libffi-dev openssl-dev libc-dev rust cargo
+
+# Download current stable version of docker-compose
+curl -L \
+  "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" \
+  -o /usr/local/bin/docker-compose
+
+# Apply executable permissions to the binary
+chmod +x /usr/local/bin/docker-compose
+
+# TODO: run docker-compose or docker swarm
+# TODO: start containers on server restart
