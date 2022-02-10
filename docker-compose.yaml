@@ -21,19 +21,9 @@ services:
     env_file:
       - ./config/api.production.env
 
-  webserver:
-    image: nginx:mainline-alpine
-    restart: unless-stopped
-    ports:
-      - '80:80'
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./nginx/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - tightshorts
-
   finra-short-api:
     image: 'ghcr.io/samgozman/finra-short-api:dev'
+    restart: unless-stopped
     ports:
       - '3001:3001'
     env_file:
