@@ -4,6 +4,8 @@
 # Disable linux firewall. Use VPS firewall instead
 ufw disable
 
+# TODO: setup swap size half of the current RAM
+
 apt-get update
 
 # Install Nginx dependencies for dynamic build from source
