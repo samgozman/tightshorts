@@ -9,6 +9,7 @@ ufw disable
 # TODO 1: wget tightshorts github
 
 apt-get update
+apt-get upgrade -y
 
 # Install Nginx dependencies for dynamic build from source
 apt-get install build-essential \
@@ -62,6 +63,9 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 EOL
+
+# Get back
+cd ..
 
 # TODO 2: copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
 
