@@ -17,19 +17,21 @@ import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.i
 import { isURL } from 'class-validator';
 import { ApiConnectService } from './modules/api/api-connect.service';
 
-const csrf = csurf({
-	cookie: {
-		httpOnly: true,
-		secure: true,
-	},
-});
-
 async function bootstrap() {
 	const server = express();
 	const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter(server));
 	const sentryService = app.get<SentryService>(SentryService);
 	const config = app.get<ConfigService>(ConfigService);
 	const apiConnectService = app.get<ApiConnectService>(ApiConnectService);
+
+	const isProduction = config.get('NODE_ENV') === 'production';
+
+	const csrf = csurf({
+		cookie: {
+			httpOnly: true,
+			secure: isProduction,
+		},
+	});
 
 	// Sets API_KEY env
 	await apiConnectService.call();
