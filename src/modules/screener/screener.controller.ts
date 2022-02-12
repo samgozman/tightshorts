@@ -12,7 +12,6 @@ export class ScreenerController {
 			isScreener: true,
 			title: 'Tight Shorts: Screener',
 			version: process.env.npm_package_version,
-			csrf: req.csrfToken(),
 			filters: {
 				settings: {
 					onTinkoff: {

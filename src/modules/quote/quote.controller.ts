@@ -13,7 +13,6 @@ export class QuoteController {
 			isMain: true,
 			version: process.env.npm_package_version,
 			ticker: ticker,
-			csrf: req.csrfToken(),
 		});
 	}
 }

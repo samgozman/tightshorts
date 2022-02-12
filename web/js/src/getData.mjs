@@ -5,11 +5,9 @@ import generateStatisticTable from './statisticsTable.mjs';
 // Get response from server side
 const getResponse = async (ticker) => {
 	try {
-		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		const resp = await fetch(`/api/quote/?ticker=${ticker}`, {
 			credentials: 'same-origin',
 			headers: {
-				'CSRF-Token': token,
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
