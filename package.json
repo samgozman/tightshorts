@@ -22,7 +22,6 @@
 		"test:e2e:github": "npm run rollup && cross-env NODE_ENV=github jest --config ./test/jest-e2e.json"
 	},
 	"dependencies": {
-		"@hapi/joi": "^17.1.1",
 		"@nestjs/common": "^8.2.3",
 		"@nestjs/config": "^1.1.5",
 		"@nestjs/core": "^8.2.3",
@@ -40,6 +39,7 @@
 		"express-handlebars": "^6.0.2",
 		"helmet": "^4.6.0",
 		"htmlnano": "^1.1.1",
+		"joi": "^17.6.0",
 		"lightweight-charts": "^3.7.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "^7.4.0",

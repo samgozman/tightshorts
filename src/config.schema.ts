@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import Joi from 'joi';
 
 // *.env validation
 export const configValidationSchema = Joi.object({
