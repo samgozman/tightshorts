@@ -6,10 +6,18 @@ ufw disable
 
 # TODO: setup swap size half of the current RAM
 
-# TODO 1: wget tightshorts github
-
 apt-get update
 apt-get upgrade -y
+
+# Create folder for the project
+mkdir tightshorts
+cd tightshorts || exit
+
+# Fetch tightshorts remote repository
+git clone https://github.com/samgozman/tightshorts.git --branch dev .
+
+# Get back
+cd ..
 
 # Install Nginx dependencies for dynamic build from source
 apt-get install build-essential \
