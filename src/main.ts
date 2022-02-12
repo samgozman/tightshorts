@@ -17,6 +17,13 @@ import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.i
 import { isURL } from 'class-validator';
 import { ApiConnectService } from './modules/api/api-connect.service';
 
+const csrf = csurf({
+	cookie: {
+		httpOnly: true,
+		secure: true,
+	},
+});
+
 async function bootstrap() {
 	const server = express();
 	const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter(server));
@@ -51,6 +58,14 @@ async function bootstrap() {
 			secret: config.get('COOKIE_SESSION_KEY'),
 		}),
 	);
+
+	// Block Cross-site request forgery
+	app.use(csrf);
+	app.use(function (req: Request, res: Response, next: NextFunction) {
+		res.cookie('XSRF-TOKEN', req.csrfToken());
+		res.locals.token = req.csrfToken();
+		next();
+	});
 
 	// Security
 	app.use(

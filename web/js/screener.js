@@ -40,6 +40,7 @@ const getUrlFilter = () => {
 
 const getFiltredFromServer = async () => {
 	try {
+		const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 		const { skip, limit, sortby, sortdir, filters, tickers } = getUrlFilter();
 
 		const resp = await fetch(
@@ -47,6 +48,7 @@ const getFiltredFromServer = async () => {
 			{
 				credentials: 'same-origin',
 				headers: {
+					'CSRF-Token': token,
 					Accept: 'application/json',
 					'Content-Type': 'application/json',
 				},

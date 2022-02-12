@@ -13,6 +13,7 @@ export class AppController {
 			isMain: true,
 			version: process.env.npm_package_version,
 			ticker: 'undefined',
+			csrf: req.csrfToken(),
 		});
 	}
 }
