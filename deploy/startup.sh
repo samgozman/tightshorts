@@ -75,7 +75,8 @@ EOL
 # Get back
 cd ..
 
-# TODO 2: copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
+# Copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
+cp -rf tightshorts/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Start nginx as a service and enable it on boot
 systemctl start nginx
@@ -104,13 +105,14 @@ echo "0 12 * * * /usr/bin/certbot renew --quiet" >> crontab_new
 crontab crontab_new
 rm crontab_new
 
-# TODO: Install docker and docker-compose
+# Install docker and docker-compose
 # Install dependencies for docker
 apt-get install \
   ca-certificates \
-  url \
+  curl \
   gnupg \
-  lsb-release
+  lsb-release \
+  -y
 
 # Add Docker’s official GPG key
 curl \
@@ -125,11 +127,10 @@ echo \
 
 # Install Docker engine
 apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-ce docker-ce-cli containerd.io -y
 
 # Install dependencies for docker-compose
-# ! Check their existence in ubuntu 20.04
-apt-get install py-pip python3-dev libffi-dev openssl-dev libc-dev rust cargo
+apt-get install python3-dev libffi-dev libc-dev cargo -y
 
 # Download current stable version of docker-compose
 curl -L \
@@ -140,4 +141,6 @@ curl -L \
 chmod +x /usr/local/bin/docker-compose
 
 # TODO: run docker-compose or docker swarm
+# cd tightshorts || exit
+# docker-compose up
 # TODO: start containers on server restart
