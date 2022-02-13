@@ -78,7 +78,7 @@ EOL
 cd ..
 
 # Copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
-cp -rf tightshorts/nginx/nginx.conf /etc/nginx/nginx.conf
+cp -rf /root/tightshorts/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Start nginx as a service and enable it on boot
 systemctl start nginx
