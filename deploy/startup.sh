@@ -9,6 +9,8 @@ ufw disable
 apt-get update
 apt-get upgrade -y
 
+cd /root || exit
+
 # Create folder for the project
 mkdir tightshorts
 cd tightshorts || exit
@@ -97,7 +99,7 @@ certbot certonly --noninteractive --agree-tos \
 --cert-name tightshorts \
 -d tightshorts.ru -d www.tightshorts.ru \
 -m sam@gozman.space \
---webroot -w /var/www/html/
+--webroot -w /root/tightshorts/dist
 
 # Certificate auto renewal
 crontab -l > crontab_new
