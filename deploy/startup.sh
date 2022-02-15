@@ -4,7 +4,8 @@
 # Disable linux firewall. Use VPS firewall instead
 ufw disable
 
-# TODO: setup swap size half of the current RAM
+# Change timezone
+timedatectl set-timezone Europe/Moscow
 
 apt-get update
 apt-get upgrade -y
