@@ -30,3 +30,6 @@ services:
       - ./config/api.production.env
     depends_on:
       - mongodb
+    volumes:
+    - '/etc/timezone:/etc/timezone:ro'
+    - '/etc/localtime:/etc/localtime:ro'
