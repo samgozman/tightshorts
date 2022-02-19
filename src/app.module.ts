@@ -7,13 +7,12 @@ import { configValidationSchema } from './config.schema';
 import { AppController } from './app.controller';
 import { APP_PIPE } from '@nestjs/core';
 import { SentryModule } from '@ntegral/nestjs-sentry';
-import { LogLevel } from '@sentry/types';
 
 @Module({
 	imports: [
 		ConfigModule.forRoot({
 			isGlobal: true,
-			envFilePath: `config/.${process.env.NODE_ENV}.env`,
+			envFilePath: `config/web.${process.env.NODE_ENV}.env`,
 			validationSchema: process.env.NODE_ENV !== 'github' ? configValidationSchema : undefined,
 		}),
 		SentryModule.forRootAsync({
@@ -23,7 +22,7 @@ import { LogLevel } from '@sentry/types';
 				debug: true,
 				environment: process.env.NODE_ENV,
 				release: process.env.npm_package_version,
-				logLevel: LogLevel.Debug,
+				logLevel: 'debug',
 				tracesSampleRate: config.get('SENTRY_TRACE_RATE'),
 				// Do not capture traces for frontend files
 				tracesSampler: (samplingContext) => {

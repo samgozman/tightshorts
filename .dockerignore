@@ -1,0 +1,17 @@
+node_modules/
+config/
+dist/js
+Dockerfile
+build/
+doc/
+data/
+.git/
+.gitignore
+.github
+.config
+.eslintrc.js
+.gitignore
+.prettierrc
+FUNDING.yml
+LICENSE
+README.md

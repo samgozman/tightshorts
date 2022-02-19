@@ -39,3 +39,4 @@ lerna-debug.log*
 config/*.env
 config/*.env
 dist/js
+data/

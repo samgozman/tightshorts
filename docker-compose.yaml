@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  tightshorts:
+    ports:
+      - '3000:3000'
+    build: ./
+    restart: unless-stopped
+    volumes:
+      - ./dist:/dist
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./config/web.development.env
+    depends_on:
+      - finra-short-api
+
+  mongodb:
+    image: 'mongo'
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./config/api.production.env
+
+  finra-short-api:
+    image: 'ghcr.io/samgozman/finra-short-api:dev'
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    env_file:
+      - ./config/api.production.env
+    depends_on:
+      - mongodb
+    volumes:
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
