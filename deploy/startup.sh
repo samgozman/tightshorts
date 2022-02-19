@@ -10,8 +10,6 @@ timedatectl set-timezone Europe/Moscow
 apt-get update
 apt-get upgrade -y
 
-cd /root || exit
-
 # Create folder for the project
 mkdir tightshorts
 cd tightshorts || exit
@@ -21,6 +19,8 @@ git clone https://github.com/samgozman/tightshorts.git --branch dev .
 
 # Get back
 cd ..
+
+cd /root || exit
 
 # Install Nginx dependencies for dynamic build from source
 apt-get install build-essential \
@@ -79,34 +79,11 @@ EOL
 cd ..
 
 # Copy nginx.conf file from tightshorts project to /etc/nginx/nginx.conf
-cp -rf /root/tightshorts/nginx/nginx.conf /etc/nginx/nginx.conf
+cp -rf /tightshorts/nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Start nginx as a service and enable it on boot
 systemctl start nginx
 systemctl enable nginx
-
-# Install certbot (for certificates renewal) via snap
-# snap should be available in ubuntu 20.04 and above
-snap install core; snap refresh core
-snap install --classic certbot
-
-# Prepare the certbot command line
-ln -s /snap/bin/certbot /usr/bin/certbot
-
-# Get certificate only, without modifying existing nginx.conf
-# TODO: use variable for domain
-# --webroot - path for /.well-known
-certbot certonly --noninteractive --agree-tos \
---cert-name tightshorts \
--d tightshorts.ru -d www.tightshorts.ru \
--m sam@gozman.space \
---webroot -w /root/tightshorts/dist
-
-# Certificate auto renewal
-crontab -l > crontab_new
-echo "0 12 * * * /usr/bin/certbot renew --quiet" >> crontab_new
-crontab crontab_new
-rm crontab_new
 
 # Install docker and docker-compose
 # Install dependencies for docker
