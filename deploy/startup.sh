@@ -17,6 +17,10 @@ cd tightshorts || exit
 # Fetch tightshorts remote repository
 git clone https://github.com/samgozman/tightshorts.git --branch dev .
 
+# Make sh scripts executable
+chmod +x deploy/run_certbot.sh
+chmod +x deploy/update.sh
+
 # Get back
 cd ..
 
