@@ -15,7 +15,7 @@ mkdir tightshorts
 cd tightshorts || exit
 
 # Fetch tightshorts remote repository
-git clone https://github.com/samgozman/tightshorts.git --branch dev .
+git clone https://github.com/samgozman/tightshorts.git --branch main .
 
 # Make sh scripts executable
 chmod +x deploy/run_certbot.sh
