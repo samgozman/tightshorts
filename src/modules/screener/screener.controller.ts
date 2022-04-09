@@ -15,10 +15,6 @@ export class ScreenerController {
 			csrf: req.csrfToken(),
 			filters: {
 				settings: {
-					onTinkoff: {
-						title: 'Available on Tinkoff broker',
-						iconClass: 'extension-puzzle-outline',
-					},
 					isNotGarbage: {
 						title: 'Is not complete garbage',
 						iconClass: 'trash-bin-outline',
