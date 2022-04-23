@@ -34,6 +34,20 @@ services:
       - ./config/api.production.env
     depends_on:
       - mongodb
+      - analyzer
     volumes:
-    - /etc/timezone:/etc/timezone:ro
-    - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  analyzer:
+    image: 'ghcr.io/samgozman/go-finra-short-sales-analyzer:latest'
+    restart: unless-stopped
+    ports:
+      - '3030:3030'
+    env_file:
+      - ./config/api.production.env
+    depends_on:
+      - mongodb
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
