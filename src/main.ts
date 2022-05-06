@@ -42,7 +42,8 @@ async function bootstrap() {
 
 	// Set Sentry for Express
 	app.use(sentryService.instance().Handlers.requestHandler());
-	app.use(sentryService.instance().Handlers.tracingHandler());
+	// ! Sentry bug
+	// app.use(sentryService.instance().Handlers.tracingHandler());
 
 	app.use(express.static(join(__dirname, '/../dist')));
 	app.engine('.hbs', hbs.engine);
