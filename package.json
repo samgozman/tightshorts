@@ -42,7 +42,7 @@
 		"helmet": "^4.6.0",
 		"htmlnano": "^1.1.1",
 		"joi": "^17.6.0",
-		"lightweight-charts": "^3.7.0",
+		"lightweight-charts": "^3.8.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "^7.5.4",
 		"url-parse": "^1.5.3"
