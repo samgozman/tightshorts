@@ -8,8 +8,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./dist:/dist
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
     env_file:
       - ./config/web.development.env
     depends_on:
@@ -20,8 +18,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./data:/data/db
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
     env_file:
       - ./config/api.production.env
 
@@ -35,9 +31,6 @@ services:
     depends_on:
       - mongodb
       - analyzer
-    volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
 
   analyzer:
     image: 'ghcr.io/samgozman/go-finra-short-sales-analyzer:latest'
@@ -48,6 +41,3 @@ services:
       - ./config/api.production.env
     depends_on:
       - mongodb
-    volumes:
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
