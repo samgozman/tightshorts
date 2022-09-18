@@ -4,9 +4,6 @@
 # Disable linux firewall. Use VPS firewall instead
 ufw disable
 
-# Change timezone
-timedatectl set-timezone Europe/Moscow
-
 apt-get update
 apt-get upgrade -y
 

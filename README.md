@@ -1,5 +1,7 @@
 # TightShorts
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1DI4VL)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/541ea20beaf744a7a102973006f3650b)](https://www.codacy.com/gh/samgozman/tightshorts/dashboard?utm_source=github.com&utm_medium=referral&utm_content=samgozman/tightshorts&utm_campaign=Badge_Grade)[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=samgozman_tightshorts&metric=alert_status)](https://sonarcloud.io/dashboard?id=samgozman_tightshorts)
 
 Tight Shorts - open-source stocks short volume charts. The service presents FINRA reports in a more visual form. You can use it to estimate the total trading volume, short volume, short exempt volume and download the annual report on the short volumes of the selected stock.
