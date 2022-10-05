@@ -7,6 +7,6 @@ window.onload = async function () {
 	if (metaTicker !== 'undefined') {
 		document
 			.getElementById('menu_shortfork')
-			.setAttribute('href', `https://short-fork.herokuapp.com/?stock=${metaTicker}`);
+			.setAttribute('href', `https://short-fork.up.railway.app/?stock=${metaTicker}`);
 	}
 };
