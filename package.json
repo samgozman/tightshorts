@@ -48,7 +48,7 @@
 		"url-parse": "^1.5.3"
 	},
 	"devDependencies": {
-		"@nestjs/cli": "^8.1.4",
+		"@nestjs/cli": "^9.1.9",
 		"@nestjs/schematics": "^8.0.4",
 		"@nestjs/testing": "^8.2.3",
 		"@rollup/plugin-commonjs": "^21.0.1",
