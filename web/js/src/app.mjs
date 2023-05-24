@@ -16,5 +16,5 @@ document.getElementById('search').addEventListener('submit', async (e) => {
 
 	document
 		.getElementById('menu_shortfork')
-		.setAttribute('href', `https://short-fork.up.railway.app/?stock=${ticker}`);
+		.setAttribute('href', `https://short-fork.extr.app/?stock=${ticker}`);
 });
