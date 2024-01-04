@@ -8,7 +8,7 @@ Tight Shorts - open-source stocks short volume charts. The service presents FINR
 
 **Tight Shorts** can be a great addition to your trading strategy!
 
-Link: **[tightshorts.ru](https://tightshorts.ru/)**
+Link: **[tightshorts.extr.app](https://tightshorts.extr.app//)**
 
 Backend and API code: [finra-short-api](https://github.com/samgozman/finra-short-api)
 

@@ -24,7 +24,7 @@ const generalSettings = {
 		horzAlign: 'center',
 		vertAlign: 'center',
 		color: color.watermark,
-		text: 'TightShorts.ru, stock',
+		text: 'TightShorts.extr.app, stock',
 	},
 	layout: {
 		backgroundColor: '#ffffff',
@@ -223,7 +223,7 @@ const loadData = (response) => {
 	series_shortExemptVolume.setData(data_shortExemptVolume);
 
 	// Update chart watermark
-	const watermark = `TightShorts.ru, ${response.ticker}`;
+	const watermark = `TightShorts.extr.app, ${response.ticker}`;
 	chartPercent.applyOptions({
 		watermark: {
 			text: watermark,

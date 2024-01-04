@@ -13,7 +13,7 @@ ln -s /snap/bin/certbot /usr/bin/certbot
 # --webroot - path for /.well-known
 certbot certonly --noninteractive --agree-tos \
 --cert-name tightshorts \
--d tightshorts.ru -d www.tightshorts.ru \
+-d tightshorts.extr.app -d www.tightshorts.extr.app \
 -m sam@gozman.space \
 --webroot -w /tightshorts/dist
 
