@@ -39,7 +39,7 @@
 		"csurf": "^1.11.0",
 		"element-resize-detector": "^1.2.3",
 		"express-handlebars": "^6.0.2",
-		"helmet": "^4.6.0",
+		"helmet": "^7.1.0",
 		"htmlnano": "^1.1.1",
 		"joi": "^17.6.0",
 		"lightweight-charts": "^3.8.0",
