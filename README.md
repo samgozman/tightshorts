@@ -1,5 +1,7 @@
 # TightShorts
 
+> **⚠️ This project is no longer maintained.** FINRA shut down their public API access, making this project non-functional. The repository is archived for historical reference only.
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C1DI4VL)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/541ea20beaf744a7a102973006f3650b)](https://www.codacy.com/gh/samgozman/tightshorts/dashboard?utm_source=github.com&utm_medium=referral&utm_content=samgozman/tightshorts&utm_campaign=Badge_Grade)[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=samgozman_tightshorts&metric=alert_status)](https://sonarcloud.io/dashboard?id=samgozman_tightshorts)
